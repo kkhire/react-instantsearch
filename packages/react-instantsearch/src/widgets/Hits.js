@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BaseWidget from './BaseWidget';
-import connectHits from '../connectors/connectHits.js';
-import HitsComponent from '../components/Hits.js';
+import connectHits from '../connectors/connectHits';
 import classNames from '../components/classNames';
+import BaseWidget from '../components/BaseWidget';
+import HitsComponent from '../components/Hits';
 
 const cx = classNames('Hits');
 

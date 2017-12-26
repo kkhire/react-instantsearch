@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BaseWidget from './BaseWidget';
-import connectSearchBox from '../connectors/connectSearchBox.js';
-import SearchBoxComponent from '../components/SearchBox.js';
+import connectSearchBox from '../connectors/connectSearchBox';
 import classNames from '../components/classNames';
+import BaseWidget from '../components/BaseWidget';
+import SearchBoxComponent from '../components/SearchBox';
 
 const cx = classNames('SearchBox');
 

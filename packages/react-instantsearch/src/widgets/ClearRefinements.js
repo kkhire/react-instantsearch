@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BaseWidget from './BaseWidget';
-import connectCurrentRefinements from '../connectors/connectCurrentRefinements.js';
-import ClearRefinementsComponent from '../components/ClearRefinements.js';
+import connectCurrentRefinements from '../connectors/connectCurrentRefinements';
 import classNames from '../components/classNames';
+import BaseWidget from '../components/BaseWidget';
+import ClearRefinementsComponent from '../components/ClearRefinements';
 
 const cx = classNames('ClearRefinements');
 

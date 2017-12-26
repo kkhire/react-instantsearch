@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BaseWidget from './BaseWidget';
-import connectToggle from '../connectors/connectToggle.js';
-import ToggleComponent from '../components/Toggle.js';
+import connectToggle from '../connectors/connectToggle';
 import classNames from '../components/classNames';
+import BaseWidget from '../components/BaseWidget';
+import ToggleComponent from '../components/Toggle';
 
 const cx = classNames('Toggle');
 

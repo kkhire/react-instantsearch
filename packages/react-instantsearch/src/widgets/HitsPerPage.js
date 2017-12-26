@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BaseWidget from './BaseWidget';
-import connectHitsPerPage from '../connectors/connectHitsPerPage.js';
-import HitsPerPageSelectComponent from '../components/HitsPerPage.js';
+import connectHitsPerPage from '../connectors/connectHitsPerPage';
 import classNames from '../components/classNames';
+import BaseWidget from '../components/BaseWidget';
+import HitsPerPageSelectComponent from '../components/HitsPerPage';
 
 const cx = classNames('ResultsPerPage');
 

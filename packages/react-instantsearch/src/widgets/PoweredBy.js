@@ -1,5 +1,5 @@
-import connectPoweredBy from '../connectors/connectPoweredBy.js';
-import PoweredByComponent from '../components/PoweredBy.js';
+import connectPoweredBy from '../connectors/connectPoweredBy';
+import PoweredByComponent from '../components/PoweredBy';
 
 /**
  * PoweredBy displays an Algolia logo.

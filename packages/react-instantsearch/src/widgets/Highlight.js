@@ -1,7 +1,7 @@
 import React from 'react';
-import connectHighlight from '../connectors/connectHighlight.js';
-import HighlightComponent from '../components/Highlight.js';
+import connectHighlight from '../connectors/connectHighlight';
 import classNames from '../components/classNames';
+import HighlightComponent from '../components/Highlight';
 
 const cx = classNames('Highlight');
 

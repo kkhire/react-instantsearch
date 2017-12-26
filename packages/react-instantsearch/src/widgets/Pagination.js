@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BaseWidget from './BaseWidget';
-import connectPagination from '../connectors/connectPagination.js';
-import PaginationComponent from '../components/Pagination.js';
+import connectPagination from '../connectors/connectPagination';
 import classNames from '../components/classNames';
+import BaseWidget from '../components/BaseWidget';
+import PaginationComponent from '../components/Pagination';
 
 const cx = classNames('Pagination');
 

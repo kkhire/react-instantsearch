@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import BaseWidget from './BaseWidget';
-import connectHierarchicalMenu from '../connectors/connectHierarchicalMenu.js';
-import HierarchicalMenuComponent from '../components/HierarchicalMenu.js';
+import PropTypes from 'prop-types';
+import connectHierarchicalMenu from '../connectors/connectHierarchicalMenu';
 import classNames from '../components/classNames';
+import BaseWidget from '../components/BaseWidget';
+import HierarchicalMenuComponent from '../components/HierarchicalMenu';
 
 const cx = classNames('HierarchicalMenu');
 

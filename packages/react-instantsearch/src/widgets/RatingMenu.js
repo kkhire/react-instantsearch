@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BaseWidget from './BaseWidget';
-import connectRange from '../connectors/connectRange.js';
-import RatingMenuComponent from '../components/RatingMenu.js';
+import connectRange from '../connectors/connectRange';
 import classNames from '../components/classNames';
+import BaseWidget from '../components/BaseWidget';
+import RatingMenuComponent from '../components/RatingMenu';
 
 const cx = classNames('RatingMenu');
 

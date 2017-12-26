@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BaseWidget from './BaseWidget';
-import connectNumericMenu from '../connectors/connectNumericMenu.js';
-import NumericMenuComponent from '../components/NumericMenu.js';
+import connectNumericMenu from '../connectors/connectNumericMenu';
 import classNames from '../components/classNames';
+import BaseWidget from '../components/BaseWidget';
+import NumericMenuComponent from '../components/NumericMenu';
 
 const cx = classNames('NumericMenu');
 

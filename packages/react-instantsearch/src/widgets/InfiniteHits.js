@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BaseWidget from './BaseWidget';
-import connectInfiniteHits from '../connectors/connectInfiniteHits.js';
-import InfiniteHitsComponent from '../components/InfiniteHits.js';
+import connectInfiniteHits from '../connectors/connectInfiniteHits';
 import classNames from '../components/classNames';
+import BaseWidget from '../components/BaseWidget';
+import InfiniteHitsComponent from '../components/InfiniteHits';
 
 const cx = classNames('InfiniteHits');
 

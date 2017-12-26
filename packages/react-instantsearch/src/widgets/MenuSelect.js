@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BaseWidget from './BaseWidget';
-import connectMenu from '../connectors/connectMenu.js';
-import MenuSelectComponent from '../components/MenuSelect.js';
+import connectMenu from '../connectors/connectMenu';
 import classNames from '../components/classNames';
+import BaseWidget from '../components/BaseWidget';
+import MenuSelectComponent from '../components/MenuSelect';
 
 const cx = classNames('MenuSelect');
 

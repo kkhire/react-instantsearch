@@ -1,7 +1,7 @@
 import React from 'react';
-import connectHighlight from '../connectors/connectHighlight.js';
-import SnippetComponent from '../components/Snippet.js';
+import connectHighlight from '../connectors/connectHighlight';
 import classNames from '../components/classNames';
+import SnippetComponent from '../components/Snippet';
 
 const cx = classNames('Snippet');
 

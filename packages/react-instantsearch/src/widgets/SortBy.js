@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BaseWidget from './BaseWidget';
-import connectSortBy from '../connectors/connectSortBy.js';
-import SortByComponent from '../components/SortBy.js';
+import connectSortBy from '../connectors/connectSortBy';
 import classNames from '../components/classNames';
+import BaseWidget from '../components/BaseWidget';
+import SortByComponent from '../components/SortBy';
 
 const cx = classNames('SortBy');
 

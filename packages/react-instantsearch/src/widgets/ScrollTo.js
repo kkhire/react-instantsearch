@@ -1,5 +1,5 @@
-import connectScrollTo from '../connectors/connectScrollTo.js';
-import ScrollToComponent from '../components/ScrollTo.js';
+import connectScrollTo from '../connectors/connectScrollTo';
+import ScrollToComponent from '../components/ScrollTo';
 
 /**
  * The ScrollTo component will make the page scroll to the component wrapped by it when one of the

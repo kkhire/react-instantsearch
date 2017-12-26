@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BaseWidget from './BaseWidget';
-import connectStats from '../connectors/connectStats.js';
-import StatsComponent from '../components/Stats.js';
+import connectStats from '../connectors/connectStats';
 import classNames from '../components/classNames';
+import BaseWidget from '../components/BaseWidget';
+import StatsComponent from '../components/Stats';
 
 const cx = classNames('Stats');
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BaseWidget from './BaseWidget';
-import connectRefinementList from '../connectors/connectRefinementList.js';
-import RefinementListComponent from '../components/RefinementList.js';
+import connectRefinementList from '../connectors/connectRefinementList';
 import classNames from '../components/classNames';
+import BaseWidget from '../components/BaseWidget';
+import RefinementListComponent from '../components/RefinementList';
 
 const cx = classNames('RefinementList');
 

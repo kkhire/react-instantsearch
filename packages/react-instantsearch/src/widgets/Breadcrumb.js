@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BaseWidget from './BaseWidget';
 import connectBreadcrumb from '../connectors/connectBreadcrumb';
-import BreadcrumbComponent from '../components/Breadcrumb';
 import classNames from '../components/classNames';
+import BaseWidget from '../components/BaseWidget';
+import BreadcrumbComponent from '../components/Breadcrumb';
 
 const cx = classNames('Breadcrumb');
 
