@@ -2,12 +2,8 @@ import React from 'react';
 import { orderBy } from 'lodash';
 import { setAddon, storiesOf } from '@storybook/react';
 import { text } from '@storybook/addon-knobs';
-import { displayName, filterProps, WrapWithHits } from './util';
-import {
-  MenuSelect,
-  Panel,
-  SearchBox,
-} from '../packages/react-instantsearch/dom';
+import { displayName, filterProps, WrapWithHits, WithoutResults } from './util';
+import { MenuSelect } from '../packages/react-instantsearch/dom';
 import JSXAddon from 'storybook-addon-jsx';
 
 setAddon(JSXAddon);
@@ -20,6 +16,19 @@ stories
     () => (
       <WrapWithHits hasPlayground={true} linkedStoryGroup="MenuSelect">
         <MenuSelect attributeName="category" />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'without results',
+    () => (
+      <WrapWithHits searchBox={false} linkedStoryGroup="MenuSelect">
+        <MenuSelect attributeName="category" />
+        <WithoutResults />
       </WrapWithHits>
     ),
     {
@@ -65,41 +74,6 @@ stories
             orderBy(items, ['label', 'count'], ['asc', 'desc'])
           }
         />
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with panel',
-    () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="MenuSelect">
-        <Panel title="Category">
-          <MenuSelect attributeName="category" />
-        </Panel>
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with panel but no available refinement',
-    () => (
-      <WrapWithHits
-        searchBox={false}
-        hasPlayground={true}
-        linkedStoryGroup="MenuSelect"
-      >
-        <Panel title="Category">
-          <MenuSelect attributeName="category" />
-          <div style={{ display: 'none' }}>
-            <SearchBox defaultRefinement="dkjsakdjskajdksjakdjaskj" />
-          </div>
-        </Panel>
       </WrapWithHits>
     ),
     {
