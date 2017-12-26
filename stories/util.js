@@ -12,7 +12,44 @@ import { connectHits } from '../packages/react-instantsearch/connectors';
 import { linkTo } from '@storybook/react';
 import '../packages/react-instantsearch-theme-algolia/style.scss';
 
-const Wrap = props => (
+export const WithoutResults = () => (
+  <div style={{ display: 'none' }}>
+    <SearchBox defaultRefinement="ds" />
+  </div>
+);
+
+export const CustomHits = connectHits(({ hits }) => (
+  <div className="hits">
+    {hits.map(hit => (
+      <div key={hit.objectID} className="hit">
+        <div>
+          <div className="hit-picture">
+            <img
+              src={`https://res.cloudinary.com/hilnmyskv/image/fetch/h_100,q_100,f_auto/${
+                hit.image
+              }`}
+            />
+          </div>
+        </div>
+        <div className="hit-content">
+          <div>
+            <Highlight attributeName="name" hit={hit} />
+            <span> - ${hit.price}</span>
+            <span> - {hit.rating} stars</span>
+          </div>
+          <div className="hit-type">
+            <Highlight attributeName="type" hit={hit} />
+          </div>
+          <div className="hit-description">
+            <Highlight attributeName="description" hit={hit} />
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+));
+
+export const Wrap = props => (
   <InstantSearch
     appId="latency"
     apiKey="6be0576ff61c053d5f9a3225e2a90f76"
@@ -26,7 +63,7 @@ Wrap.propTypes = {
   children: PropTypes.node,
 };
 
-const WrapWithHits = ({
+export const WrapWithHits = ({
   searchParameters: askedSearchParameters = {},
   children,
   searchBox = true,
@@ -94,37 +131,6 @@ const WrapWithHits = ({
   );
 };
 
-const CustomHits = connectHits(({ hits }) => (
-  <div className="hits">
-    {hits.map(hit => (
-      <div key={hit.objectID} className="hit">
-        <div>
-          <div className="hit-picture">
-            <img
-              src={`https://res.cloudinary.com/hilnmyskv/image/fetch/h_100,q_100,f_auto/${
-                hit.image
-              }`}
-            />
-          </div>
-        </div>
-        <div className="hit-content">
-          <div>
-            <Highlight attributeName="name" hit={hit} />
-            <span> - ${hit.price}</span>
-            <span> - {hit.rating} stars</span>
-          </div>
-          <div className="hit-type">
-            <Highlight attributeName="type" hit={hit} />
-          </div>
-          <div className="hit-description">
-            <Highlight attributeName="description" hit={hit} />
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
-));
-
 WrapWithHits.propTypes = {
   appId: PropTypes.string,
   apiKey: PropTypes.string,
@@ -153,7 +159,7 @@ const getReactElementDisplayName = element =>
     : element.type);
 
 // displays the right name for the JSX addon in Storybook
-const displayName = element => {
+export const displayName = element => {
   // display 'InstantSearch' instead of 'WrapWithHits'
   if (getReactElementDisplayName(element) === 'WrapWithHits') {
     const instantSearch = 'InstantSearch';
@@ -188,6 +194,4 @@ const displayName = element => {
   return getReactElementDisplayName(element);
 };
 
-const filterProps = ['linkedStoryGroup', 'hasPlayground'];
-
-export { CustomHits, displayName, filterProps, Wrap, WrapWithHits };
+export const filterProps = ['linkedStoryGroup', 'hasPlayground'];
