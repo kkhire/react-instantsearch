@@ -102,6 +102,7 @@ class List extends Component {
   }
 
   renderSearchBox() {
+    const { query } = this.state;
     const {
       cx,
       searchForItems,
@@ -111,15 +112,11 @@ class List extends Component {
       selectItem,
     } = this.props;
 
-    const noResults =
-      items.length === 0 && this.state.query !== '' ? (
-        <div className={cx('noResults')}>{translate('noResults')}</div>
-      ) : null;
     return (
       <div className={cx('searchBox')}>
         <SearchBox
           cx={classNames('SearchBox')}
-          currentRefinement={this.state.query}
+          currentRefinement={query}
           refine={value => {
             this.setState({ query: value });
             searchForItems(value);
