@@ -234,7 +234,7 @@ describe('Highlighter - multi', () => {
   it('renders a highlighted value with a custom separator', () => {
     const props = {
       ...defaultProps,
-      separator: '-',
+      renderSeparator: () => '-',
     };
 
     const wrapper = shallow(

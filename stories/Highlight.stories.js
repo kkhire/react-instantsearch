@@ -77,6 +77,14 @@ const CustomHits = connectHits(({ hits }) => (
           <div className="hit-tags">
             <Highlight attributeName="tags" hit={hit} />
           </div>
+
+          <div className="hit-tags">
+            <Highlight
+              attributeName="tags"
+              hit={hit}
+              renderSeparator={() => ' - '}
+            />
+          </div>
         </div>
       </div>
     ))}
