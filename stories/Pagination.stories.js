@@ -1,12 +1,8 @@
 import React from 'react';
 import { setAddon, storiesOf } from '@storybook/react';
-import {
-  Pagination,
-  Panel,
-  SearchBox,
-} from '../packages/react-instantsearch/dom';
+import { Pagination } from '../packages/react-instantsearch/dom';
 import { boolean, number } from '@storybook/addon-knobs';
-import { displayName, filterProps, WrapWithHits } from './util';
+import { displayName, filterProps, WrapWithHits, WithoutResults } from './util';
 import JSXAddon from 'storybook-addon-jsx';
 
 setAddon(JSXAddon);
@@ -19,6 +15,19 @@ stories
     () => (
       <WrapWithHits hasPlayground={true} linkedStoryGroup="Pagination">
         <Pagination />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'without results',
+    () => (
+      <WrapWithHits searchBox={false} linkedStoryGroup="Pagination">
+        <Pagination renderHeader={() => 'Header'} />
+        <WithoutResults />
       </WrapWithHits>
     ),
     {
@@ -53,41 +62,6 @@ stories
           pagesPadding={2}
           maxPages={3}
         />
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with panel',
-    () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="Pagination">
-        <Panel title="Pages">
-          <Pagination />
-        </Panel>
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with panel but no refinement',
-    () => (
-      <WrapWithHits
-        searchBox={false}
-        hasPlayground={true}
-        linkedStoryGroup="Pagination"
-      >
-        <Panel title="Pages">
-          <Pagination />
-          <div style={{ display: 'none' }}>
-            <SearchBox defaultRefinement="ds" />
-          </div>
-        </Panel>
       </WrapWithHits>
     ),
     {
