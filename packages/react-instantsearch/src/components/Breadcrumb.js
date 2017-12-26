@@ -1,37 +1,39 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import Link from './Link';
 import translatable from '../core/translatable';
-
-const itemsPropType = PropTypes.arrayOf(
-  PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-  })
-);
+import Link from './Link';
 
 class Breadcrumb extends Component {
   static propTypes = {
-    cx: PropTypes.func.isRequired,
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        value: PropTypes.string.isRequired,
+      })
+    ).isRequired,
     canRefine: PropTypes.bool.isRequired,
+    cx: PropTypes.func.isRequired,
     createURL: PropTypes.func.isRequired,
-    items: itemsPropType,
     refine: PropTypes.func.isRequired,
-    rootURL: PropTypes.string,
-    separator: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     translate: PropTypes.func.isRequired,
+    rootURL: PropTypes.string,
+    renderSeparator: PropTypes.func,
+  };
+
+  static defaultProps = {
+    renderSeparator: () => '>',
   };
 
   render() {
     const {
-      cx,
-      canRefine,
-      createURL,
       items,
+      canRefine,
+      cx,
+      createURL,
       refine,
-      rootURL,
-      separator,
       translate,
+      rootURL,
+      renderSeparator,
     } = this.props;
 
     const rootPath = canRefine ? (
@@ -50,7 +52,7 @@ class Breadcrumb extends Component {
       const isLast = idx === items.length - 1;
       return (
         <li className={cx('item', isLast && 'item--selected')} key={idx}>
-          <span className={cx('separator')}>{separator}</span>
+          <span className={cx('separator')}>{renderSeparator()}</span>
           {!isLast ? (
             <Link
               className={cx('link')}

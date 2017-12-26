@@ -148,14 +148,14 @@ describe('Breadcrumb', () => {
     wrapper.unmount();
   });
 
-  it('has a separator prop that can be a custom component', () => {
+  it('has a render separator prop', () => {
     const tree = renderer
       .create(
         <Breadcrumb
           cx={(...x) => x.join(' ')}
           refine={() => null}
           createURL={() => '#'}
-          separator={<span>🔍</span>}
+          renderSeparator={() => <span>🔍</span>}
           items={[
             {
               value: 'white',
@@ -174,6 +174,7 @@ describe('Breadcrumb', () => {
         />
       )
       .toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 

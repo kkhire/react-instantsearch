@@ -50,9 +50,9 @@ const cx = classNames('Breadcrumb');
  * on the Algolia dashboard or configured as `attributesForFaceting` via a set settings call to the Algolia API.
  *
  * @propType {string} attributes - List of attributes to use to generate the hierarchy of the menu. See the example for the convention to follow
- * @propType {string} [separator='>'] -  Symbol used for separating hyperlinks
  * @propType {string} [rootURL=null] - The originating page (homepage)
  * @propType {function} [transformItems] - Function to modify the items being displayed, e.g. for filtering or sorting them. Takes an items as parameter and expects it back in return
+ * @propType {function} [renderSeparator] - Symbol used for separating hyperlinks. Default value: `() => '>'`
  * @propType {function} [renderHeader] - Adds a header to the widget.
  * @propType {function} [renderFooter] - Adds a footer to the widget.
  * @themeKey ais-Breadcrumb - the root div of the widget

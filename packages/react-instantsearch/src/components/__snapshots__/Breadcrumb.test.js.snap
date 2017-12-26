@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Breadcrumb has a separator prop that can be a custom component 1`] = `
+exports[`Breadcrumb has a render separator prop 1`] = `
 <ul
   className="list"
 >
@@ -86,7 +86,9 @@ exports[`Breadcrumb has customizable translations 1`] = `
   >
     <span
       className="separator"
-    />
+    >
+      &gt;
+    </span>
     <a
       className="link"
       href="#"
@@ -100,7 +102,9 @@ exports[`Breadcrumb has customizable translations 1`] = `
   >
     <span
       className="separator"
-    />
+    >
+      &gt;
+    </span>
     <a
       className="link"
       href="#"
@@ -114,7 +118,9 @@ exports[`Breadcrumb has customizable translations 1`] = `
   >
     <span
       className="separator"
-    />
+    >
+      &gt;
+    </span>
     white1.1
   </li>
 </ul>
@@ -140,7 +146,9 @@ exports[`Breadcrumb outputs the default breadcrumb 1`] = `
   >
     <span
       className="separator"
-    />
+    >
+      &gt;
+    </span>
     <a
       className="link"
       href="#"
@@ -154,7 +162,9 @@ exports[`Breadcrumb outputs the default breadcrumb 1`] = `
   >
     <span
       className="separator"
-    />
+    >
+      &gt;
+    </span>
     <a
       className="link"
       href="#"
@@ -168,7 +178,9 @@ exports[`Breadcrumb outputs the default breadcrumb 1`] = `
   >
     <span
       className="separator"
-    />
+    >
+      &gt;
+    </span>
     white1.1
   </li>
 </ul>
