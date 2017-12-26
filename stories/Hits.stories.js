@@ -26,7 +26,7 @@ stories
     'with header and footer',
     () => (
       <WrapWithHits linkedStoryGroup="Hits">
-        <Hits header="Header" footer="Footer" />
+        <Hits renderHeader={() => 'Header'} renderFooter={() => 'Footer'} />
       </WrapWithHits>
     ),
     {
