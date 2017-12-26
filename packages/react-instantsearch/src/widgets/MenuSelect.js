@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import BaseWidget from './BaseWidget';
 import connectMenu from '../connectors/connectMenu.js';
 import MenuSelectComponent from '../components/MenuSelect.js';
@@ -16,8 +16,8 @@ const cx = classNames('MenuSelect');
  * @propType {string} attributeName - the name of the attribute in the record
  * @propType {string} [defaultRefinement] - the value of the item selected by default
  * @propType {function} [transformItems] - Function to modify the items being displayed, e.g. for filtering or sorting them. Takes an items as parameter and expects it back in return.
- * @propType {node} [header] - Adds a header to the widget.
- * @propType {node} [footer] - Adds a footer to the widget.
+ * @propType {function} [renderHeader] - Adds a header to the widget.
+ * @propType {function} [renderFooter] - Adds a footer to the widget.
  * @themeKey ais-MenuSelect - the root div of the widget
  * @themeKey ais-MenuSelect-header - the header of the widget (optional)
  * @themeKey ais-MenuSelect-body - the body of the widget
@@ -45,15 +45,21 @@ const cx = classNames('MenuSelect');
  * }
  */
 
-const Widget = props => (
-  <BaseWidget cx={cx} header={props.header} footer={props.footer}>
-    <MenuSelectComponent cx={cx} {...props} />
+const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
+  <BaseWidget
+    cx={cx}
+    canRefine={canRefine}
+    renderHeader={renderHeader}
+    renderFooter={renderFooter}
+  >
+    <MenuSelectComponent {...props} cx={cx} canRefine={canRefine} />
   </BaseWidget>
 );
 
 Widget.propTypes = {
-  header: PropTypes.node,
-  footer: PropTypes.node,
+  canRefine: PropTypes.bool.isRequired,
+  renderHeader: PropTypes.func,
+  renderFooter: PropTypes.func,
 };
 
 export default connectMenu(Widget);

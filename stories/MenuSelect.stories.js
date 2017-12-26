@@ -31,7 +31,11 @@ stories
     'with header and footer',
     () => (
       <WrapWithHits hasPlayground={true} linkedStoryGroup="MenuSelect">
-        <MenuSelect attributeName="category" header="Header" footer="Footer" />
+        <MenuSelect
+          attributeName="category"
+          renderHeader={() => 'Header'}
+          renderFooter={() => 'Footer'}
+        />
       </WrapWithHits>
     ),
     {
