@@ -78,12 +78,12 @@ describe('SearchBox', () => {
       <SearchBox
         cx={(...x) => x.join(' ')}
         refine={() => null}
-        submitComponent={<span>🔍</span>}
-        resetComponent={
+        renderSubmit={() => <span>🔍</span>}
+        renderReset={() => (
           <svg viewBox="200 198 108 122">
             <path d="M200.8 220l45 46.7-20 47.4 31.7-34 50.4 39.3-34.3-52.6 30.2-68.3-49.7 51.7" />
           </svg>
-        }
+        )}
       />
     );
 
@@ -286,5 +286,21 @@ describe('SearchBox', () => {
 
     instanceWithoutLoadingIndicator.unmount();
     instanceWithLoadingIndicator.unmount();
+  });
+
+  it('should render a custom loader', () => {
+    const instance = renderer.create(
+      <SearchBox
+        cx={(...x) => x.join(' ')}
+        refine={() => null}
+        showLoadingIndicator
+        isSearchStalled
+        renderLoadingIndicator={() => 'loading...'}
+      />
+    );
+
+    expect(instance.toJSON()).toMatchSnapshot();
+
+    instance.unmount();
   });
 });
