@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import BaseWidget from './BaseWidget';
 import connectSearchBox from '../connectors/connectSearchBox.js';
 import SearchBoxComponent from '../components/SearchBox.js';
@@ -22,8 +22,8 @@ const cx = classNames('SearchBox');
  * @propType {function} [renderLoadingIndicator] - Change the apparence of the default loading indicator (spinning circle).
  * @propType {string} [defaultRefinement] - Provide default refinement value when component is mounted.
  * @propType {boolean} [showLoadingIndicator=false] - Display that the search is loading. This only happens after a certain amount of time to avoid a blinking effect. This timer can be configured with `stalledSearchDelay` props on <InstantSearch>. By default, the value is 200ms.
- * @propType {node} [header] - Adds a header to the widget.
- * @propType {node} [footer] - Adds a footer to the widget.
+ * @propType {function} [renderHeader] - Adds a header to the widget.
+ * @propType {function} [renderFooter] - Adds a footer to the widget.
  * @themeKey ais-SearchBox - the root div of the widget
  * @themeKey ais-SearchBox-header - the header of the widget (optional)
  * @themeKey ais-SearchBox-body - the body of the widget
@@ -57,15 +57,20 @@ const cx = classNames('SearchBox');
  * }
  */
 
-const Widget = props => (
-  <BaseWidget cx={cx} header={props.header} footer={props.footer}>
-    <SearchBoxComponent cx={cx} {...props} />
+const Widget = ({ renderHeader, renderFooter, ...props }) => (
+  <BaseWidget
+    cx={cx}
+    canRefine
+    renderHeader={renderHeader}
+    renderFooter={renderFooter}
+  >
+    <SearchBoxComponent {...props} cx={cx} />
   </BaseWidget>
 );
 
 Widget.propTypes = {
-  header: PropTypes.node,
-  footer: PropTypes.node,
+  renderHeader: PropTypes.func,
+  renderFooter: PropTypes.func,
 };
 
 export default connectSearchBox(Widget);
