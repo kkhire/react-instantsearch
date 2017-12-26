@@ -12,7 +12,6 @@ import {
   RatingMenu,
   RangeInput,
   Highlight,
-  Panel,
   Configure,
 } from 'react-instantsearch/dom';
 import {
@@ -77,31 +76,38 @@ const Facets = () => (
     </section>
 
     <section className="facet-wrapper">
-      <div className="facet-category-title facet">Refine By</div>
-      <Panel title="Type">
-        <RefinementList
-          attributeName="type"
-          operator="or"
-          limitMin={5}
-          withSearchBox
-        />
-      </Panel>
-      <Panel title="Materials">
-        <RefinementList
-          attributeName="materials"
-          operator="or"
-          limitMin={5}
-          withSearchBox
-        />
-      </Panel>
+      <div className="facet-category-title facet">RefineBy</div>
+      <RefinementList
+        attributeName="type"
+        operator="or"
+        limitMin={5}
+        withSearchBox
+        renderHeader={() => 'Type'}
+      />
+
+      <RefinementList
+        attributeName="materials"
+        operator="or"
+        limitMin={5}
+        withSearchBox
+        renderHeader={() => 'Materials'}
+      />
+
       <ConnectedColorRefinementList attributeName="colors" operator="or" />
-      <Panel title="Rating">
-        <RatingMenu attributeName="rating" max={5} />
-      </Panel>
-      <Panel title="Price">
-        <RangeInput key="price_input" attributeName="price" />
-      </Panel>
+
+      <RatingMenu
+        attributeName="rating"
+        max={5}
+        renderHeader={() => 'Rating'}
+      />
+
+      <RangeInput
+        key="price_input"
+        attributeName="price"
+        renderHeader={() => 'Price'}
+      />
     </section>
+
     <div className="thank-you">
       Data courtesy of <a href="http://www.ikea.com/">ikea.com</a>
     </div>
@@ -144,7 +150,7 @@ const ColorItem = ({ item, createURL, refine }) => {
 const CustomColorRefinementList = ({ items, refine, createURL }) =>
   items.length > 0 ? (
     <div>
-      <h5 className={'ais-Panel__Title'}>Colors</h5>
+      <div className={'ais-header'}>Colors</div>
       {items.map(item => (
         <ColorItem
           key={item.label}
