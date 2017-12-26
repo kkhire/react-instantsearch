@@ -47,6 +47,6 @@ const cx = classNames('Highlight');
  * }
  */
 
-const Widget = props => <HighlightComponent cx={cx} {...props} />;
+const Widget = props => <HighlightComponent {...props} cx={cx} />;
 
 export default connectHighlight(Widget);
