@@ -1,8 +1,8 @@
 import React from 'react';
 import { setAddon, storiesOf } from '@storybook/react';
-import { Menu, Panel, SearchBox } from '../packages/react-instantsearch/dom';
+import { Menu } from '../packages/react-instantsearch/dom';
 import { text, boolean, number } from '@storybook/addon-knobs';
-import { displayName, filterProps, WrapWithHits } from './util';
+import { displayName, filterProps, WrapWithHits, WithoutResults } from './util';
 import { orderBy } from 'lodash';
 import JSXAddon from 'storybook-addon-jsx';
 
@@ -16,6 +16,23 @@ stories
     () => (
       <WrapWithHits hasPlayground={true} linkedStoryGroup="Menu">
         <Menu attributeName="category" />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'without results',
+    () => (
+      <WrapWithHits
+        searchBox={false}
+        hasPlayground={true}
+        linkedStoryGroup="Menu"
+      >
+        <Menu attributeName="category" renderHeader={() => 'Header'} />
+        <WithoutResults />
       </WrapWithHits>
     ),
     {
@@ -100,41 +117,6 @@ stories
             orderBy(items, ['label', 'count'], ['asc', 'desc'])
           }
         />
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with panel',
-    () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="Menu">
-        <Panel title="Category">
-          <Menu attributeName="category" />
-        </Panel>
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with panel but no available refinement',
-    () => (
-      <WrapWithHits
-        searchBox={false}
-        hasPlayground={true}
-        linkedStoryGroup="Menu"
-      >
-        <Panel title="Category">
-          <Menu attributeName="category" />
-          <div style={{ display: 'none' }}>
-            <SearchBox defaultRefinement="dkjsakdjskajdksjakdjaskj" />
-          </div>
-        </Panel>
       </WrapWithHits>
     ),
     {
