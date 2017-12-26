@@ -45,8 +45,8 @@ stories
             { start: 100, end: 500, label: '$100-$500' },
             { start: 500, label: '>$500' },
           ]}
-          header="Header"
-          footer="Footer"
+          renderHeader={() => 'Header'}
+          renderFooter={() => 'Footer'}
         />
       </WrapWithHits>
     ),
