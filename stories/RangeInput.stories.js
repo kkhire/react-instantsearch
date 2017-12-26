@@ -31,7 +31,11 @@ stories
     'with header and footer',
     () => (
       <WrapWithHits linkedStoryGroup="RangeInput">
-        <RangeInput attributeName="price" header="Header" footer="Footer" />
+        <RangeInput
+          attributeName="price"
+          renderHeader={() => 'Header'}
+          renderFooter={() => 'Footer'}
+        />
       </WrapWithHits>
     ),
     {
