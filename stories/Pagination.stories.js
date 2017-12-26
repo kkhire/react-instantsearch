@@ -30,7 +30,10 @@ stories
     'with header and footer',
     () => (
       <WrapWithHits hasPlayground={true} linkedStoryGroup="Pagination">
-        <Pagination header="Header" footer="Footer" />
+        <Pagination
+          renderHeader={() => 'Header'}
+          renderFooter={() => 'Footer'}
+        />
       </WrapWithHits>
     ),
     {

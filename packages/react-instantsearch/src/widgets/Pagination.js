@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import BaseWidget from './BaseWidget';
 import connectPagination from '../connectors/connectPagination.js';
 import PaginationComponent from '../components/Pagination.js';
@@ -18,8 +18,8 @@ const cx = classNames('Pagination');
  * @propType {boolean} [showNext=true] - Display the next page link.
  * @propType {number} [pagesPadding=3] - How many page links to display around the current page.
  * @propType {number} [maxPages=Infinity] - Maximum number of pages to display.
- * @propType {node} [header] - Adds a header to the widget.
- * @propType {node} [footer] - Adds a footer to the widget.
+ * @propType {function} [renderHeader] - Adds a header to the widget.
+ * @propType {function} [renderFooter] - Adds a footer to the widget.
  * @themeKey ais-Pagination - the root div of the widget
  * @themeKey ais-Pagination-header - the header of the widget (optional)
  * @themeKey ais-Pagination-body - the body of the widget
@@ -62,15 +62,21 @@ const cx = classNames('Pagination');
  * }
  */
 
-const Widget = props => (
-  <BaseWidget cx={cx} header={props.header} footer={props.footer}>
-    <PaginationComponent cx={cx} {...props} />
+const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
+  <BaseWidget
+    cx={cx}
+    canRefine={canRefine}
+    renderHeader={renderHeader}
+    renderFooter={renderFooter}
+  >
+    <PaginationComponent {...props} cx={cx} canRefine={canRefine} />
   </BaseWidget>
 );
 
 Widget.propTypes = {
-  header: PropTypes.node,
-  footer: PropTypes.node,
+  canRefine: PropTypes.bool.isRequired,
+  renderHeader: PropTypes.func,
+  renderFooter: PropTypes.func,
 };
 
 export default connectPagination(Widget);
