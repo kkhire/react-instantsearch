@@ -8,34 +8,59 @@ exports[`Hits accepts a hitComponent prop 1`] = `
     <li
       className="item"
     >
-      <Hit
-        hit={
-          Object {
-            "objectID": 0,
-          }
-        }
+      <div
+        id={0}
       />
     </li>
     <li
       className="item"
     >
-      <Hit
-        hit={
-          Object {
-            "objectID": 1,
-          }
-        }
+      <div
+        id={1}
       />
     </li>
     <li
       className="item"
     >
-      <Hit
-        hit={
-          Object {
-            "objectID": 2,
-          }
-        }
+      <div
+        id={2}
+      />
+    </li>
+  </ul>
+  <button
+    className="loadMore loadMore--disabled"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Load more
+  </button>
+</div>
+`;
+
+exports[`Hits accepts a renderHit prop 1`] = `
+<div>
+  <ul
+    className="list"
+  >
+    <li
+      className="item"
+    >
+      <div
+        id={0}
+      />
+    </li>
+    <li
+      className="item"
+    >
+      <div
+        id={1}
+      />
+    </li>
+    <li
+      className="item"
+    >
+      <div
+        id={2}
       />
     </li>
   </ul>

@@ -1,18 +1,22 @@
-import PropTypes from 'prop-types';
-/* eslint-env jest, jasmine */
-
 import React from 'react';
+import PropTypes from 'prop-types';
 import renderer from 'react-test-renderer';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import InfiniteHits from './InfiniteHits';
+
 Enzyme.configure({ adapter: new Adapter() });
 
-import InfiniteHits from './InfiniteHits';
+const Hit = ({ hit }) => <div id={hit.objectID} />;
+
+Hit.propTypes = {
+  hit: PropTypes.object,
+};
 
 describe('Hits', () => {
   it('accepts a hitComponent prop', () => {
     const hits = [{ objectID: 0 }, { objectID: 1 }, { objectID: 2 }];
-    const Hit = 'Hit';
+
     const tree = renderer.create(
       <InfiniteHits
         cx={(...x) => x.join(' ')}
@@ -22,11 +26,25 @@ describe('Hits', () => {
         refine={() => undefined}
       />
     );
+
     expect(tree.toJSON()).toMatchSnapshot();
   });
 
-  const Hit = ({ hit }) => <div>{JSON.stringify(hit)}</div>;
-  Hit.propTypes = { hit: PropTypes.object };
+  it('accepts a renderHit prop', () => {
+    const hits = [{ objectID: 0 }, { objectID: 1 }, { objectID: 2 }];
+
+    const tree = renderer.create(
+      <InfiniteHits
+        cx={(...x) => x.join(' ')}
+        renderHit={hit => <Hit hit={hit} />}
+        hits={hits}
+        hasMore={false}
+        refine={() => undefined}
+      />
+    );
+
+    expect(tree.toJSON()).toMatchSnapshot();
+  });
 
   it('calls refine when the load more button is clicked', () => {
     const mockedRefine = jest.fn();
