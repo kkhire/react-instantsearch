@@ -1,13 +1,8 @@
 import React from 'react';
 import { setAddon, storiesOf } from '@storybook/react';
-import {
-  RatingMenu,
-  Panel,
-  SearchBox,
-  Configure,
-} from '../packages/react-instantsearch/dom';
+import { RatingMenu, Configure } from '../packages/react-instantsearch/dom';
 import { object, number } from '@storybook/addon-knobs';
-import { displayName, filterProps, WrapWithHits } from './util';
+import { displayName, filterProps, WrapWithHits, WithoutResults } from './util';
 import JSXAddon from 'storybook-addon-jsx';
 
 setAddon(JSXAddon);
@@ -20,6 +15,23 @@ stories
     () => (
       <WrapWithHits hasPlayground={true} linkedStoryGroup="RatingMenu">
         <RatingMenu attributeName="rating" max={6} min={1} />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'without results',
+    () => (
+      <WrapWithHits
+        searchBox={false}
+        hasPlayground={true}
+        linkedStoryGroup="RatingMenu"
+      >
+        <RatingMenu attributeName="rating" max={6} min={1} />
+        <WithoutResults />
       </WrapWithHits>
     ),
     {
@@ -46,48 +58,11 @@ stories
     }
   )
   .addWithJSX(
-    'with panel',
-    () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="RatingMenu">
-        <Panel title="Ratings">
-          <RatingMenu attributeName="rating" max={6} min={1} />
-        </Panel>
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
     'with some unavailable refinements',
     () => (
       <WrapWithHits hasPlayground={true} linkedStoryGroup="RatingMenu">
         <Configure filters="rating>=4" />
-        <Panel title="Ratings">
-          <RatingMenu attributeName="rating" max={6} min={1} />
-        </Panel>
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with panel but no refinement',
-    () => (
-      <WrapWithHits
-        searchBox={false}
-        hasPlayground={true}
-        linkedStoryGroup="RatingMenu"
-      >
-        <Panel title="Ratings">
-          <RatingMenu attributeName="rating" max={6} min={1} />
-          <div style={{ display: 'none' }}>
-            <SearchBox defaultRefinement="ds" />
-          </div>
-        </Panel>
+        <RatingMenu attributeName="rating" max={6} min={1} />
       </WrapWithHits>
     ),
     {
