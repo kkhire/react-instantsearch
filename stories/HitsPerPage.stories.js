@@ -42,8 +42,8 @@ stories
             { value: 6, label: '6 hits per page' },
             { value: 8, label: '8 hits per page' },
           ]}
-          header="Header"
-          footer="Footer"
+          renderHeader={() => 'Header'}
+          renderFooter={() => 'Footer'}
         />
       </WrapWithHits>
     ),
