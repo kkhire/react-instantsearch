@@ -38,7 +38,11 @@ stories
     () => (
       <WrapWithHits linkedStoryGroup="CurrentRefinements">
         <div>
-          <CurrentRefinements header="Header" footer="Footer" />
+          <CurrentRefinements
+            renderHeader={() => 'Header'}
+            renderFooter={() => 'Footer'}
+          />
+
           <div style={{ display: 'none' }}>
             <RefinementList
               attributeName="category"
