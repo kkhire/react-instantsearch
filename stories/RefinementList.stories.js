@@ -33,8 +33,8 @@ stories
       <WrapWithHits linkedStoryGroup="RefinementList" hasPlayground={true}>
         <RefinementList
           attributeName="category"
-          header="Header"
-          footer="Footer"
+          renderHeader={() => 'Header'}
+          renderFooter={() => 'Footer'}
         />
       </WrapWithHits>
     ),
