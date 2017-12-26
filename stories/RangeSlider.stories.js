@@ -23,18 +23,6 @@ stories
     }
   )
   .addWithJSX(
-    'with header and footer',
-    () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="RangeSlider">
-        <Range attributeName="price" header="Header" footer="Footer" />
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
     'providing default value',
     () => (
       <WrapWithHits hasPlayground={true} linkedStoryGroup="RangeSlider">

@@ -1,9 +1,4 @@
-import connectRange from '../connectors/connectRange';
-import BaseWidget from './BaseWidget';
 import React from 'react';
-import classNames from '../components/classNames';
-
-const cx = classNames('RangeSlider');
 
 /**
  * Since a lot of sliders already exist, we did not include one by default.

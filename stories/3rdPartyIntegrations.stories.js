@@ -1,13 +1,9 @@
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { connectRange } from '../packages/react-instantsearch/connectors';
 import { WrapWithHits } from './util';
-import BaseWidget from '../packages/react-instantsearch/src/widgets/BaseWidget';
-import classNames from '../packages/react-instantsearch/src/components/classNames';
 import Rheostat from 'rheostat';
-
-const cx = classNames('RangeSlider');
 
 const stories = storiesOf('Integration With Other Libraries', module);
 
@@ -24,8 +20,6 @@ class Range extends Component {
     currentRefinement: PropTypes.object,
     refine: PropTypes.func.isRequired,
     canRefine: PropTypes.bool.isRequired,
-    header: PropTypes.node,
-    footer: PropTypes.node,
   };
 
   state = { currentValues: { min: this.props.min, max: this.props.max } };
@@ -60,32 +54,35 @@ class Range extends Component {
   };
 
   render() {
-    const { min, max, currentRefinement, header, footer } = this.props;
     const { currentValues } = this.state;
-    return min !== max ? (
-      <BaseWidget cx={cx} header={header} footer={footer}>
-        <Rheostat
-          min={min}
-          max={max}
-          values={[currentRefinement.min, currentRefinement.max]}
-          onChange={this.onChange}
-          onValuesUpdated={this.onValuesUpdated}
+    const { min, max, currentRefinement } = this.props;
+
+    if (min === max) {
+      return null;
+    }
+
+    return (
+      <Rheostat
+        min={min}
+        max={max}
+        values={[currentRefinement.min, currentRefinement.max]}
+        onChange={this.onChange}
+        onValuesUpdated={this.onValuesUpdated}
+      >
+        <div
+          className="rheostat-marker rheostat-marker--large"
+          style={{ left: '0%', position: 'absolute', marginLeft: '0px' }}
         >
-          <div
-            className="rheostat-marker rheostat-marker--large"
-            style={{ left: '0%', position: 'absolute', marginLeft: '0px' }}
-          >
-            <div className="rheostat-value">{currentValues.min}</div>
-          </div>
-          <div
-            className="rheostat-marker rheostat-marker--large"
-            style={{ left: '100%', position: 'absolute', marginLeft: '-1px' }}
-          >
-            <div className="rheostat-value">{currentValues.max}</div>
-          </div>
-        </Rheostat>
-      </BaseWidget>
-    ) : null;
+          <div className="rheostat-value">{currentValues.min}</div>
+        </div>
+        <div
+          className="rheostat-marker rheostat-marker--large"
+          style={{ left: '100%', position: 'absolute', marginLeft: '-1px' }}
+        >
+          <div className="rheostat-value">{currentValues.max}</div>
+        </div>
+      </Rheostat>
+    );
   }
 }
 
