@@ -4,7 +4,6 @@ import {
   CurrentRefinements,
   RefinementList,
   Toggle,
-  Panel,
 } from '../packages/react-instantsearch/dom';
 import { displayName, filterProps, WrapWithHits } from './util';
 import JSXAddon from 'storybook-addon-jsx';
@@ -17,15 +16,25 @@ stories
     'default',
     () => (
       <WrapWithHits linkedStoryGroup="CurrentRefinements">
-        <div>
-          <CurrentRefinements />
-          <div style={{ display: 'none' }}>
-            <RefinementList
-              attributeName="category"
-              defaultRefinement={['Dining', 'Other']}
-            />
-          </div>
+        <CurrentRefinements />
+        <div style={{ display: 'none' }}>
+          <RefinementList
+            attributeName="category"
+            defaultRefinement={['Dining', 'Other']}
+          />
         </div>
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'without results',
+    () => (
+      <WrapWithHits linkedStoryGroup="CurrentRefinements">
+        <CurrentRefinements renderHeader={() => 'Header'} />
       </WrapWithHits>
     ),
     {
@@ -37,18 +46,16 @@ stories
     'with header and footer',
     () => (
       <WrapWithHits linkedStoryGroup="CurrentRefinements">
-        <div>
-          <CurrentRefinements
-            renderHeader={() => 'Header'}
-            renderFooter={() => 'Footer'}
-          />
+        <CurrentRefinements
+          renderHeader={() => 'Header'}
+          renderFooter={() => 'Footer'}
+        />
 
-          <div style={{ display: 'none' }}>
-            <RefinementList
-              attributeName="category"
-              defaultRefinement={['Dining']}
-            />
-          </div>
+        <div style={{ display: 'none' }}>
+          <RefinementList
+            attributeName="category"
+            defaultRefinement={['Dining']}
+          />
         </div>
       </WrapWithHits>
     ),
@@ -61,48 +68,12 @@ stories
     'with toggle',
     () => (
       <WrapWithHits linkedStoryGroup="CurrentRefinements">
-        <div>
-          <CurrentRefinements />
-          <Toggle
-            attributeName="materials"
-            label="Made with solid pine"
-            value={'Solid pine'}
-          />
-        </div>
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with panel',
-    () => (
-      <WrapWithHits linkedStoryGroup="CurrentRefinements">
-        <Panel title="Current Refinements">
-          <CurrentRefinements />
-          <div style={{ display: 'none' }}>
-            <RefinementList
-              attributeName="category"
-              defaultRefinement={['Dining']}
-            />
-          </div>
-        </Panel>
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with panel but no refinement',
-    () => (
-      <WrapWithHits linkedStoryGroup="CurrentRefinements">
-        <Panel title="Current Refinements">
-          <CurrentRefinements />
-        </Panel>
+        <CurrentRefinements />
+        <Toggle
+          attributeName="materials"
+          label="Made with solid pine"
+          value={'Solid pine'}
+        />
       </WrapWithHits>
     ),
     {
