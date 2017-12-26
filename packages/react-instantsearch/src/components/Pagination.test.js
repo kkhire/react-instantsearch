@@ -369,28 +369,19 @@ describe('Pagination', () => {
   });
   it('Should indicate when no more refinement', () => {
     const refine = jest.fn();
-    const canRefine = jest.fn();
     const wrapper = mount(
       <Pagination
         cx={(...x) => x.join(' ')}
         {...DEFAULT_PROPS}
         refine={refine}
         canRefine={true}
-      />,
-      {
-        context: { canRefine },
-        childContextTypes: { canRefine: PropTypes.func },
-      }
+      />
     );
 
-    expect(canRefine.mock.calls).toHaveLength(1);
-    expect(canRefine.mock.calls[0][0]).toEqual(true);
     expect(wrapper.find('.list--noRefinement')).toHaveLength(0);
 
     wrapper.setProps({ canRefine: false });
 
-    expect(canRefine.mock.calls).toHaveLength(2);
-    expect(canRefine.mock.calls[1][0]).toEqual(false);
     expect(wrapper.find('.list--noRefinement')).toHaveLength(1);
   });
 
