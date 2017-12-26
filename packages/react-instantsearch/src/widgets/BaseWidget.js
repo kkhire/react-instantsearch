@@ -24,7 +24,7 @@ const BaseWidget = ({
 BaseWidget.propTypes = {
   cx: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
-  canRefine: PropTypes.bool,
+  canRefine: PropTypes.bool.isRequired,
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
 };
