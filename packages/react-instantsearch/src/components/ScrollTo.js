@@ -13,6 +13,7 @@ class ScrollTo extends Component {
 
   componentDidUpdate(prevProps) {
     const { value, hasNotChanged } = this.props;
+
     if (value !== prevProps.value && hasNotChanged) {
       this.el.scrollIntoView();
     }
@@ -20,7 +21,7 @@ class ScrollTo extends Component {
 
   render() {
     return (
-      <div ref={ref => (this.el = ref)} classNames={cx('')}>
+      <div ref={ref => (this.el = ref)} className={cx('')}>
         {this.props.children}
       </div>
     );
