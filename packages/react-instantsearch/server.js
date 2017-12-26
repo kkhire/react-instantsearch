@@ -1,8 +1,5 @@
-import { createInstantSearch } from './src/core/createInstantSearchServer';
 import algoliasearch from 'algoliasearch/lite';
+import { createInstantSearch as createInstantSearchServer } from './src/core/createInstantSearchServer';
 
-const cis = function() {
-  return createInstantSearch(algoliasearch);
-};
-
-export { cis as createInstantSearch };
+export const createInstantSearch = () =>
+  createInstantSearchServer(algoliasearch);

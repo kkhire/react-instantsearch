@@ -1,51 +1,41 @@
-export {
-  default as connectConfigure,
-} from './src/connectors/connectConfigure.js';
+export { default as connectConfigure } from './src/connectors/connectConfigure';
 export {
   default as connectCurrentRefinements,
-} from './src/connectors/connectCurrentRefinements.js';
+} from './src/connectors/connectCurrentRefinements';
 export {
   default as connectHierarchicalMenu,
-} from './src/connectors/connectHierarchicalMenu.js';
-export {
-  default as connectHighlight,
-} from './src/connectors/connectHighlight.js';
-export { default as connectHits } from './src/connectors/connectHits.js';
+} from './src/connectors/connectHierarchicalMenu';
+export { default as connectHighlight } from './src/connectors/connectHighlight';
+export { default as connectHits } from './src/connectors/connectHits';
 export {
   default as connectAutoComplete,
-} from './src/connectors/connectAutoComplete.js';
+} from './src/connectors/connectAutoComplete';
 export {
   default as connectHitsPerPage,
-} from './src/connectors/connectHitsPerPage.js';
+} from './src/connectors/connectHitsPerPage';
 export {
   default as connectInfiniteHits,
-} from './src/connectors/connectInfiniteHits.js';
-export { default as connectMenu } from './src/connectors/connectMenu.js';
+} from './src/connectors/connectInfiniteHits';
+export { default as connectMenu } from './src/connectors/connectMenu';
 export {
   default as connectNumericMenu,
-} from './src/connectors/connectNumericMenu.js';
+} from './src/connectors/connectNumericMenu';
 export {
   default as connectPagination,
-} from './src/connectors/connectPagination.js';
-export {
-  default as connectPoweredBy,
-} from './src/connectors/connectPoweredBy.js';
-export { default as connectRange } from './src/connectors/connectRange.js';
+} from './src/connectors/connectPagination';
+export { default as connectPoweredBy } from './src/connectors/connectPoweredBy';
+export { default as connectRange } from './src/connectors/connectRange';
 export {
   default as connectRefinementList,
-} from './src/connectors/connectRefinementList.js';
-export {
-  default as connectScrollTo,
-} from './src/connectors/connectScrollTo.js';
+} from './src/connectors/connectRefinementList';
+export { default as connectScrollTo } from './src/connectors/connectScrollTo';
 export {
   default as connectBreadcrumb,
-} from './src/connectors/connectBreadcrumb.js';
-export {
-  default as connectSearchBox,
-} from './src/connectors/connectSearchBox.js';
-export { default as connectSortBy } from './src/connectors/connectSortBy.js';
-export { default as connectStats } from './src/connectors/connectStats.js';
-export { default as connectToggle } from './src/connectors/connectToggle.js';
+} from './src/connectors/connectBreadcrumb';
+export { default as connectSearchBox } from './src/connectors/connectSearchBox';
+export { default as connectSortBy } from './src/connectors/connectSortBy';
+export { default as connectStats } from './src/connectors/connectStats';
+export { default as connectToggle } from './src/connectors/connectToggle';
 export {
   default as connectStateResults,
-} from './src/connectors/connectStateResults.js';
+} from './src/connectors/connectStateResults';
