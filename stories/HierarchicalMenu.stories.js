@@ -33,8 +33,8 @@ stories
     () => (
       <WrapWithHits hasPlayground={true} linkedStoryGroup="HierarchicalMenu">
         <HierarchicalMenu
-          header="Header"
-          footer="Footer"
+          renderHeader={() => 'Header'}
+          renderFooter={() => 'Footer'}
           attributes={['category', 'sub_category', 'sub_sub_category']}
         />
       </WrapWithHits>
