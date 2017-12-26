@@ -27,7 +27,11 @@ stories
     'with header and footer',
     () => (
       <WrapWithHits hasPlayground={true} linkedStoryGroup="Menu">
-        <Menu attributeName="category" header="Header" footer="Footer" />
+        <Menu
+          attributeName="category"
+          renderHeader={() => 'Header'}
+          renderFooter={() => 'Footer'}
+        />
       </WrapWithHits>
     ),
     {
