@@ -33,8 +33,8 @@ stories
           attributeName="materials"
           label="Made with solid pine"
           value={'Solid pine'}
-          header="Header"
-          footer="Footer"
+          renderHeader={() => 'Header'}
+          renderFooter={() => 'Footer'}
         />
       </WrapWithHits>
     ),

@@ -75,6 +75,7 @@ export default createConnector({
       searchState,
       this.context
     );
+
     return { currentRefinement };
   },
 
@@ -107,8 +108,9 @@ export default createConnector({
   getMetadata(props, searchState) {
     const id = getId(props);
     const checked = getCurrentRefinement(props, searchState, this.context);
-    const items = [];
     const index = getIndex(this.context);
+    const items = [];
+
     if (checked) {
       items.push({
         label: props.label,
@@ -117,6 +119,7 @@ export default createConnector({
         value: nextState => refine(props, nextState, false, this.context),
       });
     }
+
     return { id, index, items };
   },
 });
