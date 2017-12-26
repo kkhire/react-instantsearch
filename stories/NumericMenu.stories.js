@@ -1,10 +1,6 @@
 import React from 'react';
 import { setAddon, storiesOf } from '@storybook/react';
-import {
-  NumericMenu,
-  Panel,
-  Configure,
-} from '../packages/react-instantsearch/dom';
+import { NumericMenu, Configure } from '../packages/react-instantsearch/dom';
 import { displayName, filterProps, WrapWithHits } from './util';
 import JSXAddon from 'storybook-addon-jsx';
 
@@ -25,6 +21,29 @@ stories
             { start: 100, end: 500, label: '$100-$500' },
             { start: 500, label: '>$500' },
           ]}
+        />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'without results',
+    () => (
+      <WrapWithHits searchBox={false} linkedStoryGroup="NumericMenu">
+        <Configure filters="price>200000" />
+
+        <NumericMenu
+          attributeName="price"
+          items={[
+            { end: 10, label: '<$10' },
+            { start: 10, end: 100, label: '$10-$100' },
+            { start: 100, end: 500, label: '$100-$500' },
+            { start: 500, label: '>$500' },
+          ]}
+          renderHeader={() => 'Header'}
         />
       </WrapWithHits>
     ),
@@ -89,51 +108,6 @@ stories
             { start: 90000, label: '>$90000' },
           ]}
         />
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with panel',
-    () => (
-      <WrapWithHits linkedStoryGroup="NumericMenu">
-        <Panel title="Price">
-          <NumericMenu
-            attributeName="price"
-            items={[
-              { end: 10, label: '<$10' },
-              { start: 10, end: 100, label: '$10-$100' },
-              { start: 100, end: 500, label: '$100-$500' },
-              { start: 500, label: '>$500' },
-            ]}
-          />
-        </Panel>
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with panel but no available refinements',
-    () => (
-      <WrapWithHits searchBox={false} linkedStoryGroup="NumericMenu">
-        <Panel title="Price">
-          <Configure filters="price>200000" />
-          <NumericMenu
-            attributeName="price"
-            items={[
-              { end: 10, label: '<$10' },
-              { start: 10, end: 100, label: '$10-$100' },
-              { start: 100, end: 500, label: '$100-$500' },
-              { start: 500, label: '>$500' },
-            ]}
-          />
-        </Panel>
       </WrapWithHits>
     ),
     {
