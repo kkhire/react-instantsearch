@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { createElement } from 'react';
 import PropTypes from 'prop-types';
 
-const Hits = ({ cx, hits, hitComponent: HitComponent }) => (
+const Hits = ({ cx, hits, hitComponent, renderHit }) => (
   // Spread the hit on HitComponent instead of passing the full object. BC.
   // ex: <HitComponent {...hit} key={hit.objectID} />
 
   <ul className={cx('list')}>
     {hits.map(hit => (
       <li className={cx('item')} key={hit.objectID}>
-        <HitComponent hit={hit} />
+        {renderHit ? renderHit(hit) : createElement(hitComponent, { hit })}
       </li>
     ))}
   </ul>
@@ -17,7 +17,8 @@ const Hits = ({ cx, hits, hitComponent: HitComponent }) => (
 Hits.propTypes = {
   cx: PropTypes.func.isRequired,
   hits: PropTypes.array,
-  hitComponent: PropTypes.func.isRequired,
+  hitComponent: PropTypes.func,
+  renderHit: PropTypes.func,
 };
 
 Hits.defaultProps = {

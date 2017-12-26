@@ -33,13 +33,17 @@ stories
       displayName,
       filterProps,
     }
-  );
-
-stories.add('with custom rendering', () => (
-  <WrapWithHits linkedStoryGroup="Hits">
-    <Hits hitComponent={Product} />
-  </WrapWithHits>
-));
+  )
+  .add('with custom Component', () => (
+    <WrapWithHits linkedStoryGroup="Hits">
+      <Hits hitComponent={Product} />
+    </WrapWithHits>
+  ))
+  .add('with custom render function', () => (
+    <WrapWithHits linkedStoryGroup="Hits">
+      <Hits renderHit={hit => <Product hit={hit} />} />
+    </WrapWithHits>
+  ));
 
 function Product({ hit }) {
   return (

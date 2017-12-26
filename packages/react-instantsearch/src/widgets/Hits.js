@@ -18,6 +18,9 @@ const cx = classNames('Hits');
  * @propType {Component} [hitComponent] - Component used for rendering each hit from
  *   the results. If it is not provided the rendering defaults to displaying the
  *   hit in its JSON form. The component will be called with a `hit` prop.
+ * @propType {function} [renderHit] - Function used for rendering each hit from
+ *   the results. If it is not provided the rendering defaults to displaying the
+ *   hit in its JSON form. The function will be called with `hit` as argument.
  * @propType {function} [renderHeader] - Adds a header to the widget.
  * @propType {function} [renderFooter] - Adds a footer to the widget.
  * @themeKey ais-Hits - the root div of the widget
