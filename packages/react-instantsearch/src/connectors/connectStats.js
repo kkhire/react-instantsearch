@@ -18,6 +18,7 @@ export default createConnector({
     if (!results) {
       return null;
     }
+
     return {
       nbHits: results.nbHits,
       processingTimeMS: results.processingTimeMS,

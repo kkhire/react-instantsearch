@@ -29,7 +29,7 @@ stories
     () => (
       <WrapWithHits linkedStoryGroup="Stats">
         <div>
-          <Stats header="Header" footer="Footer" />
+          <Stats renderHeader={() => 'Header'} renderFooter={() => 'Footer'} />
         </div>
       </WrapWithHits>
     ),
