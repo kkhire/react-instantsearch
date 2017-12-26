@@ -37,5 +37,4 @@ export { default as SearchBox } from './src/widgets/SearchBox';
 export { default as SortBy } from './src/widgets/SortBy';
 export { default as Stats } from './src/widgets/Stats';
 export { default as Toggle } from './src/widgets/Toggle';
-export { default as Panel } from './src/widgets/Panel';
 export { default as Breadcrumb } from './src/widgets/Breadcrumb';
