@@ -20,8 +20,6 @@ class Breadcrumb extends Component {
     rootURL: PropTypes.string,
     separator: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     translate: PropTypes.func.isRequired,
-    header: PropTypes.node,
-    footer: PropTypes.node,
   };
 
   render() {
@@ -35,6 +33,7 @@ class Breadcrumb extends Component {
       separator,
       translate,
     } = this.props;
+
     const rootPath = canRefine ? (
       <li className={cx('item')}>
         <Link
