@@ -8,7 +8,7 @@ const BaseWidget = ({
   renderHeader,
   renderFooter,
 }) => (
-  <div className={cx('', !canRefine && `-noRefinement`)}>
+  <div className={cx('', !canRefine && '-noRefinement')}>
     {renderHeader && (
       <div className={`${cx('header')} ais-header`}>{renderHeader()}</div>
     )}

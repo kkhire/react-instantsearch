@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseWidget expect to render 1`] = `
+<div
+  className=""
+>
+  <div
+    className="body ais-body"
+  >
+    <div>
+      Hello content
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BaseWidget expect to render with footer 1`] = `
+<div
+  className=""
+>
+  <div
+    className="body ais-body"
+  >
+    <div>
+      Hello content
+    </div>
+  </div>
+  <div
+    className="footer ais-footer"
+  >
+    Footer
+  </div>
+</div>
+`;
+
+exports[`BaseWidget expect to render with header 1`] = `
+<div
+  className=""
+>
+  <div
+    className="header ais-header"
+  >
+    Header
+  </div>
+  <div
+    className="body ais-body"
+  >
+    <div>
+      Hello content
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BaseWidget expect to render without refinement 1`] = `
+<div
+  className="-noRefinement"
+>
+  <div
+    className="body ais-body"
+  >
+    <div>
+      Hello content
+    </div>
+  </div>
+</div>
+`;
