@@ -9,7 +9,7 @@ navWeight: 95
 Install `react-instantsearch` using [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/):
 
 ```shell
-npm install react-instantsearch --save
+yarn add react-instantsearch
 ```
 
 **Notes:**

@@ -52,37 +52,35 @@ You can either copy paste the content in your own app or use a direct link to js
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@latest/themes/reset-min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@latest/themes/algolia-min.css">
 ```
 
-### Via npm, Webpack
+### Via yarn, Webpack
 
 ```shell
-npm install instantsearch.css --save
-npm install sass-loader style-loader css-loader autoprefixer postcss-loader --save-dev
+yarn add instantsearch.css
+yarn add style-loader css-loader --dev
 ```
 
 App.js:
 
 ```jsx
-// import 'instantsearch.css/themes/reset.css'
-// import 'instantsearch.css/themes/algolia.css'
+import 'instantsearch.css/themes/reset.css';
+import 'instantsearch.css/themes/algolia.css';
 ```
 
 webpack.config.babel.js:
 
 ```jsx
-import autoprefixer from 'autoprefixer';
-
 export default {
   module: {
     loaders: [
       {
         test: /\.css$/,
-        loaders: ['style?insertAt=top', 'css', 'postcss', 'sass']
+        loaders: ['style?insertAt=top', 'css']
       }
     ]
-  },
-  postcss: [autoprefixer()]
+  }
 };
 ```
 
