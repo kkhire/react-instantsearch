@@ -84,12 +84,12 @@ const Facets = () => (
       </li>
       <li className="separator" />
     </ul>
-    <Panel title="Genres" id="genres">
+    <Section title="Genres" id="genres">
       <RefinementListLinks attributeName="genre" />
-    </Panel>
-    <Panel title="Rating" id="ratings">
+    </Section>
+    <Section title="Rating" id="ratings">
       <RatingMenu attributeName="rating" max={5} />
-    </Panel>
+    </Section>
     <div className="thank-you">
       {' '}
       Data courtesy of <a href="https://www.imdb.com/">imdb.com</a>
@@ -97,7 +97,7 @@ const Facets = () => (
   </aside>
 );
 
-const Panel = ({ title, children, id }) => (
+const Section = ({ title, children, id }) => (
   <div id={id}>
     <h5>
       <i className="fa fa-chevron-right" /> {title}
