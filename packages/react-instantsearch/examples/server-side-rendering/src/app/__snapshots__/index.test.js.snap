@@ -82,6 +82,38 @@ exports[`Server-side rendering recipes App renders without crashing 1`] = `
       <ul
         className="ais-Results-list"
       />
+      <button
+        className="ais-SearchBox__submit"
+        hidden={false}
+        title="Submit your search query."
+        type="submit"
+      >
+        <svg
+          height="1em"
+          role="img"
+          width="1em"
+        >
+          <use
+            xlinkHref="#sbx-icon-search-13"
+          />
+        </svg>
+      </button>
+      <button
+        className="ais-SearchBox__reset"
+        onClick={[Function]}
+        title="Clear the search query."
+        type="reset"
+      >
+        <svg
+          height="1em"
+          role="img"
+          width="1em"
+        >
+          <use
+            xlinkHref="#sbx-icon-clear-3"
+          />
+        </svg>
+      </button>
     </div>
   </div>
   <div
