@@ -149,14 +149,13 @@ class List extends Component {
 
     // Always limit the number of items we show on screen, since the actual
     // number of retrieved items might vary with the `maxValuesPerFacet` config
-    // option.
-    const limit = this.getLimit();
+    // option
     return (
       <div>
         {searchBox}
         <ul className={cx('list', !canRefine && 'list--noRefinement')}>
           {items
-            .slice(0, limit)
+            .slice(0, this.getLimit())
             .map(item => this.renderItem(item, this.resetQuery))}
         </ul>
         {showMore && this.renderShowMore()}
