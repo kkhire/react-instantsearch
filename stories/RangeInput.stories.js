@@ -1,12 +1,8 @@
 import React from 'react';
 import { setAddon, storiesOf } from '@storybook/react';
-import {
-  RangeInput,
-  Panel,
-  SearchBox,
-} from '../packages/react-instantsearch/dom';
+import { RangeInput, SearchBox } from '../packages/react-instantsearch/dom';
 import { object, number } from '@storybook/addon-knobs';
-import { displayName, filterProps, WrapWithHits } from './util';
+import { displayName, filterProps, WrapWithHits, WithoutResults } from './util';
 
 import JSXAddon from 'storybook-addon-jsx';
 
@@ -28,6 +24,19 @@ stories
     }
   )
   .addWithJSX(
+    'without results',
+    () => (
+      <WrapWithHits searchBox={false} linkedStoryGroup="RangeInput">
+        <RangeInput attributeName="price" renderHeader={() => 'Header'} />
+        <WithoutResults />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
     'with header and footer',
     () => (
       <WrapWithHits linkedStoryGroup="RangeInput">
@@ -36,35 +45,6 @@ stories
           renderHeader={() => 'Header'}
           renderFooter={() => 'Footer'}
         />
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with panel',
-    () => (
-      <WrapWithHits linkedStoryGroup="RangeInput">
-        <Panel title="Price">
-          <RangeInput attributeName="price" />
-        </Panel>
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with no refinement',
-    () => (
-      <WrapWithHits searchBox={false} linkedStoryGroup="RangeInput">
-        <RangeInput attributeName="price" />
-        <div style={{ display: 'none' }}>
-          <SearchBox defaultRefinement="ds" />
-        </div>
       </WrapWithHits>
     ),
     {
@@ -145,23 +125,6 @@ stories
           max={500}
           defaultRefinement={{ min: 50, max: 200 }}
         />
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with panel but no refinement',
-    () => (
-      <WrapWithHits searchBox={false} linkedStoryGroup="RangeInput">
-        <Panel title="Price">
-          <RangeInput attributeName="price" />
-          <div style={{ display: 'none' }}>
-            <SearchBox defaultRefinement="ds" />
-          </div>
-        </Panel>
       </WrapWithHits>
     ),
     {
