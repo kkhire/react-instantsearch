@@ -86,12 +86,9 @@ class List extends Component {
   };
 
   renderShowMore() {
-    const { showMore, translate, cx } = this.props;
     const { extended } = this.state;
-    const disabled = this.props.limitMin >= this.props.items.length;
-    if (!showMore) {
-      return null;
-    }
+    const { items, limitMin, translate, cx } = this.props;
+    const disabled = limitMin >= items.length;
 
     return (
       <button
@@ -137,13 +134,16 @@ class List extends Component {
             }
           }}
         />
-        {noResults}
+        {!items.length &&
+          query !== '' && (
+            <div className={cx('noResults')}>{translate('noResults')}</div>
+          )}
       </div>
     );
   }
 
   render() {
-    const { cx, items, withSearchBox, canRefine } = this.props;
+    const { cx, items, withSearchBox, showMore, canRefine } = this.props;
     const searchBox = withSearchBox && this.renderSearchBox();
 
     if (!items.length) {
@@ -162,7 +162,7 @@ class List extends Component {
             .slice(0, limit)
             .map(item => this.renderItem(item, this.resetQuery))}
         </ul>
-        {this.renderShowMore()}
+        {showMore && this.renderShowMore()}
       </div>
     );
   }
