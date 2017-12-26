@@ -15,10 +15,10 @@ const cx = classNames('InfiniteHits');
  *
  * @name InfiniteHits
  * @kind widget
- * @propType {Component} hitComponent - Component used for rendering each hit from
+ * @propType {Component} [hitComponent] - Component used for rendering each hit from
  *   the results. If it is not provided the rendering defaults to displaying the
  *   hit in its JSON form. The component will be called with a `hit` prop.
- * @propType {function} renderHit - Function used for rendering each hit from
+ * @propType {function} [renderHit] - Function used for rendering each hit from
  *   the results. If it is not provided the rendering defaults to displaying the
  *   hit in its JSON form. The function will be called with a `hit` as argument.
  * @propType {function} [renderHeader] - Adds a header to the widget.
@@ -51,7 +51,12 @@ const cx = classNames('InfiniteHits');
  */
 
 const Widget = ({ renderHeader, renderFooter, ...props }) => (
-  <BaseWidget cx={cx} renderHeader={renderHeader} renderFooter={renderFooter}>
+  <BaseWidget
+    cx={cx}
+    canRefine
+    renderHeader={renderHeader}
+    renderFooter={renderFooter}
+  >
     <InfiniteHitsComponent {...props} cx={cx} />
   </BaseWidget>
 );
