@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 const BaseWidget = ({
   cx,
   children,
-  cantRefine,
+  canRefine,
   renderHeader,
   renderFooter,
 }) => (
-  <div className={cx('', cantRefine && `-noRefinement`)}>
+  <div className={cx('', !canRefine && `-noRefinement`)}>
     {renderHeader && (
       <div className={`${cx('header')} ais-header`}>{renderHeader()}</div>
     )}
@@ -24,7 +24,7 @@ const BaseWidget = ({
 BaseWidget.propTypes = {
   cx: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
-  cantRefine: PropTypes.bool,
+  canRefine: PropTypes.bool,
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
 };
