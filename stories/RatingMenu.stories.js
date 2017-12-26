@@ -35,8 +35,8 @@ stories
           attributeName="rating"
           max={6}
           min={1}
-          header="Header"
-          footer="Footer"
+          renderHeader={() => 'Header'}
+          renderFooter={() => 'Footer'}
         />
       </WrapWithHits>
     ),
