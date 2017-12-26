@@ -44,10 +44,10 @@ stories
     () => (
       <WrapWithHits hasPlayground={true} linkedStoryGroup="Breadcrumb">
         <Breadcrumb
-          header="Header"
-          footer="Footer"
           attributes={['category', 'sub_category', 'sub_sub_category']}
           separator=">"
+          renderHeader={() => 'Header'}
+          renderFooter={() => 'Footer'}
         />
         <hr />
         <HierarchicalMenu

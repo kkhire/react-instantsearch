@@ -1,5 +1,5 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
 import BaseWidget from './BaseWidget';
 import connectBreadcrumb from '../connectors/connectBreadcrumb';
 import BreadcrumbComponent from '../components/Breadcrumb';
@@ -53,8 +53,8 @@ const cx = classNames('Breadcrumb');
  * @propType {string} [separator='>'] -  Symbol used for separating hyperlinks
  * @propType {string} [rootURL=null] - The originating page (homepage)
  * @propType {function} [transformItems] - Function to modify the items being displayed, e.g. for filtering or sorting them. Takes an items as parameter and expects it back in return
- * @propType {node} [header] - Adds a header to the widget.
- * @propType {node} [footer] - Adds a footer to the widget.
+ * @propType {function} [renderHeader] - Adds a header to the widget.
+ * @propType {function} [renderFooter] - Adds a footer to the widget.
  * @themeKey ais-Breadcrumb - the root div of the widget
  * @themeKey ais-Breadcrumb-header - the header of the widget (optional)
  * @themeKey ais-Breadcrumb-body - the body of the widget
@@ -91,38 +91,21 @@ const cx = classNames('Breadcrumb');
  * }
  */
 
-class Widget extends Component {
-  componentWillMount() {
-    if (this.context.canRefine) this.context.canRefine(this.props.canRefine);
-  }
-
-  componentWillReceiveProps(props) {
-    if (this.context.canRefine) this.context.canRefine(props.canRefine);
-  }
-
-  render() {
-    const { header, footer, canRefine } = this.props;
-    return (
-      <BaseWidget
-        cx={cx}
-        header={header}
-        footer={footer}
-        cantRefine={!canRefine}
-      >
-        <BreadcrumbComponent cx={cx} {...this.props} />
-      </BaseWidget>
-    );
-  }
-}
+const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
+  <BaseWidget
+    cx={cx}
+    canRefine={canRefine}
+    renderHeader={renderHeader}
+    renderFooter={renderFooter}
+  >
+    <BreadcrumbComponent {...props} cx={cx} canRefine={canRefine} />
+  </BaseWidget>
+);
 
 Widget.propTypes = {
   canRefine: PropTypes.bool.isRequired,
-  header: PropTypes.node,
-  footer: PropTypes.node,
-};
-
-Widget.contextTypes = {
-  canRefine: PropTypes.func,
+  renderHeader: PropTypes.func,
+  renderFooter: PropTypes.func,
 };
 
 export default connectBreadcrumb(Widget);
