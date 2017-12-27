@@ -1,37 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CurrentRefinements allows clearing unique items of a refinement 1`] = `
+exports[`CurrentRefinements - Connect renders with translate 1`] = `
 <ul
   className="list"
 >
   <li
     className="item"
-  >
-    <button
-      className="button"
-      onClick={[Function]}
-    >
-      <span
-        className="label"
-      >
-        Sci-fi
-      </span>
-      <span
-        className="delete"
-      >
-        ✕
-      </span>
-    </button>
-  </li>
-</ul>
-`;
-
-exports[`CurrentRefinements renders a list of current refinements 1`] = `
-<ul
-  className="list"
->
-  <li
-    className="item"
+    key="Genre"
   >
     <button
       className="button"
@@ -46,6 +21,60 @@ exports[`CurrentRefinements renders a list of current refinements 1`] = `
         className="delete"
       >
         ✕
+      </span>
+    </button>
+  </li>
+</ul>
+`;
+
+exports[`CurrentRefinements - Raw renders a list of current refinements 1`] = `
+<ul
+  className="list"
+>
+  <li
+    className="item"
+    key="Genre"
+  >
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      <span
+        className="label"
+      >
+        Genre
+      </span>
+      <span
+        className="delete"
+      >
+        clearFilter
+      </span>
+    </button>
+  </li>
+</ul>
+`;
+
+exports[`CurrentRefinements - Raw renders a list of nested current refinements 1`] = `
+<ul
+  className="list"
+>
+  <li
+    className="item"
+    key="Sci-fi"
+  >
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      <span
+        className="label"
+      >
+        Sci-fi
+      </span>
+      <span
+        className="delete"
+      >
+        clearFilter
       </span>
     </button>
   </li>

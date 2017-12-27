@@ -1,55 +1,96 @@
-/* eslint-env jest, jasmine */
-
 import React from 'react';
-import renderer from 'react-test-renderer';
-import Enzyme from 'enzyme';
+import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import Connect, { CurrentRefinements } from './CurrentRefinements';
+
 Enzyme.configure({ adapter: new Adapter() });
 
-import CurrentRefinements from './CurrentRefinements';
+describe('CurrentRefinements - Raw', () => {
+  const defaultProps = {
+    items: [],
+    cx: (...x) => x.join(' '),
+    refine: () => {},
+    translate: x => x,
+  };
 
-describe('CurrentRefinements', () => {
-  it('renders a list of current refinements', () =>
-    expect(
-      renderer
-        .create(
-          <CurrentRefinements
-            cx={(...x) => x.join(' ')}
-            refine={() => null}
-            items={[
-              {
-                label: 'Genre',
-                value: 'clear all genres',
-              },
-            ]}
-            canRefine={true}
-          />
-        )
-        .toJSON()
-    ).toMatchSnapshot());
+  it('renders a list of current refinements', () => {
+    const props = {
+      ...defaultProps,
+      items: [
+        {
+          label: 'Genre',
+          value: () => {},
+        },
+      ],
+    };
 
-  it('allows clearing unique items of a refinement', () =>
-    expect(
-      renderer
-        .create(
-          <CurrentRefinements
-            cx={(...x) => x.join(' ')}
-            refine={() => null}
-            items={[
-              {
-                label: 'Genre',
-                value: 'clear all genres',
-                items: [
-                  {
-                    label: 'Sci-fi',
-                    value: 'clear sci-fi',
-                  },
-                ],
-              },
-            ]}
-            canRefine={true}
-          />
-        )
-        .toJSON()
-    ).toMatchSnapshot());
+    const wrapper = shallow(<CurrentRefinements {...props} />);
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('renders a list of nested current refinements', () => {
+    const props = {
+      ...defaultProps,
+      items: [
+        {
+          label: 'Genre',
+          value: () => {},
+          items: [
+            {
+              label: 'Sci-fi',
+              value: () => {},
+            },
+          ],
+        },
+      ],
+    };
+
+    const wrapper = shallow(<CurrentRefinements {...props} />);
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('call refine onClick', () => {
+    const props = {
+      ...defaultProps,
+      items: [
+        {
+          label: 'Genre',
+          value: () => {},
+        },
+      ],
+      refine: jest.fn(),
+    };
+
+    shallow(<CurrentRefinements {...props} />)
+      .find('button')
+      .simulate('click');
+
+    expect(props.refine).toHaveBeenCalledWith(expect.any(Function));
+  });
+});
+
+describe('CurrentRefinements - Connect', () => {
+  const defaultProps = {
+    items: [],
+    cx: (...x) => x.join(' '),
+    refine: () => {},
+  };
+
+  it('renders with translate', () => {
+    const props = {
+      ...defaultProps,
+      items: [
+        {
+          label: 'Genre',
+          value: () => {},
+        },
+      ],
+    };
+
+    const wrapper = shallow(<Connect {...props} />).dive();
+
+    expect(wrapper).toMatchSnapshot();
+  });
 });

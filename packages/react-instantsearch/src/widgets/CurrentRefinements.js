@@ -57,7 +57,7 @@ const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
     renderHeader={renderHeader}
     renderFooter={renderFooter}
   >
-    <CurrentRefinementsComponent {...props} cx={cx} canRefine={canRefine} />
+    <CurrentRefinementsComponent {...props} cx={cx} />
   </BaseWidget>
 );
 
