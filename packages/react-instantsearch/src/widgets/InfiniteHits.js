@@ -15,9 +15,6 @@ const cx = classNames('InfiniteHits');
  *
  * @name InfiniteHits
  * @kind widget
- * @propType {Component} [hitComponent] - Component used for rendering each hit from
- *   the results. If it is not provided the rendering defaults to displaying the
- *   hit in its JSON form. The component will be called with a `hit` prop.
  * @propType {function} [renderHit] - Function used for rendering each hit from
  *   the results. If it is not provided the rendering defaults to displaying the
  *   hit in its JSON form. The function will be called with a `hit` as argument.
