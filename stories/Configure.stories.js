@@ -10,19 +10,26 @@ stories.add('default', () => <ConfigureExample />);
 class ConfigureExample extends React.Component {
   constructor() {
     super();
-    this.state = { hitsPerPage: 3 };
+
+    this.state = {
+      hitsPerPage: 3,
+    };
   }
 
   onClick = () => {
-    const hitsPerPage = this.state.hitsPerPage === 3 ? 1 : 3;
-    this.setState({ hitsPerPage });
+    this.setState(previousState => ({
+      hitsPerPage: previousState.hitsPerPage === 3 ? 1 : 3,
+    }));
   };
 
   render() {
     return (
       <WrapWithHits linkedStoryGroup="Configure">
         <Configure hitsPerPage={this.state.hitsPerPage} />
-        <button onClick={this.onClick}>Toggle HitsPerPage</button>
+
+        <button className="ais-ClearRefinements-button" onClick={this.onClick}>
+          Toggle HitsPerPage ({this.state.hitsPerPage})
+        </button>
       </WrapWithHits>
     );
   }
