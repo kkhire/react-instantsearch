@@ -147,5 +147,5 @@
  */
 
 .rheostat-value {
-  padding-top: 25px;
+  padding-top: 25px !important;
 }
