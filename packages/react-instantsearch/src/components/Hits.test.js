@@ -1,36 +1,34 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import renderer from 'react-test-renderer';
+import Enzyme, { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import Hits from './Hits';
 
-const Hit = ({ hit }) => <div id={hit.objectID} />;
-
-Hit.propTypes = {
-  hit: PropTypes.object,
-};
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('Hits', () => {
+  const defaultProps = {
+    cx: (...args) => args.join(' '),
+    hits: [{ objectID: 0 }, { objectID: 1 }, { objectID: 2 }],
+  };
+
   it('render the default hit', () => {
-    const hits = [{ objectID: 0 }, { objectID: 1 }, { objectID: 2 }];
+    const props = {
+      ...defaultProps,
+    };
 
-    const tree = renderer.create(
-      <Hits cx={(...x) => x.join(' ')} hits={hits} hitComponent={Hit} />
-    );
+    const wrapper = shallow(<Hits {...props} />);
 
-    expect(tree.toJSON()).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
-  it('accepts a renderHit prop', () => {
-    const hits = [{ objectID: 0 }, { objectID: 1 }, { objectID: 2 }];
+  it('render a custom hit', () => {
+    const props = {
+      ...defaultProps,
+      renderHit: hit => <div id={hit.objectID} />,
+    };
 
-    const tree = renderer.create(
-      <Hits
-        cx={(...x) => x.join(' ')}
-        hits={hits}
-        renderHit={hit => <Hit hit={hit} />}
-      />
-    );
+    const wrapper = shallow(<Hits {...props} />);
 
-    expect(tree.toJSON()).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });
