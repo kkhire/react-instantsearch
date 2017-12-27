@@ -5,7 +5,7 @@ import classNames from '../components/classNames';
 import BaseWidget from '../components/BaseWidget';
 import HitsPerPageSelectComponent from '../components/HitsPerPage';
 
-const cx = classNames('ResultsPerPage');
+const cx = classNames('HitsPerPage');
 
 /**
  * The HitsPerPage widget displays a dropdown menu to let the user change the number
@@ -21,12 +21,12 @@ const cx = classNames('ResultsPerPage');
  * @propType {function} [transformItems] - Function to modify the items being displayed, e.g. for filtering or sorting them. Takes an items as parameter and expects it back in return.
  * @propType {function} [renderHeader] - Adds a header to the widget.
  * @propType {function} [renderFooter] - Adds a footer to the widget.
- * @themeKey ais-ResultsPerPage - the root div of the widget
- * @themeKey ais-ResultsPerPage-header - the header of the widget (optional)
- * @themeKey ais-ResultsPerPage-body - the body of the widget
- * @themeKey ais-ResultsPerPage-select - the select
- * @themeKey ais-ResultsPerPage-option - the select option
- * @themeKey ais-ResultsPerPage-footer - the footer of the widget (optional)
+ * @themeKey ais-HitsPerPage - the root div of the widget
+ * @themeKey ais-HitsPerPage-header - the header of the widget (optional)
+ * @themeKey ais-HitsPerPage-body - the body of the widget
+ * @themeKey ais-HitsPerPage-select - the select
+ * @themeKey ais-HitsPerPage-option - the select option
+ * @themeKey ais-HitsPerPage-footer - the footer of the widget (optional)
  * @example
  * import React from 'react';
 
