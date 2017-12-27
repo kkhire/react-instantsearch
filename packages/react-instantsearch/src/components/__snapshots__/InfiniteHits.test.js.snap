@@ -1,49 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Hits accepts a renderHit prop 1`] = `
+exports[`InfiniteHits - Connect renders with translate 1`] = `
 <div>
   <ul
     className="list"
   >
     <li
       className="item"
-    >
-      <div
-        id={0}
-      />
-    </li>
-    <li
-      className="item"
-    >
-      <div
-        id={1}
-      />
-    </li>
-    <li
-      className="item"
-    >
-      <div
-        id={2}
-      />
-    </li>
-  </ul>
-  <button
-    className="loadMore loadMore--disabled"
-    disabled={true}
-    onClick={[Function]}
-  >
-    Load more
-  </button>
-</div>
-`;
-
-exports[`Hits render a default hit 1`] = `
-<div>
-  <ul
-    className="list"
-  >
-    <li
-      className="item"
+      key="0"
     >
       <div
         style={
@@ -61,6 +25,7 @@ exports[`Hits render a default hit 1`] = `
     </li>
     <li
       className="item"
+      key="1"
     >
       <div
         style={
@@ -78,6 +43,7 @@ exports[`Hits render a default hit 1`] = `
     </li>
     <li
       className="item"
+      key="2"
     >
       <div
         style={
@@ -100,6 +66,186 @@ exports[`Hits render a default hit 1`] = `
     onClick={[Function]}
   >
     Load more
+  </button>
+</div>
+`;
+
+exports[`InfiniteHits - Raw button is disabled when it is the last page 1`] = `
+<div>
+  <ul
+    className="list"
+  >
+    <li
+      className="item"
+      key="0"
+    >
+      <div
+        style={
+          Object {
+            "borderBottom": "1px solid #bbb",
+            "marginBottom": "5px",
+            "paddingBottom": "5px",
+            "wordBreak": "break-all",
+          }
+        }
+      >
+        {"objectID":0}
+        ...
+      </div>
+    </li>
+    <li
+      className="item"
+      key="1"
+    >
+      <div
+        style={
+          Object {
+            "borderBottom": "1px solid #bbb",
+            "marginBottom": "5px",
+            "paddingBottom": "5px",
+            "wordBreak": "break-all",
+          }
+        }
+      >
+        {"objectID":1}
+        ...
+      </div>
+    </li>
+    <li
+      className="item"
+      key="2"
+    >
+      <div
+        style={
+          Object {
+            "borderBottom": "1px solid #bbb",
+            "marginBottom": "5px",
+            "paddingBottom": "5px",
+            "wordBreak": "break-all",
+          }
+        }
+      >
+        {"objectID":2}
+        ...
+      </div>
+    </li>
+  </ul>
+  <button
+    className="loadMore loadMore--disabled"
+    disabled={true}
+    onClick={[Function]}
+  >
+    loadMore
+  </button>
+</div>
+`;
+
+exports[`InfiniteHits - Raw renders a custom hit 1`] = `
+<div>
+  <ul
+    className="list"
+  >
+    <li
+      className="item"
+      key="0"
+    >
+      <div
+        id={0}
+      />
+    </li>
+    <li
+      className="item"
+      key="1"
+    >
+      <div
+        id={1}
+      />
+    </li>
+    <li
+      className="item"
+      key="2"
+    >
+      <div
+        id={2}
+      />
+    </li>
+  </ul>
+  <button
+    className="loadMore loadMore--disabled"
+    disabled={true}
+    onClick={[Function]}
+  >
+    loadMore
+  </button>
+</div>
+`;
+
+exports[`InfiniteHits - Raw renders a default hit 1`] = `
+<div>
+  <ul
+    className="list"
+  >
+    <li
+      className="item"
+      key="0"
+    >
+      <div
+        style={
+          Object {
+            "borderBottom": "1px solid #bbb",
+            "marginBottom": "5px",
+            "paddingBottom": "5px",
+            "wordBreak": "break-all",
+          }
+        }
+      >
+        {"objectID":0}
+        ...
+      </div>
+    </li>
+    <li
+      className="item"
+      key="1"
+    >
+      <div
+        style={
+          Object {
+            "borderBottom": "1px solid #bbb",
+            "marginBottom": "5px",
+            "paddingBottom": "5px",
+            "wordBreak": "break-all",
+          }
+        }
+      >
+        {"objectID":1}
+        ...
+      </div>
+    </li>
+    <li
+      className="item"
+      key="2"
+    >
+      <div
+        style={
+          Object {
+            "borderBottom": "1px solid #bbb",
+            "marginBottom": "5px",
+            "paddingBottom": "5px",
+            "wordBreak": "break-all",
+          }
+        }
+      >
+        {"objectID":2}
+        ...
+      </div>
+    </li>
+  </ul>
+  <button
+    className="loadMore loadMore--disabled"
+    disabled={true}
+    onClick={[Function]}
+  >
+    loadMore
   </button>
 </div>
 `;

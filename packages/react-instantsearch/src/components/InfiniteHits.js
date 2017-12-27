@@ -2,7 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import translatable from '../core/translatable';
 
-const InfiniteHits = ({ cx, renderHit, hits, hasMore, refine, translate }) => (
+export const InfiniteHits = ({
+  hits,
+  hasMore,
+  cx,
+  refine,
+  translate,
+  renderHit,
+}) => (
   <div>
     <ul className={cx('list')}>
       {hits.map(hit => (
@@ -11,9 +18,10 @@ const InfiniteHits = ({ cx, renderHit, hits, hasMore, refine, translate }) => (
         </li>
       ))}
     </ul>
+
     <button
       className={cx('loadMore', !hasMore && 'loadMore--disabled')}
-      onClick={() => refine()}
+      onClick={refine}
       disabled={!hasMore}
     >
       {translate('loadMore')}
@@ -22,14 +30,12 @@ const InfiniteHits = ({ cx, renderHit, hits, hasMore, refine, translate }) => (
 );
 
 InfiniteHits.propTypes = {
-  cx: PropTypes.func.isRequired,
-  hits: PropTypes.array,
-  renderHit: PropTypes.func,
+  hits: PropTypes.array.isRequired,
   hasMore: PropTypes.bool.isRequired,
+  cx: PropTypes.func.isRequired,
   refine: PropTypes.func.isRequired,
   translate: PropTypes.func.isRequired,
-  header: PropTypes.node,
-  footer: PropTypes.node,
+  renderHit: PropTypes.func,
 };
 
 InfiniteHits.defaultProps = {
