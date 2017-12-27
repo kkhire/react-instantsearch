@@ -2,9 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Hits = ({ cx, hits, renderHit }) => (
-  // Spread the hit on HitComponent instead of passing the full object. BC.
-  // ex: <HitComponent {...hit} key={hit.objectID} />
-
   <ul className={cx('list')}>
     {hits.map(hit => (
       <li className={cx('item')} key={hit.objectID}>
