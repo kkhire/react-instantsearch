@@ -1,12 +1,8 @@
 import React from 'react';
 import { setAddon, storiesOf } from '@storybook/react';
-import {
-  RefinementList,
-  Panel,
-  SearchBox,
-} from '../packages/react-instantsearch/dom';
+import { RefinementList } from '../packages/react-instantsearch/dom';
 import { boolean, number, array } from '@storybook/addon-knobs';
-import { displayName, filterProps, WrapWithHits } from './util';
+import { displayName, filterProps, WrapWithHits, WithoutResults } from './util';
 import { orderBy } from 'lodash';
 import JSXAddon from 'storybook-addon-jsx';
 
@@ -20,6 +16,27 @@ stories
     () => (
       <WrapWithHits linkedStoryGroup="RefinementList" hasPlayground={true}>
         <RefinementList attributeName="category" />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'without results',
+    () => (
+      <WrapWithHits
+        searchBox={false}
+        linkedStoryGroup="RefinementList"
+        hasPlayground={true}
+      >
+        <RefinementList
+          attributeName="category"
+          renderHeader={() => 'Header'}
+        />
+
+        <WithoutResults />
       </WrapWithHits>
     ),
     {
@@ -97,41 +114,6 @@ stories
             orderBy(items, ['label', 'count'], ['asc', 'desc'])
           }
         />
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with panel',
-    () => (
-      <WrapWithHits linkedStoryGroup="RefinementList" hasPlayground={true}>
-        <Panel title="Category">
-          <RefinementList attributeName="category" />
-        </Panel>
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with panel but no refinement',
-    () => (
-      <WrapWithHits
-        searchBox={false}
-        linkedStoryGroup="RefinementList"
-        hasPlayground={true}
-      >
-        <Panel title="Category">
-          <RefinementList attributeName="category" />
-          <div style={{ display: 'none' }}>
-            <SearchBox defaultRefinement="ds" />
-          </div>
-        </Panel>
       </WrapWithHits>
     ),
     {
