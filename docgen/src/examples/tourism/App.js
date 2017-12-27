@@ -228,39 +228,47 @@ function DatesAndGuest() {
 }
 
 const RoomType = connectRefinementList(({ items, refine }) => {
-  const sortedItems = items.sort((i1, i2) => i1.label.localeCompare(i2.label));
-  const hitComponents = sortedItems.map(item => {
-    const selectedClassName = item.isRefined
-      ? ' ais-refinement-list--item__active'
-      : '';
-    const itemClassName = `ais-refinement-list--item col-sm-3 ${selectedClassName}`;
-    return (
-      <div className={itemClassName} key={item.label}>
-        <div>
-          <label
-            className="ais-refinement-list--label"
-            onClick={e => {
-              e.preventDefault();
-              refine(item.value);
-            }}
-          >
-            <input
-              type="checkbox"
-              className="ais-refinement-list--checkbox"
-              defaultChecked={item.isRefined ? 'checked' : ''}
-            />
-            {item.label}
-            <span className="ais-refinement-list--count">{item.count}</span>
-          </label>
-        </div>
-      </div>
-    );
-  });
+  const sortedItems = items
+    .slice()
+    .sort((i1, i2) => i1.label.localeCompare(i2.label));
 
   return (
     <div className="row aisdemo-filter">
       <div className="col-sm-2 aisdemo-filter-title">Room Type</div>
-      <div id="room_types col-sm-3">{hitComponents}</div>
+      <div id="room_types col-sm-3">
+        {sortedItems.map(item => {
+          const selectedClassName = item.isRefined
+            ? ' ais-refinement-list--item__active'
+            : '';
+
+          return (
+            <div
+              className={`ais-refinement-list--item col-sm-3 ${selectedClassName}`}
+              key={item.label}
+            >
+              <div>
+                <label
+                  className="ais-refinement-list--label"
+                  onClick={e => {
+                    e.preventDefault();
+                    refine(item.value);
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    className="ais-refinement-list--checkbox"
+                    defaultChecked={item.isRefined ? 'checked' : ''}
+                  />
+                  {item.label}
+                  <span className="ais-refinement-list--count">
+                    {item.count}
+                  </span>
+                </label>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 });
@@ -276,12 +284,11 @@ function Price() {
   );
 }
 
-const MyHits = connectHits(({ hits }) => {
-  const hs = hits.map(hit => <HitComponent key={hit.objectID} hit={hit} />);
-  return <div id="hits">{hs}</div>;
-});
+const MyHits = connectHits(({ hits }) => (
+  <div id="hits">{hits.map(hit => <Hit key={hit.objectID} hit={hit} />)}</div>
+));
 
-function HitComponent({ hit }) {
+function Hit({ hit }) {
   return (
     <div className="hit col-sm-3">
       <div className="pictures-wrapper">
@@ -307,7 +314,7 @@ function HitDescription({ hit }) {
   );
 }
 
-HitComponent.propTypes = {
+Hit.propTypes = {
   hit: PropTypes.object,
 };
 

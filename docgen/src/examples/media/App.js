@@ -127,8 +127,9 @@ const Genres = ({ genres }) => (
   </p>
 );
 
-const Hit = hit => {
-  const { image, rating, year, genre } = hit.hit;
+const Hit = ({ hit }) => {
+  const { image, rating, year, genre } = hit;
+
   return (
     <div className="hit media">
       <div className="media-left">
@@ -139,7 +140,7 @@ const Hit = hit => {
       </div>
       <div className="media-body">
         <h4 className="media-heading">
-          <Highlight attributeName="title" hit={hit.hit} />
+          <Highlight attributeName="title" hit={hit} />
           <Stars rating={rating} />
         </h4>
         <p className="year">{year}</p>
@@ -156,7 +157,7 @@ const Results = connectSearchBox(() => (
     </div>
     <hr />
     <div id="hits">
-      <Hits hitComponent={Hit} />
+      <Hits renderHit={hit => <Hit hit={hit} />} />
     </div>
     <div id="pagination" className="text-center">
       <Pagination />
@@ -165,25 +166,25 @@ const Results = connectSearchBox(() => (
 ));
 
 const RefinementListLinks = connectRefinementList(
-  ({ items, refine, createURL }) => {
-    const hitComponents = items.map(item => (
-      <div className={item.isRefined ? ' active' : ''} key={item.label}>
-        <a
-          className="item"
-          href={createURL(item.value)}
-          onClick={e => {
-            e.preventDefault();
-            refine(item.value);
-          }}
-        >
-          <span> {item.label}</span>
-          <span className="badge pull-right">{item.count}</span>
-        </a>
-      </div>
-    ));
-
-    return <div className="nav nav-list">{hitComponents}</div>;
-  }
+  ({ items, refine, createURL }) => (
+    <div className="nav nav-list">
+      {items.map(item => (
+        <div className={item.isRefined ? ' active' : ''} key={item.label}>
+          <a
+            className="item"
+            href={createURL(item.value)}
+            onClick={e => {
+              e.preventDefault();
+              refine(item.value);
+            }}
+          >
+            <span> {item.label}</span>
+            <span className="badge pull-right">{item.count}</span>
+          </a>
+        </div>
+      ))}
+    </div>
+  )
 );
 
 export default withUrlSync(App);

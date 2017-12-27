@@ -14,17 +14,20 @@ the results.
 
 This feature is already packaged for you in react-instantsearch and
 like most of its features it comes in two flavors, depending on your use case:
- - when using the DOM, widgets is the way to go
- - when using another rendering (such as react native), you will use the connector
+
+* when using the DOM, widgets is the way to go
+* when using another rendering (such as react native), you will use the connector
 
 ## &lt;Highlight&gt; and &lt;Snippet&gt; widgets
 
 Highlighting is based on the results and you will need to make a custom Hit in order
 to use the Highlighter. The Highlight and the Snippet widgets take two props:
- - attributeName: the path to the highlighted attribute of the hit (which can be either a string or an array of strings)
- - hit: a single result object
+
+* attributeName: the path to the highlighted attribute of the hit (which can be either a string or an array of strings)
+* hit: a single result object
 
 **Notes:**
+
 * Use the `<Highlight>` widget when you want to display the regular value of an attribute.
 * Use the `<Snippet>` widget when you want to display the snippet version of an attribute.
   To use this widget, the attribute name passed to the `attributeName` prop must be present in
@@ -56,7 +59,7 @@ export default function App() {
       apiKey="6be0576ff61c053d5f9a3225e2a90f76"
       indexName="ikea"
     >
-      <Hits hitComponent={Hit} />
+      <Hits renderHit={hit => <Hit hit={hit} />} />
     </InstantSearch>
   );
 }
@@ -67,9 +70,10 @@ export default function App() {
 The connector provides a function that will extract the highlighting data
 from the results. This function takes a single parameter object with three
 properties:
- - attributeName: the highlighted attribute name
- - hit: a single result object
- - highlightProperty: the path to the structure containing the highlighted attribute. The value is either `_highlightResult` or `_snippetResult` depending on whether you want to make a Highlight or a Snippet widget.
+
+* attributeName: the highlighted attribute name
+* hit: a single result object
+* highlightProperty: the path to the structure containing the highlighted attribute. The value is either `_highlightResult` or `_snippetResult` depending on whether you want to make a Highlight or a Snippet widget.
 
 Those parameters are taken from the context in which the the custom component
 is used, therefore it's reasonable to have them as props.
@@ -110,7 +114,7 @@ export default function App() {
       apiKey="6be0576ff61c053d5f9a3225e2a90f76"
       indexName="ikea"
     >
-      <Hits hitComponent={Hit} />
+      <Hits renderHit={hit => <Hit hit={hit} />} />
     </InstantSearch>
   );
 }

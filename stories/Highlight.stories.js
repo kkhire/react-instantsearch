@@ -56,12 +56,12 @@ StrongHits.propTypes = {
 stories
   .add('default', () => (
     <WrapWithHits linkedStoryGroup="Highlight">
-      <Hits hitComponent={Default} />
+      <Hits renderHit={hit => <Default hit={hit} />} />
     </WrapWithHits>
   ))
   .add('playground', () => (
     <WrapWithHits linkedStoryGroup="Highlight">
-      <Hits hitComponent={StrongHits} />
+      <Hits renderHit={hit => <StrongHits hit={hit} />} />
     </WrapWithHits>
   ));
 

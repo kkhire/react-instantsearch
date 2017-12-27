@@ -42,18 +42,6 @@ stories
     }
   )
   .addWithJSX(
-    'with custom Component',
-    () => (
-      <WrapWithHits linkedStoryGroup="Hits" pagination={false}>
-        <InfiniteHits hitComponent={Product} />
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
     'with custom render function',
     () => (
       <WrapWithHits linkedStoryGroup="Hits" pagination={false}>

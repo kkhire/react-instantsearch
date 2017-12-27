@@ -159,8 +159,8 @@ view lets you inspect the values that are retrieved from Algolia, in order
 to build your custom view.
 
 In order to customize the view for each product, we can use a special prop
-of the Hit widget: `hitComponent`. This prop accepts a Component that
-will be used for each hit in the results from Algolia.
+of the Hit widget: `renderHit`. This prop accepts a function that
+will be used for render each hit in the results from Algolia.
 
 ```jsx
 function Product({ hit }) {
@@ -172,13 +172,13 @@ The widget receives a prop `hit` that contains the content of the
 record. Here we are only displaying the name for the sake of simplicity
 but there is no limit as long as the data is in the record.
 
-Now let's modify the `Hits` usage to add our new `hitComponent`.
+Now let's modify the `Hits` usage to add our new `Product`.
 
 ```jsx
 function Search() {
   return (
     <div>
-      <Hits hitComponent={Product} />
+      <Hits renderHit={hit => <Product hit={hit} />} />
     </div>
   );
 }
@@ -207,7 +207,7 @@ function Search() {
   return (
     <div>
       <SearchBox />
-      <Hits hitComponent={Product} />
+      <Hits renderHit={hit => <Product hit={hit} />} />
     </div>
   );
 }
@@ -282,7 +282,7 @@ function Search() {
     <div className="container">
       <SearchBox />
       <RefinementList attributeName="category" />
-      <Hits hitComponent={Product} />
+      <Hits renderHit={hit => <Product hit={hit} />} />
     </div>
   );
 }
@@ -336,7 +336,7 @@ function Search() {
       <ClearRefinements />
       <SearchBox />
       <RefinementList attributeName="category" />
-      <Hits hitComponent={Product} />
+      <Hits renderHit={hit => <Product hit={hit} />} />
       <Pagination />
     </div>
   );
