@@ -1,6 +1,6 @@
 import React from 'react';
 import { setAddon, storiesOf } from '@storybook/react';
-import { RangeInput, SearchBox } from '../packages/react-instantsearch/dom';
+import { RangeInput } from '../packages/react-instantsearch/dom';
 import { object, number } from '@storybook/addon-knobs';
 import { displayName, filterProps, WrapWithHits, WithoutResults } from './util';
 
