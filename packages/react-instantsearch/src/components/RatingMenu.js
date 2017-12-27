@@ -84,14 +84,13 @@ class RatingMenu extends Component {
 
     // The last item of the list (the default item), should not
     // be clickable if it is selected.
-    const isLastAndSelect = isLastSelectableItem && selected;
-    const StarsWrapper = isLastAndSelect ? 'div' : 'a';
-    const onClickHandler = isLastAndSelect
-      ? {}
-      : {
-          href: createURL({ min: lowerBound, max }),
-          onClick: this.onClick.bind(this, lowerBound, max),
-        };
+    const onClickHandler =
+      !disabled && (!isLastSelectableItem || !selected)
+        ? {
+            href: createURL({ min: lowerBound, max }),
+            onClick: this.onClick.bind(this, lowerBound, max),
+          }
+        : {};
 
     return (
       <li
@@ -102,10 +101,9 @@ class RatingMenu extends Component {
           disabled && 'item--disabled'
         )}
       >
-        <StarsWrapper
+        <a
           aria-label={`${rating}${translate('ratingLabel')}`}
           className={cx('link')}
-          disabled={disabled}
           {...onClickHandler}
         >
           {icons}
@@ -113,7 +111,7 @@ class RatingMenu extends Component {
             {translate('ratingLabel')}
           </span>{' '}
           <span className={cx('count')}>{count}</span>
-        </StarsWrapper>
+        </a>
       </li>
     );
   }
