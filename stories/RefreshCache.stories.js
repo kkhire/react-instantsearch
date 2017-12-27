@@ -99,6 +99,7 @@ class AppWithRefresh extends Component {
             cursor: 'pointer',
             color: '#fff',
             background: '#3369e7',
+            marginTop: '15px',
           }}
         >
           Refresh cache
