@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import renderer from 'react-test-renderer';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -7,20 +6,13 @@ import InfiniteHits from './InfiniteHits';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-const Hit = ({ hit }) => <div id={hit.objectID} />;
-
-Hit.propTypes = {
-  hit: PropTypes.object,
-};
-
 describe('Hits', () => {
-  it('accepts a hitComponent prop', () => {
+  it('render a default hit', () => {
     const hits = [{ objectID: 0 }, { objectID: 1 }, { objectID: 2 }];
 
     const tree = renderer.create(
       <InfiniteHits
         cx={(...x) => x.join(' ')}
-        hitComponent={Hit}
         hits={hits}
         hasMore={false}
         refine={() => undefined}
@@ -36,7 +28,7 @@ describe('Hits', () => {
     const tree = renderer.create(
       <InfiniteHits
         cx={(...x) => x.join(' ')}
-        renderHit={hit => <Hit hit={hit} />}
+        renderHit={hit => <div id={hit.objectID} />}
         hits={hits}
         hasMore={false}
         refine={() => undefined}
@@ -53,7 +45,7 @@ describe('Hits', () => {
       <InfiniteHits
         cx={(...x) => x.join(' ')}
         refine={mockedRefine}
-        hitComponent={Hit}
+        renderHit={hit => <div id={hit.objectID} />}
         hits={hits}
         hasMore={true}
       />
@@ -69,7 +61,7 @@ describe('Hits', () => {
       <InfiniteHits
         cx={(...x) => x.join(' ')}
         refine={() => undefined}
-        hitComponent={Hit}
+        renderHit={hit => <div id={hit.objectID} />}
         hits={hits}
         hasMore={false}
       />

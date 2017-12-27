@@ -1,21 +1,13 @@
-import React, { createElement } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import translatable from '../core/translatable';
 
-const InfiniteHits = ({
-  cx,
-  hitComponent,
-  renderHit,
-  hits,
-  hasMore,
-  refine,
-  translate,
-}) => (
+const InfiniteHits = ({ cx, renderHit, hits, hasMore, refine, translate }) => (
   <div>
     <ul className={cx('list')}>
       {hits.map(hit => (
         <li key={hit.objectID} className={cx('item')}>
-          {renderHit ? renderHit(hit) : createElement(hitComponent, { hit })}
+          {renderHit(hit)}
         </li>
       ))}
     </ul>
@@ -32,7 +24,6 @@ const InfiniteHits = ({
 InfiniteHits.propTypes = {
   cx: PropTypes.func.isRequired,
   hits: PropTypes.array,
-  hitComponent: PropTypes.func,
   renderHit: PropTypes.func,
   hasMore: PropTypes.bool.isRequired,
   refine: PropTypes.func.isRequired,
@@ -42,7 +33,7 @@ InfiniteHits.propTypes = {
 };
 
 InfiniteHits.defaultProps = {
-  hitComponent: props => (
+  renderHit: hit => (
     <div
       style={{
         borderBottom: '1px solid #bbb',
@@ -51,7 +42,7 @@ InfiniteHits.defaultProps = {
         wordBreak: 'break-all',
       }}
     >
-      {JSON.stringify(props).slice(0, 100)}...
+      {JSON.stringify(hit).slice(0, 100)}...
     </div>
   ),
 };
