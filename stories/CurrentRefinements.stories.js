@@ -69,11 +69,19 @@ stories
     () => (
       <WrapWithHits linkedStoryGroup="CurrentRefinements">
         <CurrentRefinements />
+
         <Toggle
           attributeName="materials"
           label="Made with solid pine"
           value={'Solid pine'}
         />
+
+        <div style={{ display: 'none' }}>
+          <RefinementList
+            attributeName="category"
+            defaultRefinement={['Dining']}
+          />
+        </div>
       </WrapWithHits>
     ),
     {

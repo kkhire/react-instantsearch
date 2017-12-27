@@ -1,6 +1,5 @@
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import translatable from '../core/translatable';
 
 class CurrentRefinements extends Component {
@@ -20,23 +19,23 @@ class CurrentRefinements extends Component {
   render() {
     const { cx, translate, items, refine } = this.props;
 
+    const flatten = items.reduce(
+      (acc, item) => (item.items ? acc.concat(item.items) : acc.concat(item)),
+      []
+    );
+
     return (
       <ul className={cx('list')}>
-        {items.filter(item => item.items).map(item =>
-          item.items.map(nestedItem => (
-            <li key={nestedItem.label} className={cx('item')}>
-              <button
-                className={cx('button')}
-                onClick={() => refine(nestedItem.value)}
-              >
-                <span className={cx('label')}>{nestedItem.label}</span>
-                <span className={cx('delete')}>
-                  {translate('clearFilter', nestedItem)}
-                </span>
-              </button>
-            </li>
-          ))
-        )}
+        {flatten.map(item => (
+          <li key={item.label} className={cx('item')}>
+            <button className={cx('button')} onClick={() => refine(item.value)}>
+              <span className={cx('label')}>{item.label}</span>
+              <span className={cx('delete')}>
+                {translate('clearFilter', item)}
+              </span>
+            </button>
+          </li>
+        ))}
       </ul>
     );
   }
