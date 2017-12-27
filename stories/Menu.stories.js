@@ -14,7 +14,7 @@ stories
   .addWithJSX(
     'default',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="Menu">
+      <WrapWithHits linkedStoryGroup="Menu">
         <Menu attributeName="category" />
       </WrapWithHits>
     ),
@@ -26,11 +26,7 @@ stories
   .addWithJSX(
     'without results',
     () => (
-      <WrapWithHits
-        searchBox={false}
-        hasPlayground={true}
-        linkedStoryGroup="Menu"
-      >
+      <WrapWithHits searchBox={false} linkedStoryGroup="Menu">
         <Menu attributeName="category" renderHeader={() => 'Header'} />
         <WithoutResults />
       </WrapWithHits>
@@ -43,7 +39,7 @@ stories
   .addWithJSX(
     'with header and footer',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="Menu">
+      <WrapWithHits linkedStoryGroup="Menu">
         <Menu
           attributeName="category"
           renderHeader={() => 'Header'}
@@ -59,7 +55,7 @@ stories
   .addWithJSX(
     'with default selected item',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="Menu">
+      <WrapWithHits linkedStoryGroup="Menu">
         <Menu attributeName="category" defaultRefinement="Eating" />
       </WrapWithHits>
     ),
@@ -71,7 +67,7 @@ stories
   .addWithJSX(
     'with show more',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="Menu">
+      <WrapWithHits linkedStoryGroup="Menu">
         <Menu
           attributeName="category"
           limitMin={2}
@@ -88,7 +84,7 @@ stories
   .addWithJSX(
     'with search inside items',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="Menu">
+      <WrapWithHits linkedStoryGroup="Menu">
         <Menu
           attributeName="category"
           withSearchBox
@@ -110,7 +106,7 @@ stories
   .addWithJSX(
     'with the sort strategy changed',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="Menu">
+      <WrapWithHits linkedStoryGroup="Menu">
         <Menu
           attributeName="category"
           transformItems={items =>

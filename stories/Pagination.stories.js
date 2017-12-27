@@ -13,7 +13,7 @@ stories
   .addWithJSX(
     'default',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="Pagination">
+      <WrapWithHits linkedStoryGroup="Pagination">
         <Pagination />
       </WrapWithHits>
     ),
@@ -38,7 +38,7 @@ stories
   .addWithJSX(
     'with header and footer',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="Pagination">
+      <WrapWithHits linkedStoryGroup="Pagination">
         <Pagination
           renderHeader={() => 'Header'}
           renderFooter={() => 'Footer'}
@@ -53,7 +53,7 @@ stories
   .addWithJSX(
     'with all props',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="Pagination">
+      <WrapWithHits linkedStoryGroup="Pagination">
         <Pagination
           showFirst={true}
           showLast={true}

@@ -33,7 +33,7 @@ stories
   .addWithJSX(
     'with header and footer',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="HitsPerPage">
+      <WrapWithHits linkedStoryGroup="HitsPerPage">
         <HitsPerPage
           defaultRefinement={4}
           items={[
@@ -55,7 +55,7 @@ stories
   .addWithJSX(
     'without label',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="HitsPerPage">
+      <WrapWithHits linkedStoryGroup="HitsPerPage">
         <HitsPerPage
           defaultRefinement={4}
           items={[{ value: 2 }, { value: 4 }, { value: 6 }, { value: 8 }]}

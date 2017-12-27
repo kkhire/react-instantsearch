@@ -13,7 +13,7 @@ stories
   .addWithJSX(
     'default',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="RangeSlider">
+      <WrapWithHits linkedStoryGroup="RangeSlider">
         <Range attributeName="price" />
       </WrapWithHits>
     ),
@@ -25,7 +25,7 @@ stories
   .addWithJSX(
     'providing default value',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="RangeSlider">
+      <WrapWithHits linkedStoryGroup="RangeSlider">
         <Range
           attributeName="price"
           defaultRefinement={{ min: 50, max: 200 }}
@@ -40,7 +40,7 @@ stories
   .addWithJSX(
     'custom min/max bounds',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="RangeSlider">
+      <WrapWithHits linkedStoryGroup="RangeSlider">
         <Range attributeName="price" min={30} max={100} />
       </WrapWithHits>
     ),

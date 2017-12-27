@@ -13,7 +13,7 @@ stories
   .addWithJSX(
     'default',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="HierarchicalMenu">
+      <WrapWithHits linkedStoryGroup="HierarchicalMenu">
         <HierarchicalMenu
           attributes={['category', 'sub_category', 'sub_sub_category']}
         />
@@ -43,7 +43,7 @@ stories
   .addWithJSX(
     'with header and footer',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="HierarchicalMenu">
+      <WrapWithHits linkedStoryGroup="HierarchicalMenu">
         <HierarchicalMenu
           renderHeader={() => 'Header'}
           renderFooter={() => 'Footer'}
@@ -59,7 +59,7 @@ stories
   .addWithJSX(
     'with default selected item',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="HierarchicalMenu">
+      <WrapWithHits linkedStoryGroup="HierarchicalMenu">
         <HierarchicalMenu
           attributes={['category', 'sub_category', 'sub_sub_category']}
           defaultRefinement="Eating"
@@ -74,7 +74,7 @@ stories
   .addWithJSX(
     'with show more',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="HierarchicalMenu">
+      <WrapWithHits linkedStoryGroup="HierarchicalMenu">
         <HierarchicalMenu
           attributes={['category', 'sub_category', 'sub_sub_category']}
           limitMin={2}

@@ -14,11 +14,7 @@ stories
   .addWithJSX(
     'default',
     () => (
-      <WrapWithHits
-        searchBox={false}
-        hasPlayground={true}
-        linkedStoryGroup="SearchBox"
-      >
+      <WrapWithHits searchBox={false} linkedStoryGroup="SearchBox">
         <SearchBox
           showLoadingIndicator={boolean('showLoadingIndicator', true)}
         />
@@ -32,11 +28,7 @@ stories
   .addWithJSX(
     'with header and footer',
     () => (
-      <WrapWithHits
-        searchBox={false}
-        hasPlayground={true}
-        linkedStoryGroup="SearchBox"
-      >
+      <WrapWithHits searchBox={false} linkedStoryGroup="SearchBox">
         <SearchBox
           renderHeader={() => 'Header'}
           renderFooter={() => 'Footer'}
@@ -51,11 +43,7 @@ stories
   .addWithJSX(
     'with a default query',
     () => (
-      <WrapWithHits
-        searchBox={false}
-        hasPlayground={true}
-        linkedStoryGroup="SearchBox"
-      >
+      <WrapWithHits searchBox={false} linkedStoryGroup="SearchBox">
         <SearchBox defaultRefinement="battery" />
       </WrapWithHits>
     ),
@@ -67,11 +55,7 @@ stories
   .addWithJSX(
     'with submit and reset components',
     () => (
-      <WrapWithHits
-        searchBox={false}
-        hasPlayground={true}
-        linkedStoryGroup="SearchBox"
-      >
+      <WrapWithHits searchBox={false} linkedStoryGroup="SearchBox">
         <SearchBox
           renderSubmit={() => <span>🔍</span>}
           renderReset={() => (
@@ -168,11 +152,7 @@ class SearchBoxContainer extends Component {
 
   render() {
     return (
-      <WrapWithHits
-        searchBox={false}
-        hasPlayground={true}
-        linkedStoryGroup="SearchBox"
-      >
+      <WrapWithHits searchBox={false} linkedStoryGroup="SearchBox">
         <div
           style={{
             color: '#999',

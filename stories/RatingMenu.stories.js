@@ -13,7 +13,7 @@ stories
   .addWithJSX(
     'default',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="RatingMenu">
+      <WrapWithHits linkedStoryGroup="RatingMenu">
         <RatingMenu attributeName="rating" max={6} min={1} />
       </WrapWithHits>
     ),
@@ -25,11 +25,7 @@ stories
   .addWithJSX(
     'without results',
     () => (
-      <WrapWithHits
-        searchBox={false}
-        hasPlayground={true}
-        linkedStoryGroup="RatingMenu"
-      >
+      <WrapWithHits searchBox={false} linkedStoryGroup="RatingMenu">
         <RatingMenu attributeName="rating" max={6} min={1} />
         <WithoutResults />
       </WrapWithHits>
@@ -42,7 +38,7 @@ stories
   .addWithJSX(
     'with header and footer',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="RatingMenu">
+      <WrapWithHits linkedStoryGroup="RatingMenu">
         <RatingMenu
           attributeName="rating"
           max={6}
@@ -60,7 +56,7 @@ stories
   .addWithJSX(
     'with some unavailable refinements',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="RatingMenu">
+      <WrapWithHits linkedStoryGroup="RatingMenu">
         <Configure filters="rating>=4" />
         <RatingMenu attributeName="rating" max={6} min={1} />
       </WrapWithHits>
@@ -73,7 +69,7 @@ stories
   .addWithJSX(
     'with filter on rating',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="RatingMenu">
+      <WrapWithHits linkedStoryGroup="RatingMenu">
         <Configure filters="rating>2" />
         <RatingMenu attributeName="rating" max={6} min={1} />
       </WrapWithHits>

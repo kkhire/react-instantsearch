@@ -14,7 +14,7 @@ stories
   .addWithJSX(
     'default',
     () => (
-      <WrapWithHits linkedStoryGroup="RefinementList" hasPlayground={true}>
+      <WrapWithHits linkedStoryGroup="RefinementList">
         <RefinementList attributeName="category" />
       </WrapWithHits>
     ),
@@ -26,11 +26,7 @@ stories
   .addWithJSX(
     'without results',
     () => (
-      <WrapWithHits
-        searchBox={false}
-        linkedStoryGroup="RefinementList"
-        hasPlayground={true}
-      >
+      <WrapWithHits searchBox={false} linkedStoryGroup="RefinementList">
         <RefinementList
           attributeName="category"
           renderHeader={() => 'Header'}
@@ -47,7 +43,7 @@ stories
   .addWithJSX(
     'with header and footer',
     () => (
-      <WrapWithHits linkedStoryGroup="RefinementList" hasPlayground={true}>
+      <WrapWithHits linkedStoryGroup="RefinementList">
         <RefinementList
           attributeName="category"
           renderHeader={() => 'Header'}
@@ -63,7 +59,7 @@ stories
   .addWithJSX(
     'with selected item',
     () => (
-      <WrapWithHits linkedStoryGroup="RefinementList" hasPlayground={true}>
+      <WrapWithHits linkedStoryGroup="RefinementList">
         <RefinementList
           attributeName="category"
           defaultRefinement={['Dining']}
@@ -78,7 +74,7 @@ stories
   .addWithJSX(
     'with show more',
     () => (
-      <WrapWithHits linkedStoryGroup="RefinementList" hasPlayground={true}>
+      <WrapWithHits linkedStoryGroup="RefinementList">
         <RefinementList
           attributeName="category"
           limitMin={2}
@@ -95,7 +91,7 @@ stories
   .addWithJSX(
     'with search inside items',
     () => (
-      <WrapWithHits linkedStoryGroup="RefinementList" hasPlayground={true}>
+      <WrapWithHits linkedStoryGroup="RefinementList">
         <RefinementList attributeName="category" withSearchBox />
       </WrapWithHits>
     ),
@@ -107,7 +103,7 @@ stories
   .addWithJSX(
     'with the sort strategy changed',
     () => (
-      <WrapWithHits linkedStoryGroup="RefinementList" hasPlayground={true}>
+      <WrapWithHits linkedStoryGroup="RefinementList">
         <RefinementList
           attributeName="category"
           transformItems={items =>

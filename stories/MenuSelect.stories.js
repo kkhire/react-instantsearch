@@ -14,7 +14,7 @@ stories
   .addWithJSX(
     'default',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="MenuSelect">
+      <WrapWithHits linkedStoryGroup="MenuSelect">
         <MenuSelect attributeName="category" />
       </WrapWithHits>
     ),
@@ -39,7 +39,7 @@ stories
   .addWithJSX(
     'with header and footer',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="MenuSelect">
+      <WrapWithHits linkedStoryGroup="MenuSelect">
         <MenuSelect
           attributeName="category"
           renderHeader={() => 'Header'}
@@ -55,7 +55,7 @@ stories
   .addWithJSX(
     'with default selected item',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="MenuSelect">
+      <WrapWithHits linkedStoryGroup="MenuSelect">
         <MenuSelect attributeName="category" defaultRefinement="Eating" />
       </WrapWithHits>
     ),
@@ -67,7 +67,7 @@ stories
   .addWithJSX(
     'with the sort strategy changed',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="MenuSelect">
+      <WrapWithHits linkedStoryGroup="MenuSelect">
         <MenuSelect
           attributeName="category"
           transformItems={items =>

@@ -19,7 +19,7 @@ stories
     'default',
     () => (
       <div>
-        <WrapWithHits hasPlayground={true} linkedStoryGroup="Breadcrumb">
+        <WrapWithHits linkedStoryGroup="Breadcrumb">
           <Breadcrumb
             attributes={['category', 'sub_category', 'sub_sub_category']}
           />
@@ -39,7 +39,7 @@ stories
     }
   )
   .add('without results', () => (
-    <WrapWithHits hasPlayground={true} linkedStoryGroup="Breadcrumb">
+    <WrapWithHits linkedStoryGroup="Breadcrumb">
       <Breadcrumb
         attributes={['category', 'sub_category', 'sub_sub_category']}
         renderHeader={() => 'Breadcrumb'}
@@ -51,7 +51,7 @@ stories
   .addWithJSX(
     'with header and footer',
     () => (
-      <WrapWithHits hasPlayground={true} linkedStoryGroup="Breadcrumb">
+      <WrapWithHits linkedStoryGroup="Breadcrumb">
         <Breadcrumb
           attributes={['category', 'sub_category', 'sub_sub_category']}
           renderHeader={() => 'Header'}
@@ -70,7 +70,7 @@ stories
     }
   )
   .add('with custom component', () => (
-    <WrapWithHits hasPlayground={true} linkedStoryGroup="Breadcrumb">
+    <WrapWithHits linkedStoryGroup="Breadcrumb">
       <Breadcrumb
         attributes={['category', 'sub_category', 'sub_sub_category']}
         renderSeparator={() => <span> ⚡ </span>}
@@ -83,7 +83,7 @@ stories
     </WrapWithHits>
   ))
   .add('playground', () => (
-    <WrapWithHits hasPlayground={true} linkedStoryGroup="Breadcrumb">
+    <WrapWithHits linkedStoryGroup="Breadcrumb">
       <Breadcrumb
         attributes={['category', 'sub_category', 'sub_sub_category']}
         translations={object('translations', {
