@@ -3,6 +3,9 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { checkA11y } from 'storybook-addon-a11y';
 import { setOptions } from '@storybook/addon-options';
 
+import 'instantsearch.css/themes/reset.css';
+import 'instantsearch.css/themes/algolia.css';
+
 setOptions({
   name: 'react-instantsearch',
   url: 'https://community.algolia.com/react-instantsearch/',
