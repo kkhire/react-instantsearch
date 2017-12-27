@@ -10,7 +10,7 @@ Hit.propTypes = {
 };
 
 describe('Hits', () => {
-  it('accepts a hitComponent prop', () => {
+  it('render the default hit', () => {
     const hits = [{ objectID: 0 }, { objectID: 1 }, { objectID: 2 }];
 
     const tree = renderer.create(

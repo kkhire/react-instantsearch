@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Hits accepts a hitComponent prop 1`] = `
+exports[`Hits accepts a renderHit prop 1`] = `
 <ul
   className="list"
 >
@@ -28,7 +28,7 @@ exports[`Hits accepts a hitComponent prop 1`] = `
 </ul>
 `;
 
-exports[`Hits accepts a renderHit prop 1`] = `
+exports[`Hits render the default hit 1`] = `
 <ul
   className="list"
 >
@@ -36,22 +36,52 @@ exports[`Hits accepts a renderHit prop 1`] = `
     className="item"
   >
     <div
-      id={0}
-    />
+      style={
+        Object {
+          "borderBottom": "1px solid #bbb",
+          "marginBottom": "5px",
+          "paddingBottom": "5px",
+          "wordBreak": "break-all",
+        }
+      }
+    >
+      {"objectID":0}
+      ...
+    </div>
   </li>
   <li
     className="item"
   >
     <div
-      id={1}
-    />
+      style={
+        Object {
+          "borderBottom": "1px solid #bbb",
+          "marginBottom": "5px",
+          "paddingBottom": "5px",
+          "wordBreak": "break-all",
+        }
+      }
+    >
+      {"objectID":1}
+      ...
+    </div>
   </li>
   <li
     className="item"
   >
     <div
-      id={2}
-    />
+      style={
+        Object {
+          "borderBottom": "1px solid #bbb",
+          "marginBottom": "5px",
+          "paddingBottom": "5px",
+          "wordBreak": "break-all",
+        }
+      }
+    >
+      {"objectID":2}
+      ...
+    </div>
   </li>
 </ul>
 `;
