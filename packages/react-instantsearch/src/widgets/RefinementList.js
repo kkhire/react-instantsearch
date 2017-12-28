@@ -58,7 +58,12 @@ const cx = classNames('RefinementList');
  * }
  */
 
-const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
+const RefinementList = ({
+  canRefine,
+  renderHeader,
+  renderFooter,
+  ...props
+}) => (
   <BaseWidget
     cx={cx}
     canRefine={canRefine}
@@ -69,10 +74,10 @@ const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
   </BaseWidget>
 );
 
-Widget.propTypes = {
+RefinementList.propTypes = {
   canRefine: PropTypes.bool.isRequired,
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
 };
 
-export default connectRefinementList(Widget);
+export default connectRefinementList(RefinementList);
