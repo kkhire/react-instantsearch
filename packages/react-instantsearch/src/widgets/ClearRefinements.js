@@ -37,9 +37,9 @@ const cx = classNames('ClearRefinements');
  *     >
  *       <ClearRefinements />
  *       <RefinementList
-          attributeName="colors"
-          defaultRefinement={['Black']}
-        />
+ *         attributeName="colors"
+ *         defaultRefinement={['Black']}
+ *       />
  *     </InstantSearch>
  *   );
  * }
