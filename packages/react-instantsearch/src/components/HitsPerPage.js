@@ -1,40 +1,26 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-
 import Select from './Select';
 
-class HitsPerPage extends Component {
-  static propTypes = {
-    cx: PropTypes.func.isRequired,
-    refine: PropTypes.func.isRequired,
-    currentRefinement: PropTypes.number.isRequired,
-    transformItems: PropTypes.func,
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        /**
-         * Number of hits to display.
-         */
-        value: PropTypes.number.isRequired,
+const HitsPerPage = ({ items, currentRefinement, cx, refine }) => (
+  <Select
+    onSelect={refine}
+    selectedItem={currentRefinement}
+    items={items}
+    cx={cx}
+  />
+);
 
-        /**
-         * Label to display on the option.
-         */
-        label: PropTypes.string,
-      })
-    ),
-  };
-
-  render() {
-    const { cx, currentRefinement, refine, items } = this.props;
-    return (
-      <Select
-        onSelect={refine}
-        selectedItem={currentRefinement}
-        items={items}
-        cx={cx}
-      />
-    );
-  }
-}
+HitsPerPage.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.number.isRequired,
+      label: PropTypes.string,
+    })
+  ).isRequired,
+  currentRefinement: PropTypes.number.isRequired,
+  cx: PropTypes.func.isRequired,
+  refine: PropTypes.func.isRequired,
+};
 
 export default HitsPerPage;
