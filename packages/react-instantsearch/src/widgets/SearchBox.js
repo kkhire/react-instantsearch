@@ -57,7 +57,7 @@ const cx = classNames('SearchBox');
  * }
  */
 
-const Widget = ({ renderHeader, renderFooter, ...props }) => (
+const SearchBox = ({ renderHeader, renderFooter, ...props }) => (
   <BaseWidget
     cx={cx}
     canRefine
@@ -68,9 +68,9 @@ const Widget = ({ renderHeader, renderFooter, ...props }) => (
   </BaseWidget>
 );
 
-Widget.propTypes = {
+SearchBox.propTypes = {
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
 };
 
-export default connectSearchBox(Widget);
+export default connectSearchBox(SearchBox);
