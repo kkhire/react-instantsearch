@@ -39,7 +39,7 @@ When using the `<Index>` component the shape of the search state will be modifie
 
 <div class="guide-nav">
     <div class="guide-nav-left">
-        Previous: <a href="guide/Search_parameters.html">← Search Parameters</a>
+        Previous: <a href="guide/Operations.html">← Operations</a>
     </div>
     <div class="guide-nav-right">
         Next: <a href="guide/Custom_connectors.html">Custom connectors →</a>

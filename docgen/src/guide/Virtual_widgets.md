@@ -38,7 +38,7 @@ In this case, we are using the `VirtualMenu` to pre refine our results (within t
 
 <div class="guide-nav">
     <div class="guide-nav-left">
-        Previous: <a href="guide/Search_for_facet_values.html">← Search for facet values</a>
+        Previous: <a href="guide/Searching_in_Lists.html">← Searching in *Lists</a>
     </div>
     <div class="guide-nav-right">
         Next: <a href="guide/Routing.html">Routing →</a>
