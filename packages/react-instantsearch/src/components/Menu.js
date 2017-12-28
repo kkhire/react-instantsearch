@@ -1,19 +1,12 @@
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { pick } from 'lodash';
+import PropTypes from 'prop-types';
 import translatable from '../core/translatable';
+import Highlight from '../widgets/Highlight';
 import List from './List';
 import Link from './Link';
-import Highlight from '../widgets/Highlight';
 
 class Menu extends Component {
   static propTypes = {
-    cx: PropTypes.func.isRequired,
-    translate: PropTypes.func.isRequired,
-    refine: PropTypes.func.isRequired,
-    searchForItems: PropTypes.func.isRequired,
-    withSearchBox: PropTypes.bool,
-    createURL: PropTypes.func.isRequired,
     items: PropTypes.arrayOf(
       PropTypes.shape({
         label: PropTypes.string.isRequired,
@@ -21,13 +14,18 @@ class Menu extends Component {
         count: PropTypes.number.isRequired,
         isRefined: PropTypes.bool.isRequired,
       })
-    ),
-    isFromSearch: PropTypes.bool.isRequired,
+    ).isRequired,
     canRefine: PropTypes.bool.isRequired,
+    cx: PropTypes.func.isRequired,
+    isFromSearch: PropTypes.bool.isRequired,
+    translate: PropTypes.func.isRequired,
+    refine: PropTypes.func.isRequired,
+    searchForItems: PropTypes.func.isRequired,
+    createURL: PropTypes.func.isRequired,
+    withSearchBox: PropTypes.bool,
     showMore: PropTypes.bool,
     limitMin: PropTypes.number,
     limitMax: PropTypes.number,
-    transformItems: PropTypes.func,
   };
 
   renderItem = (item, resetQuery) => {
@@ -37,6 +35,7 @@ class Menu extends Component {
     ) : (
       item.label
     );
+
     return (
       <Link
         className={cx('link')}
@@ -55,23 +54,33 @@ class Menu extends Component {
   };
 
   render() {
-    const { cx } = this.props;
+    const {
+      items,
+      canRefine,
+      showMore,
+      limitMin,
+      limitMax,
+      isFromSearch,
+      withSearchBox,
+      translate,
+      searchForItems,
+      cx,
+    } = this.props;
+
     return (
       <List
+        items={items}
+        canRefine={canRefine}
+        isFromSearch={isFromSearch}
+        cx={cx}
+        translate={translate}
+        searchForItems={searchForItems}
         renderItem={this.renderItem}
         selectItem={this.selectItem}
-        cx={cx}
-        {...pick(this.props, [
-          'translate',
-          'items',
-          'showMore',
-          'limitMin',
-          'limitMax',
-          'isFromSearch',
-          'searchForItems',
-          'withSearchBox',
-          'canRefine',
-        ])}
+        withSearchBox={withSearchBox}
+        showMore={showMore}
+        limitMin={limitMin}
+        limitMax={limitMax}
       />
     );
   }
