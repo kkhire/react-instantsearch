@@ -227,21 +227,21 @@ It takes in the current props of the higher-order component and the searchState 
 `searchState` holds the searchState of all widgets, with the shape `{[widgetId]: widgetState}`. Stateful widgets describe the format of their searchState in their respective documentation entry.
 
 ```jsx
-import {omit} from 'lodash';
-import {createConnector} from 'react-instantsearch';
+import { omit } from 'lodash';
+import { createConnector } from 'react-instantsearch';
 
 const CoolWidget = createConnector({
   // displayName, getProvidedProps, refine, getSearchParameters, getMetadata
 
   cleanUp(props, searchState) {
-    return omit('queryAndPage', searchState)
-  },
+    return omit('queryAndPage', searchState);
+  }
 })(Widget);
 ```
 
 <div class="guide-nav">
     <div class="guide-nav-left">
-        Previous: <a href="guide/Multi_index.html">← Multi_index</a>
+        Previous: <a href="guide/Multi_index.html">← Multi index</a>
     </div>
     <div class="guide-nav-right">
         Next: <a href="guide/Conditional_display.html">Conditional Display →</a>
