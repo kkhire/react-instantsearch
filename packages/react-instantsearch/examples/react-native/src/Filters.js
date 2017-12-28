@@ -114,7 +114,7 @@ class Refinements extends React.Component {
             item.currentRefinement.max
           } stars`,
       },
-      ClearRefinements: {
+      ClearAll: {
         attributeName: 'clearAll',
       },
     };
@@ -126,7 +126,7 @@ class Refinements extends React.Component {
     );
     const refinementValue = item ? this.mapping[refinement].value(item) : '-';
     const filtersRow =
-      refinement !== 'ClearRefinements' ? (
+      refinement !== 'ClearAll' ? (
         <TouchableHighlight
           onPress={() => {
             Actions[refinement]({
@@ -176,7 +176,7 @@ class Refinements extends React.Component {
             'Categories',
             'Price',
             'Rating',
-            'ClearRefinements',
+            'ClearAll',
           ])}
           renderRow={this._renderRow}
           renderSeparator={this._renderSeparator}
