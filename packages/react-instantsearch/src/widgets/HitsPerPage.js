@@ -48,7 +48,7 @@ const cx = classNames('HitsPerPage');
  * }
  */
 
-const Widget = ({ renderHeader, renderFooter, ...props }) => (
+const HitsPerPage = ({ renderHeader, renderFooter, ...props }) => (
   <BaseWidget
     cx={cx}
     canRefine
@@ -59,9 +59,9 @@ const Widget = ({ renderHeader, renderFooter, ...props }) => (
   </BaseWidget>
 );
 
-Widget.propTypes = {
+HitsPerPage.propTypes = {
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
 };
 
-export default connectHitsPerPage(Widget);
+export default connectHitsPerPage(HitsPerPage);
