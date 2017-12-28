@@ -52,15 +52,13 @@ const cx = classNames('Menu');
  *       apiKey="6be0576ff61c053d5f9a3225e2a90f76"
  *       indexName="ikea"
  *     >
- *       <Menu
- *         attributeName="category"
- *       />
+ *       <Menu attributeName="category" />
  *     </InstantSearch>
  *   );
  * }
  */
 
-const Widget = ({ renderHeader, renderFooter, ...props }) => (
+const Menu = ({ renderHeader, renderFooter, ...props }) => (
   <BaseWidget
     cx={cx}
     canRefine
@@ -71,9 +69,9 @@ const Widget = ({ renderHeader, renderFooter, ...props }) => (
   </BaseWidget>
 );
 
-Widget.propTypes = {
+Menu.propTypes = {
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
 };
 
-export default connectMenu(Widget);
+export default connectMenu(Menu);
