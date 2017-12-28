@@ -45,7 +45,7 @@ const cx = classNames('ClearRefinements');
  * }
  */
 
-const Widget = ({ renderHeader, renderFooter, ...props }) => (
+const ClearRefinements = ({ renderHeader, renderFooter, ...props }) => (
   <BaseWidget
     cx={cx}
     renderHeader={renderHeader}
@@ -56,9 +56,9 @@ const Widget = ({ renderHeader, renderFooter, ...props }) => (
   </BaseWidget>
 );
 
-Widget.propTypes = {
+ClearRefinements.propTypes = {
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
 };
 
-export default connectCurrentRefinements(Widget);
+export default connectCurrentRefinements(ClearRefinements);
