@@ -24,18 +24,16 @@ export const CurrentRefinements = ({ items, cx, refine, translate }) => {
   );
 };
 
-const partialItemPropType = {
-  label: PropTypes.string.isRequired,
-  value: PropTypes.func.isRequired,
-};
+const itemsPropType = PropTypes.arrayOf(
+  PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    value: PropTypes.func.isRequired,
+    items: (...args) => itemsPropType(...args),
+  })
+);
 
 CurrentRefinements.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      ...partialItemPropType,
-      items: PropTypes.arrayOf(PropTypes.shape(partialItemPropType)),
-    })
-  ).isRequired,
+  items: itemsPropType.isRequired,
   cx: PropTypes.func.isRequired,
   refine: PropTypes.func.isRequired,
   translate: PropTypes.func.isRequired,
