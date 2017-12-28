@@ -53,7 +53,7 @@ const cx = classNames('RatingMenu');
  * }
  */
 
-const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
+const RatingMenu = ({ canRefine, renderHeader, renderFooter, ...props }) => (
   <BaseWidget
     cx={cx}
     canRefine={canRefine}
@@ -64,10 +64,10 @@ const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
   </BaseWidget>
 );
 
-Widget.propTypes = {
+RatingMenu.propTypes = {
   canRefine: PropTypes.bool.isRequired,
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
 };
 
-export default connectRange(Widget);
+export default connectRange(RatingMenu);
