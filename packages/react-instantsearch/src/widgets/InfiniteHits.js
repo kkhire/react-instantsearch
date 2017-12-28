@@ -47,7 +47,7 @@ const cx = classNames('InfiniteHits');
  * }
  */
 
-const Widget = ({ renderHeader, renderFooter, ...props }) => (
+const InfiniteHits = ({ renderHeader, renderFooter, ...props }) => (
   <BaseWidget
     cx={cx}
     canRefine
@@ -58,9 +58,9 @@ const Widget = ({ renderHeader, renderFooter, ...props }) => (
   </BaseWidget>
 );
 
-Widget.propTypes = {
+InfiniteHits.propTypes = {
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
 };
 
-export default connectInfiniteHits(Widget);
+export default connectInfiniteHits(InfiniteHits);
