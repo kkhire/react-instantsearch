@@ -49,7 +49,7 @@ const cx = classNames('SortBy');
  * }
  */
 
-const Widget = ({ renderHeader, renderFooter, ...props }) => (
+const SortBy = ({ renderHeader, renderFooter, ...props }) => (
   <BaseWidget
     cx={cx}
     canRefine
@@ -60,9 +60,9 @@ const Widget = ({ renderHeader, renderFooter, ...props }) => (
   </BaseWidget>
 );
 
-Widget.propTypes = {
+SortBy.propTypes = {
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
 };
 
-export default connectSortBy(Widget);
+export default connectSortBy(SortBy);
