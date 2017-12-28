@@ -50,7 +50,12 @@ const cx = classNames('CurrentRefinements');
  * }
  */
 
-const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
+const CurrentRefinements = ({
+  canRefine,
+  renderHeader,
+  renderFooter,
+  ...props
+}) => (
   <BaseWidget
     cx={cx}
     canRefine={canRefine}
@@ -61,10 +66,10 @@ const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
   </BaseWidget>
 );
 
-Widget.propTypes = {
+CurrentRefinements.propTypes = {
   canRefine: PropTypes.bool.isRequired,
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
 };
 
-export default connectCurrentRefinements(Widget);
+export default connectCurrentRefinements(CurrentRefinements);
