@@ -24,12 +24,6 @@ const cx = classNames('Highlight');
  *
  * import { Hits, Highlight, InstantSearch } from 'react-instantsearch/dom';
  *
- * const Hit = ({ hit }) =>
- *   <p>
- *     <Highlight attributeName="description" hit={hit} />
- *   </p>
- * );
- *
  * export default function App() {
  *  return (
  *    <InstantSearch
@@ -37,7 +31,13 @@ const cx = classNames('Highlight');
  *      apiKey="6be0576ff61c053d5f9a3225e2a90f76"
  *      indexName="ikea"
  *    >
- *      <Hits renderHit={hit => <Hit hit={hit} />} />
+ *      <Hits
+ *        renderHit={hit =>
+ *          <p>
+ *            <Highlight attributeName="description" hit={hit} />
+ *          </p>
+ *        }
+ *      />
  *    </InstantSearch>
  *  );
  * }

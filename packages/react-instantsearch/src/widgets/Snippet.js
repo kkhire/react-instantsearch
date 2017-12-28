@@ -24,6 +24,7 @@ const cx = classNames('Snippet');
  * @themeKey ais-Snippet-nonHighlighted - the normal text
  * @example
  * import React from 'react';
+ *
  * import { Snippet, InstantSearch, Hits } from 'react-instantsearch/dom';
  *
  * export default function App() {
@@ -34,17 +35,17 @@ const cx = classNames('Snippet');
  *       indexName="ikea"
  *     >
  *       <Hits
- *         renderHit={hit => (
- *           <p key={hit.objectID}>
+ *         renderHit={hit =>
+ *           <p>
  *             <Snippet attributeName="description" hit={hit} />
  *           </p>
- *         )}
+ *         }
  *       />
  *     </InstantSearch>
  *   );
  * }
  */
 
-const Widget = props => <SnippetComponent {...props} cx={cx} />;
+const Snippet = props => <SnippetComponent {...props} cx={cx} />;
 
-export default connectHighlight(Widget);
+export default connectHighlight(Snippet);
