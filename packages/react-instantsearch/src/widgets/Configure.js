@@ -1,5 +1,4 @@
 import connectConfigure from '../connectors/connectConfigure';
-import Configure from '../components/Configure';
 
 /**
  * Configure is a widget that lets you provide raw search parameters
@@ -32,4 +31,7 @@ import Configure from '../components/Configure';
  *   );
  * }
  */
+
+const Configure = () => null;
+
 export default connectConfigure(Configure);
