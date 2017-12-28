@@ -55,7 +55,7 @@ const cx = classNames('NumericMenu');
  * }
  */
 
-const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
+const NumericMenu = ({ canRefine, renderHeader, renderFooter, ...props }) => (
   <BaseWidget
     cx={cx}
     canRefine={canRefine}
@@ -66,10 +66,10 @@ const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
   </BaseWidget>
 );
 
-Widget.propTypes = {
+NumericMenu.propTypes = {
   canRefine: PropTypes.bool.isRequired,
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
 };
 
-export default connectNumericMenu(Widget);
+export default connectNumericMenu(NumericMenu);
