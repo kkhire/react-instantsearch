@@ -1,8 +1,4 @@
-/* eslint react/prop-types: 0 */
-
 import React from 'react';
-import 'react-instantsearch-theme-algolia/style.scss';
-
 import {
   InstantSearch,
   Hits,
@@ -12,11 +8,12 @@ import {
   Highlight,
   Configure,
 } from 'react-instantsearch/dom';
-
 import {
   connectSearchBox,
   connectRefinementList,
 } from 'react-instantsearch/connectors';
+import 'instantsearch.css/themes/reset.css';
+import 'instantsearch.css/themes/algolia.css';
 import { withUrlSync } from '../urlSync';
 
 const App = props => (
