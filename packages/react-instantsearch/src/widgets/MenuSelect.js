@@ -37,15 +37,13 @@ const cx = classNames('MenuSelect');
  *       apiKey="6be0576ff61c053d5f9a3225e2a90f76"
  *       indexName="ikea"
  *     >
- *       <MenuSelect
- *         attributeName="category"
- *       />
+ *       <MenuSelect attributeName="category" />
  *     </InstantSearch>
  *   );
  * }
  */
 
-const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
+const MenuSelect = ({ canRefine, renderHeader, renderFooter, ...props }) => (
   <BaseWidget
     cx={cx}
     canRefine={canRefine}
@@ -56,10 +54,10 @@ const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
   </BaseWidget>
 );
 
-Widget.propTypes = {
+MenuSelect.propTypes = {
   canRefine: PropTypes.bool.isRequired,
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
 };
 
-export default connectMenu(Widget);
+export default connectMenu(MenuSelect);
