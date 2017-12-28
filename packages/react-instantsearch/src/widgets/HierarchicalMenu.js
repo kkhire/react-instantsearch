@@ -101,7 +101,12 @@ const cx = classNames('HierarchicalMenu');
  * }
  */
 
-const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
+const HierarchicalMenu = ({
+  canRefine,
+  renderHeader,
+  renderFooter,
+  ...props
+}) => (
   <BaseWidget
     cx={cx}
     canRefine={canRefine}
@@ -112,10 +117,10 @@ const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
   </BaseWidget>
 );
 
-Widget.propTypes = {
+HierarchicalMenu.propTypes = {
   canRefine: PropTypes.bool.isRequired,
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
 };
 
-export default connectHierarchicalMenu(Widget);
+export default connectHierarchicalMenu(HierarchicalMenu);
