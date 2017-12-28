@@ -34,8 +34,7 @@ export default {
         loader: 'happypack/loader?id=babel',
       },
       {
-        test: /\.scss$/,
-        exclude: /node_modules/,
+        test: /\.css/,
         loader: 'happypack/loader?id=style',
       },
     ],
@@ -44,6 +43,7 @@ export default {
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
     }),
+
     new webpack.optimize.CommonsChunkPlugin({
       name: 'js/common',
       minChunks: module =>
@@ -54,17 +54,14 @@ export default {
         /\/fbjs\//.test(module.context) ||
         /\/algolia-frontend-components\//.test(module.context),
     }),
+
     new HappyPack({
       loaders: ['babel-loader?cacheDirectory=true'],
       id: 'babel',
     }),
+
     new HappyPack({
-      loaders: [
-        'style-loader?insertAt=top',
-        'css-loader',
-        'postcss-loader',
-        'sass-loader',
-      ],
+      loaders: ['style-loader?insertAt=top', 'css-loader'],
       id: 'style',
     }),
   ],
