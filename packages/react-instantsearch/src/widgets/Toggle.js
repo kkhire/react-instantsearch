@@ -54,7 +54,7 @@ const cx = classNames('Toggle');
  * }
  */
 
-const Widget = ({ renderHeader, renderFooter, ...props }) => (
+const Toggle = ({ renderHeader, renderFooter, ...props }) => (
   <BaseWidget
     cx={cx}
     canRefine
@@ -65,9 +65,9 @@ const Widget = ({ renderHeader, renderFooter, ...props }) => (
   </BaseWidget>
 );
 
-Widget.propTypes = {
+Toggle.propTypes = {
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
 };
 
-export default connectToggle(Widget);
+export default connectToggle(Toggle);
