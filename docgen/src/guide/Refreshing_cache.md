@@ -109,3 +109,12 @@ class App extends Component {
 Note that if you need to wait for an action from Algolia, you should use [`waitTask`](https://www.algolia.com/doc/api-reference/api-methods/wait-task/) to avoid refreshing the cache too early.
 
 See a live example on our [Storybook](https://community.algolia.com/react-instantsearch/storybook/?selectedKind=RefreshCache&selectedStory=with%20setInterval&full=0&down=1&left=1&panelRight=1&downPanel=storybooks%2Fstorybook-addon-knobs)
+
+<div class="guide-nav">
+    <div class="guide-nav-left">
+        Previous: <a href="guide/Autocomplete_menu.html">← Autocomplete menu</a>
+    </div>
+    <div class="guide-nav-right">
+        Next: <a href="guide/Migration_guide_v3.html">Migration Guide - v2 to v3 →</a>
+    </div>
+</div>

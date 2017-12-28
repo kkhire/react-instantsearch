@@ -24,6 +24,6 @@ them you can read their guide first:
         Previous: <a href="guide/Server-side_rendering.html">← Server-side Rendering</a>
     </div>
     <div class="guide-nav-right">
-        Next: <a href="guide/Migration_guides.html">Migration guides →</a>
+        Next: <a href="guide/Refreshing_cache.html">Refreshing cache →</a>
     </div>
 </div>
