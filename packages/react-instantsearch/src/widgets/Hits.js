@@ -44,7 +44,7 @@ const cx = classNames('Hits');
  * }
  */
 
-const Widget = ({ renderHeader, renderFooter, ...props }) => (
+const Hits = ({ renderHeader, renderFooter, ...props }) => (
   <BaseWidget
     cx={cx}
     canRefine
@@ -55,9 +55,9 @@ const Widget = ({ renderHeader, renderFooter, ...props }) => (
   </BaseWidget>
 );
 
-Widget.propTypes = {
+Hits.propTypes = {
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
 };
 
-export default connectHits(Widget);
+export default connectHits(Hits);
