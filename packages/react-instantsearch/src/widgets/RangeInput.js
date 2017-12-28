@@ -44,13 +44,13 @@ const cx = classNames('RangeInput');
  *       apiKey="6be0576ff61c053d5f9a3225e2a90f76"
  *       indexName="ikea"
  *     >
- *       <RangeInput attributeName="price"/>
+ *       <RangeInput attributeName="price" />
  *     </InstantSearch>
  *   );
  * }
  */
 
-const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
+const RangeInput = ({ canRefine, renderHeader, renderFooter, ...props }) => (
   <BaseWidget
     cx={cx}
     canRefine={canRefine}
@@ -61,10 +61,10 @@ const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
   </BaseWidget>
 );
 
-Widget.propTypes = {
+RangeInput.propTypes = {
   canRefine: PropTypes.bool.isRequired,
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
 };
 
-export default connectRange(Widget);
+export default connectRange(RangeInput);
