@@ -37,7 +37,7 @@ const cx = classNames('Stats');
  * }
  */
 
-const Widget = ({ renderHeader, renderFooter, ...props }) => (
+const Stats = ({ renderHeader, renderFooter, ...props }) => (
   <BaseWidget
     cx={cx}
     canRefine
@@ -48,9 +48,9 @@ const Widget = ({ renderHeader, renderFooter, ...props }) => (
   </BaseWidget>
 );
 
-Widget.propTypes = {
+Stats.propTypes = {
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
 };
 
-export default connectStats(Widget);
+export default connectStats(Stats);
