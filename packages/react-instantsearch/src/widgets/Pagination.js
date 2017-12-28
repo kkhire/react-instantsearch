@@ -62,21 +62,21 @@ const cx = classNames('Pagination');
  * }
  */
 
-const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
+const Pagination = ({ renderHeader, renderFooter, ...props }) => (
   <BaseWidget
     cx={cx}
-    canRefine={canRefine}
+    canRefine
     renderHeader={renderHeader}
     renderFooter={renderFooter}
   >
-    <PaginationComponent {...props} cx={cx} canRefine={canRefine} />
+    <PaginationComponent {...props} cx={cx} />
   </BaseWidget>
 );
 
-Widget.propTypes = {
+Pagination.propTypes = {
   canRefine: PropTypes.bool.isRequired,
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
 };
 
-export default connectPagination(Widget);
+export default connectPagination(Pagination);
