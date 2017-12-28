@@ -67,7 +67,7 @@ const cx = classNames('Breadcrumb');
  * @translationKey rootLabel - The root's label. Accepts a string
  * @example
  * import React from 'react';
-
+ *
  * import { Breadcrumb, InstantSearch } from 'react-instantsearch/dom';
  *
  * export default function App() {
@@ -91,7 +91,7 @@ const cx = classNames('Breadcrumb');
  * }
  */
 
-const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
+const Breadcrumb = ({ canRefine, renderHeader, renderFooter, ...props }) => (
   <BaseWidget
     cx={cx}
     canRefine={canRefine}
@@ -102,10 +102,10 @@ const Widget = ({ canRefine, renderHeader, renderFooter, ...props }) => (
   </BaseWidget>
 );
 
-Widget.propTypes = {
+Breadcrumb.propTypes = {
   canRefine: PropTypes.bool.isRequired,
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
 };
 
-export default connectBreadcrumb(Widget);
+export default connectBreadcrumb(Breadcrumb);
