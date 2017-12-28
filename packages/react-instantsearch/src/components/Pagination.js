@@ -1,8 +1,6 @@
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
 import { range } from 'lodash';
-
-import { capitalize } from '../core/utils';
+import { createElement } from 'react';
+import PropTypes from 'prop-types';
 import translatable from '../core/translatable';
 import LinkList from './LinkList';
 
@@ -42,132 +40,115 @@ function getPages(currentPage, maxPages, padding) {
   return range(first + 1, last + 1);
 }
 
-class Pagination extends Component {
-  static propTypes = {
-    cx: PropTypes.func.isRequired,
-    nbPages: PropTypes.number.isRequired,
-    currentRefinement: PropTypes.number.isRequired,
-    refine: PropTypes.func.isRequired,
-    createURL: PropTypes.func.isRequired,
-    canRefine: PropTypes.bool.isRequired,
+const Pagination = ({
+  currentRefinement,
+  nbPages,
+  cx,
+  refine,
+  createURL,
+  translate,
+  showFirst,
+  showPrevious,
+  showNext,
+  showLast,
+  pagesPadding,
+  maxPages,
+  listComponent,
+  ...props
+}) => {
+  const totalPages = Math.min(nbPages, maxPages);
+  const lastPage = totalPages;
+  let items = [];
 
-    translate: PropTypes.func.isRequired,
-    listComponent: PropTypes.func,
+  if (showFirst) {
+    items.push({
+      key: 'first',
+      modifier: 'item--firstPage',
+      disabled: currentRefinement === 1,
+      label: translate('first'),
+      value: 1,
+      ariaLabel: translate('ariaFirst'),
+    });
+  }
 
-    showFirst: PropTypes.bool,
-    showPrevious: PropTypes.bool,
-    showNext: PropTypes.bool,
-    showLast: PropTypes.bool,
-    pagesPadding: PropTypes.number,
-    maxPages: PropTypes.number,
-  };
+  if (showPrevious) {
+    items.push({
+      key: 'previous',
+      modifier: 'item--previousPage',
+      disabled: currentRefinement === 1,
+      label: translate('previous'),
+      value: currentRefinement - 1,
+      ariaLabel: translate('ariaPrevious'),
+    });
+  }
 
-  static defaultProps = {
-    listComponent: LinkList,
-    showFirst: true,
-    showPrevious: true,
-    showNext: true,
-    showLast: false,
-    pagesPadding: 3,
-    maxPages: Infinity,
-  };
-
-  getItem(modifier, translationKey, value) {
-    const { nbPages, maxPages, translate } = this.props;
-    return {
-      key: `${modifier}.${value}`,
-      modifier,
-      disabled: value < 1 || value >= Math.min(maxPages, nbPages),
-      label: translate(translationKey, value),
+  items = items.concat(
+    getPages(currentRefinement, totalPages, pagesPadding).map(value => ({
+      key: value,
+      modifier: 'item--page',
+      label: translate('page', value),
       value,
-      ariaLabel: translate(`aria${capitalize(translationKey)}`, value),
-    };
+      selected: value === currentRefinement,
+      ariaLabel: translate('ariaPage', value),
+    }))
+  );
+
+  if (showNext) {
+    items.push({
+      key: 'next',
+      modifier: 'item--nextPage',
+      disabled: currentRefinement === lastPage || lastPage <= 1,
+      label: translate('next'),
+      value: currentRefinement + 1,
+      ariaLabel: translate('ariaNext'),
+    });
   }
 
-  render() {
-    const {
-      cx,
-      nbPages,
-      maxPages,
-      currentRefinement,
-      pagesPadding,
-      showFirst,
-      showPrevious,
-      showNext,
-      showLast,
-      refine,
-      createURL,
-      translate,
-      listComponent: ListComponent,
-      ...otherProps
-    } = this.props;
-    const totalPages = Math.min(nbPages, maxPages);
-    const lastPage = totalPages;
-
-    let items = [];
-    if (showFirst) {
-      items.push({
-        key: 'first',
-        modifier: 'item--firstPage',
-        disabled: currentRefinement === 1,
-        label: translate('first'),
-        value: 1,
-        ariaLabel: translate('ariaFirst'),
-      });
-    }
-    if (showPrevious) {
-      items.push({
-        key: 'previous',
-        modifier: 'item--previousPage',
-        disabled: currentRefinement === 1,
-        label: translate('previous'),
-        value: currentRefinement - 1,
-        ariaLabel: translate('ariaPrevious'),
-      });
-    }
-
-    items = items.concat(
-      getPages(currentRefinement, totalPages, pagesPadding).map(value => ({
-        key: value,
-        modifier: 'item--page',
-        label: translate('page', value),
-        value,
-        selected: value === currentRefinement,
-        ariaLabel: translate('ariaPage', value),
-      }))
-    );
-    if (showNext) {
-      items.push({
-        key: 'next',
-        modifier: 'item--nextPage',
-        disabled: currentRefinement === lastPage || lastPage <= 1,
-        label: translate('next'),
-        value: currentRefinement + 1,
-        ariaLabel: translate('ariaNext'),
-      });
-    }
-    if (showLast) {
-      items.push({
-        key: 'last',
-        modifier: 'item--lastPage',
-        disabled: currentRefinement === lastPage || lastPage <= 1,
-        label: translate('last'),
-        value: lastPage,
-        ariaLabel: translate('ariaLast'),
-      });
-    }
-
-    return (
-      <ListComponent
-        {...otherProps}
-        cx={cx}
-        items={items}
-        onSelect={refine}
-        createURL={createURL}
-      />
-    );
+  if (showLast) {
+    items.push({
+      key: 'last',
+      modifier: 'item--lastPage',
+      disabled: currentRefinement === lastPage || lastPage <= 1,
+      label: translate('last'),
+      value: lastPage,
+      ariaLabel: translate('ariaLast'),
+    });
   }
-}
+
+  return createElement(listComponent, {
+    ...props,
+    onSelect: refine,
+    items,
+    cx,
+    createURL,
+  });
+};
+
+Pagination.propTypes = {
+  currentRefinement: PropTypes.number.isRequired,
+  nbPages: PropTypes.number.isRequired,
+  cx: PropTypes.func.isRequired,
+  refine: PropTypes.func.isRequired,
+  createURL: PropTypes.func.isRequired,
+  translate: PropTypes.func.isRequired,
+  showFirst: PropTypes.bool,
+  showPrevious: PropTypes.bool,
+  showNext: PropTypes.bool,
+  showLast: PropTypes.bool,
+  pagesPadding: PropTypes.number,
+  maxPages: PropTypes.number,
+  listComponent: PropTypes.func,
+};
+
+Pagination.defaultProps = {
+  listComponent: LinkList,
+  showFirst: true,
+  showPrevious: true,
+  showNext: true,
+  showLast: false,
+  pagesPadding: 3,
+  maxPages: Infinity,
+};
 
 export default translatable({
   previous: '‹',
