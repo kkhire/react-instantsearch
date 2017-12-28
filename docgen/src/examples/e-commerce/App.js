@@ -1,5 +1,3 @@
-/* eslint react/prop-types: 0 */
-/* eslint react/prop-types: 0 */
 import React from 'react';
 import {
   InstantSearch,
@@ -21,7 +19,8 @@ import {
   connectStateResults,
 } from 'react-instantsearch/connectors';
 import { withUrlSync } from '../urlSync';
-import 'react-instantsearch-theme-algolia/style.scss';
+import 'instantsearch.css/themes/reset.css';
+import 'instantsearch.css/themes/algolia.css';
 
 const App = props => (
   <InstantSearch
@@ -76,13 +75,13 @@ const Facets = () => (
     </section>
 
     <section className="facet-wrapper">
-      <div className="facet-category-title facet">RefineBy</div>
+      <div className="facet-category-title facet">Refine By</div>
       <RefinementList
         attributeName="type"
         operator="or"
         limitMin={5}
         withSearchBox
-        renderHeader={() => 'Type'}
+        renderHeader={() => <h5>Type</h5>}
       />
 
       <RefinementList
@@ -90,21 +89,28 @@ const Facets = () => (
         operator="or"
         limitMin={5}
         withSearchBox
-        renderHeader={() => 'Materials'}
+        renderHeader={() => <h5>Materials</h5>}
       />
 
-      <ConnectedColorRefinementList attributeName="colors" operator="or" />
+      <div>
+        <div className="ais-header">
+          <h5>Colors</h5>
+        </div>
+        <div className="ais-body">
+          <ConnectedColorRefinementList attributeName="colors" operator="or" />
+        </div>
+      </div>
 
       <RatingMenu
         attributeName="rating"
         max={5}
-        renderHeader={() => 'Rating'}
+        renderHeader={() => <h5>Rating</h5>}
       />
 
       <RangeInput
         key="price_input"
         attributeName="price"
-        renderHeader={() => 'Price'}
+        renderHeader={() => <h5>Price</h5>}
       />
     </section>
 
@@ -148,19 +154,15 @@ const ColorItem = ({ item, createURL, refine }) => {
 };
 
 const CustomColorRefinementList = ({ items, refine, createURL }) =>
-  items.length > 0 ? (
-    <div>
-      <div className={'ais-header'}>Colors</div>
-      {items.map(item => (
-        <ColorItem
-          key={item.label}
-          item={item}
-          refine={refine}
-          createURL={createURL}
-        />
-      ))}
-    </div>
-  ) : null;
+  items.length > 0 &&
+  items.map(item => (
+    <ColorItem
+      key={item.label}
+      item={item}
+      refine={refine}
+      createURL={createURL}
+    />
+  ));
 
 function CustomHits({ hits }) {
   return (
@@ -173,9 +175,19 @@ function CustomHits({ hits }) {
 const Hit = ({ item }) => {
   const icons = [];
   for (let i = 0; i < 5; i++) {
-    const suffix = i >= item.rating ? '_empty' : '';
+    const suffixClassName = i >= item.rating ? '--empty' : '';
+    const suffixXlink = i >= item.rating ? 'Empty' : '';
+
     icons.push(
-      <label key={i} className={`ais-RatingMenu__ratingIcon${suffix}`} />
+      <svg
+        key={i}
+        className={`ais-RatingMenu-starIcon ais-RatingMenu-starIcon${suffixClassName}`}
+        aria-hidden="true"
+        width="24"
+        height="24"
+      >
+        <use xlinkHref={`#ais-RatingMenu-star${suffixXlink}Symbol`} />
+      </svg>
     );
   }
   return (
@@ -196,8 +208,8 @@ const Hit = ({ item }) => {
         <div className="product-type">
           <Highlight attributeName="type" hit={item} />
         </div>
-        <div className="ais-RatingMenu__ratingLink">
-          {icons}
+        <div className="product-footer">
+          <div className="ais-RatingMenu-link">{icons}</div>
           <div className="product-price">${item.price}</div>
         </div>
       </div>
