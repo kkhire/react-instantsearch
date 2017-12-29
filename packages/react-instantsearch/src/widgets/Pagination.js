@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import connectPagination from '../connectors/connectPagination';
 import classNames from '../components/classNames';
+import AutoHideContainer from '../components/AutoHideContainer';
 import Panel from '../components/Panel';
 import PaginationComponent from '../components/Pagination';
 
@@ -18,6 +18,7 @@ const cx = classNames('Pagination');
  * @propType {boolean} [showNext=true] - Display the next page link.
  * @propType {number} [pagesPadding=3] - How many page links to display around the current page.
  * @propType {number} [maxPages=Infinity] - Maximum number of pages to display.
+ * @propType {boolean} [autoHideContainer=false] - Hide the container when no results match.
  * @propType {function} [renderHeader] - Adds a header to the widget.
  * @propType {function} [renderFooter] - Adds a footer to the widget.
  * @themeKey ais-Pagination - the root div of the widget
@@ -62,16 +63,22 @@ const cx = classNames('Pagination');
  * }
  */
 
-const Pagination = ({ renderHeader, renderFooter, ...props }) => (
-  <Panel cx={cx} renderHeader={renderHeader} renderFooter={renderFooter}>
-    <PaginationComponent {...props} cx={cx} />
-  </Panel>
+const Pagination = connectPagination(
+  ({ canRefine, autoHideContainer, renderHeader, renderFooter, ...props }) => (
+    <AutoHideContainer
+      canRefine={canRefine}
+      autoHideContainer={autoHideContainer}
+    >
+      <Panel
+        cx={cx}
+        canRefine={canRefine}
+        renderHeader={renderHeader}
+        renderFooter={renderFooter}
+      >
+        <PaginationComponent {...props} cx={cx} />
+      </Panel>
+    </AutoHideContainer>
+  )
 );
 
-Pagination.propTypes = {
-  canRefine: PropTypes.bool.isRequired,
-  renderHeader: PropTypes.func,
-  renderFooter: PropTypes.func,
-};
-
-export default connectPagination(Pagination);
+export default Pagination;

@@ -23,10 +23,44 @@ stories
     }
   )
   .addWithJSX(
-    'without results',
+    'with all props',
+    () => (
+      <WrapWithHits linkedStoryGroup="Pagination">
+        <Pagination
+          showFirst={true}
+          showLast={true}
+          showPrevious={true}
+          showNext={true}
+          pagesPadding={2}
+          maxPages={3}
+        />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'hidden without results',
+    () => (
+      <WrapWithHits searchBox={false} linkedStoryGroup="Pagination">
+        <Pagination renderHeader={() => 'Header'} autoHideContainer />
+
+        <WithoutResults />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'visible without results',
     () => (
       <WrapWithHits searchBox={false} linkedStoryGroup="Pagination">
         <Pagination renderHeader={() => 'Header'} />
+
         <WithoutResults />
       </WrapWithHits>
     ),
@@ -42,25 +76,6 @@ stories
         <Pagination
           renderHeader={() => 'Header'}
           renderFooter={() => 'Footer'}
-        />
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with all props',
-    () => (
-      <WrapWithHits linkedStoryGroup="Pagination">
-        <Pagination
-          showFirst={true}
-          showLast={true}
-          showPrevious={true}
-          showNext={true}
-          pagesPadding={2}
-          maxPages={3}
         />
       </WrapWithHits>
     ),
