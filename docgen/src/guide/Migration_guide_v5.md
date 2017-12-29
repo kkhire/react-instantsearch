@@ -16,7 +16,7 @@ This guide will provide step-by-step migration information for each React Instan
 
 * [Migration steps](guide/Migration_guide_v5.html#migration-steps)
   * [Updating widgets names](guide/Migration_guide_v5.html#updating-widgets-names)
-  * [Removing Panel](guide/Migration_guide_v5.html#removing-panel)
+  * [Updating Panel](guide/Migration_guide_v5.html#updating-panel)
   * [Updating to render prop](guide/Migration_guide_v5.html#updating-to-render-prop)
   * [Updating styles](guide/Migration_guide_v5.html#updating-styles)
 * [Widgets changes](guide/Migration_guide_v5.html#widgets-changes)
@@ -32,6 +32,7 @@ This guide will provide step-by-step migration information for each React Instan
   * [MenuSelect](guide/Migration_guide_v5.html#menuselect)
   * [MultiRange](guide/Migration_guide_v5.html#multirange)
   * [Pagination](guide/Migration_guide_v5.html#pagination)
+  * [Panel](guide/Migration_guide_v5.html#panel)
   * [PoweredBy](guide/Migration_guide_v5.html#poweredby)
   * [RangeInput](guide/Migration_guide_v5.html#rangeinput)
   * [RefinementList](guide/Migration_guide_v5.html#refinementlist)
@@ -93,9 +94,9 @@ const Search = () => (
 );
 ```
 
-### Removing Panel
+### Updating Panel
 
-The `<Panel>` widget has been removed in favour of properties directly passed to most widgets.
+The `<Panel />` widget has been updated to support render props instead of the `title` prop. By default **all the built-in widgets are wrapped by the Panel component** and expose its render props.
 
 ```js
 // Before
@@ -103,8 +104,20 @@ The `<Panel>` widget has been removed in favour of properties directly passed to
   <RefinementList attributeName="category" />
 </Panel>
 
-// After
+// After with built-in widget
 <RefinementList
+  attributeName="category"
+  renderHeader={() => 'Category'}
+/>
+
+// After with custom widget
+const MyCustomRefinementList = connectRefinementList(({ renderHeader }) => (
+  <Panel renderHeader={renderHeader}>
+    My custom refinement list
+  </Panel>
+));
+
+<MyCustomRefinementList
   attributeName="category"
   renderHeader={() => 'Category'}
 />
@@ -469,6 +482,23 @@ No change.
 | .ais-Pagination\_\_itemSelected | .ais-Pagination-item--selected     |
 | .ais-Pagination\_\_itemLink     | .ais-Pagination-link               |
 | .ais-Pagination\_\_noRefinement | .ais-Pagination--noRefinement      |
+
+### Panel
+
+#### Naming
+
+No change.
+
+#### Behaviour
+
+No change.
+
+#### CSS classes equivalency table
+
+| Old class name             | New class name          |
+| -------------------------- | ----------------------- |
+| .ais-Panel\_\_root         | .ais-Panel              |
+| .ais-Panel\_\_noRefinement | .ais-Panel-noRefinement |
 
 ### PoweredBy
 
