@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import connectBreadcrumb from '../connectors/connectBreadcrumb';
 import classNames from '../components/classNames';
+import AutoHideContainer from '../components/AutoHideContainer';
 import Panel from '../components/Panel';
 import BreadcrumbComponent from '../components/Breadcrumb';
 
@@ -51,6 +51,7 @@ const cx = classNames('Breadcrumb');
  *
  * @propType {string} attributes - List of attributes to use to generate the hierarchy of the menu. See the example for the convention to follow
  * @propType {string} [rootURL=null] - The originating page (homepage)
+ * @propType {boolean} [autoHideContainer=false] - Hide the container when no results match.
  * @propType {function} [transformItems] - Function to modify the items being displayed, e.g. for filtering or sorting them. Takes an items as parameter and expects it back in return
  * @propType {function} [renderSeparator] - Symbol used for separating hyperlinks. Default value: `() => '>'`
  * @propType {function} [renderHeader] - Adds a header to the widget.
@@ -91,21 +92,22 @@ const cx = classNames('Breadcrumb');
  * }
  */
 
-const Breadcrumb = ({ canRefine, renderHeader, renderFooter, ...props }) => (
-  <Panel
-    cx={cx}
-    canRefine={canRefine}
-    renderHeader={renderHeader}
-    renderFooter={renderFooter}
-  >
-    <BreadcrumbComponent {...props} cx={cx} canRefine={canRefine} />
-  </Panel>
+const Breadcrumb = connectBreadcrumb(
+  ({ canRefine, autoHideContainer, renderHeader, renderFooter, ...props }) => (
+    <AutoHideContainer
+      canRefine={canRefine}
+      autoHideContainer={autoHideContainer}
+    >
+      <Panel
+        cx={cx}
+        canRefine={canRefine}
+        renderHeader={renderHeader}
+        renderFooter={renderFooter}
+      >
+        <BreadcrumbComponent {...props} cx={cx} canRefine={canRefine} />
+      </Panel>
+    </AutoHideContainer>
+  )
 );
 
-Breadcrumb.propTypes = {
-  canRefine: PropTypes.bool.isRequired,
-  renderHeader: PropTypes.func,
-  renderFooter: PropTypes.func,
-};
-
-export default connectBreadcrumb(Breadcrumb);
+export default Breadcrumb;

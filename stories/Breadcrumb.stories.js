@@ -6,48 +6,71 @@ import {
   Breadcrumb,
   HierarchicalMenu,
 } from '../packages/react-instantsearch/dom';
-import { connectHierarchicalMenu } from '../packages/react-instantsearch/connectors';
 import { displayName, filterProps, WrapWithHits, WithoutResults } from './util';
 
 setAddon(JSXAddon);
 
-const stories = storiesOf('Breadcrumb', module);
-const VirtualHierarchicalMenu = connectHierarchicalMenu(() => null);
+const LineBreak = () => <hr style={{ marginTop: 30, marginBottom: 30 }} />;
 
-stories
+storiesOf('Breadcrumb', module)
   .addWithJSX(
     'default',
     () => (
-      <div>
-        <WrapWithHits linkedStoryGroup="Breadcrumb">
-          <Breadcrumb
-            attributes={['category', 'sub_category', 'sub_sub_category']}
-          />
-          <hr />
-          <HierarchicalMenu
-            attributes={['category', 'sub_category', 'sub_sub_category']}
-            defaultRefinement="Cooking > Kitchen textiles"
-            limitMax={3}
-            showMore={true}
-          />
-        </WrapWithHits>
-      </div>
+      <WrapWithHits linkedStoryGroup="Breadcrumb">
+        <Breadcrumb
+          attributes={['category', 'sub_category', 'sub_sub_category']}
+        />
+
+        <LineBreak />
+
+        <HierarchicalMenu
+          attributes={['category', 'sub_category', 'sub_sub_category']}
+          defaultRefinement="Cooking > Kitchen textiles"
+          limitMax={3}
+          showMore={true}
+        />
+      </WrapWithHits>
     ),
     {
       displayName,
       filterProps,
     }
   )
-  .add('without results', () => (
-    <WrapWithHits linkedStoryGroup="Breadcrumb">
-      <Breadcrumb
-        attributes={['category', 'sub_category', 'sub_sub_category']}
-        renderHeader={() => 'Breadcrumb'}
-      />
+  .addWithJSX(
+    'hidden without refinement',
+    () => (
+      <WrapWithHits searchBox={false} linkedStoryGroup="Breadcrumb">
+        <Breadcrumb
+          attributes={['category', 'sub_category', 'sub_sub_category']}
+          renderHeader={() => 'Breadcrumb'}
+          autoHideContainer
+        />
 
-      <WithoutResults />
-    </WrapWithHits>
-  ))
+        <WithoutResults />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'visible without refinement ',
+    () => (
+      <WrapWithHits linkedStoryGroup="Breadcrumb">
+        <Breadcrumb
+          attributes={['category', 'sub_category', 'sub_sub_category']}
+          renderHeader={() => 'Breadcrumb'}
+        />
+
+        <WithoutResults />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
   .addWithJSX(
     'with header and footer',
     () => (
@@ -57,7 +80,9 @@ stories
           renderHeader={() => 'Header'}
           renderFooter={() => 'Footer'}
         />
-        <hr />
+
+        <LineBreak />
+
         <HierarchicalMenu
           attributes={['category', 'sub_category', 'sub_sub_category']}
           defaultRefinement="Cooking > Bakeware"
@@ -75,8 +100,10 @@ stories
         attributes={['category', 'sub_category', 'sub_sub_category']}
         renderSeparator={() => <span> ⚡ </span>}
       />
-      <hr />
-      <VirtualHierarchicalMenu
+
+      <LineBreak />
+
+      <HierarchicalMenu
         attributes={['category', 'sub_category', 'sub_sub_category']}
         defaultRefinement="Winter holidays > Toys & play"
       />
@@ -90,7 +117,10 @@ stories
           rootLabel: 'Home',
         })}
       />
-      <VirtualHierarchicalMenu
+
+      <LineBreak />
+
+      <HierarchicalMenu
         attributes={['category', 'sub_category', 'sub_sub_category']}
         defaultRefinement="Cooking > Bakeware"
       />
