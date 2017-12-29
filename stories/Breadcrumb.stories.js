@@ -6,7 +6,7 @@ import {
   HierarchicalMenu,
 } from '../packages/react-instantsearch/dom';
 import { connectHierarchicalMenu } from '../packages/react-instantsearch/connectors';
-import { object, text } from '@storybook/addon-knobs';
+import { object } from '@storybook/addon-knobs';
 import { displayName, filterProps, WrapWithHits } from './util';
 import JSXAddon from 'storybook-addon-jsx';
 
@@ -47,7 +47,6 @@ stories
           header="Header"
           footer="Footer"
           attributes={['category', 'sub_category', 'sub_sub_category']}
-          separator=">"
         />
         <hr />
         <HierarchicalMenu
@@ -67,7 +66,7 @@ stories
     <WrapWithHits hasPlayground={true} linkedStoryGroup="Breadcrumb">
       <Breadcrumb
         attributes={['category', 'sub_category', 'sub_sub_category']}
-        separator={<span> ⚡ </span>}
+        renderSeparator={() => <span> ⚡ </span>}
       />
       <hr />
       <VirtualHierarchicalMenu
@@ -81,7 +80,6 @@ stories
       <Panel title="Category">
         <Breadcrumb
           attributes={['category', 'sub_category', 'sub_sub_category']}
-          separator={text('separator', ' / ')}
           translations={object('translations', {
             rootLabel: 'Home',
           })}

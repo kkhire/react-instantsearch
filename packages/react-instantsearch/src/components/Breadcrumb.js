@@ -18,10 +18,14 @@ class Breadcrumb extends Component {
     items: itemsPropType,
     refine: PropTypes.func.isRequired,
     rootURL: PropTypes.string,
-    separator: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+    renderSeparator: PropTypes.func,
     translate: PropTypes.func.isRequired,
     header: PropTypes.node,
     footer: PropTypes.node,
+  };
+
+  static defaultProps = {
+    renderSeparator: () => '>',
   };
 
   render() {
@@ -32,7 +36,7 @@ class Breadcrumb extends Component {
       items,
       refine,
       rootURL,
-      separator,
+      renderSeparator,
       translate,
     } = this.props;
     const rootPath = canRefine ? (
@@ -51,7 +55,7 @@ class Breadcrumb extends Component {
       const isLast = idx === items.length - 1;
       return (
         <li className={cx('item', isLast && 'item--selected')} key={idx}>
-          <span className={cx('separator')}>{separator}</span>
+          <span className={cx('separator')}>{renderSeparator()}</span>
           {!isLast ? (
             <Link
               className={cx('link')}
