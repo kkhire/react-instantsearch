@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import connectCurrentRefinements from '../connectors/connectCurrentRefinements';
 import classNames from '../components/classNames';
+import AutoHideContainer from '../components/AutoHideContainer';
 import Panel from '../components/Panel';
 import CurrentRefinementsComponent from '../components/CurrentRefinements';
 
@@ -13,6 +13,7 @@ const cx = classNames('CurrentRefinements');
  * It allows the user to selectively remove them.
  * @name CurrentRefinements
  * @kind widget
+ * @propType {boolean} [autoHideContainer=false] - Hides the widget when there are no current refinements.
  * @propType {function} [transformItems] - Function to modify the items being displayed, e.g. for filtering or sorting them. Takes an items as parameter and expects it back in return.
  * @propType {function} [renderHeader] - Adds a header to the widget.
  * @propType {function} [renderFooter] - Adds a footer to the widget.
@@ -50,26 +51,22 @@ const cx = classNames('CurrentRefinements');
  * }
  */
 
-const CurrentRefinements = ({
-  canRefine,
-  renderHeader,
-  renderFooter,
-  ...props
-}) => (
-  <Panel
-    cx={cx}
-    canRefine={canRefine}
-    renderHeader={renderHeader}
-    renderFooter={renderFooter}
-  >
-    <CurrentRefinementsComponent {...props} cx={cx} />
-  </Panel>
+const CurrentRefinements = connectCurrentRefinements(
+  ({ canRefine, autoHideContainer, renderHeader, renderFooter, ...props }) => (
+    <AutoHideContainer
+      canRefine={canRefine}
+      autoHideContainer={autoHideContainer}
+    >
+      <Panel
+        cx={cx}
+        canRefine={canRefine}
+        renderHeader={renderHeader}
+        renderFooter={renderFooter}
+      >
+        <CurrentRefinementsComponent {...props} cx={cx} />
+      </Panel>
+    </AutoHideContainer>
+  )
 );
-
-CurrentRefinements.propTypes = {
-  canRefine: PropTypes.bool.isRequired,
-  renderHeader: PropTypes.func,
-  renderFooter: PropTypes.func,
-};
 
 export default connectCurrentRefinements(CurrentRefinements);
