@@ -5,6 +5,20 @@ exports[`BaseWidget expect to render 1`] = `
   className=""
 >
   <div
+    className="ais-body"
+  >
+    <div>
+      Hello content
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BaseWidget expect to render with custom cx 1`] = `
+<div
+  className=""
+>
+  <div
     className="body ais-body"
   >
     <div>

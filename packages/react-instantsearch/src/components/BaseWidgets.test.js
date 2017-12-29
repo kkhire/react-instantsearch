@@ -8,10 +8,19 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('BaseWidget', () => {
   const defaultProps = {
     cx: (...args) => args.filter(x => Boolean(x)).join(' '),
-    canRefine: true,
   };
 
   it('expect to render', () => {
+    const wrapper = shallow(
+      <BaseWidget>
+        <div>Hello content</div>
+      </BaseWidget>
+    );
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('expect to render with custom cx', () => {
     const props = {
       ...defaultProps,
     };
