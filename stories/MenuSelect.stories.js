@@ -1,50 +1,19 @@
-import React from 'react';
 import { orderBy } from 'lodash';
+import React from 'react';
 import { setAddon, storiesOf } from '@storybook/react';
 import { text } from '@storybook/addon-knobs';
+import JSXAddon from 'storybook-addon-jsx';
 import { displayName, filterProps, WrapWithHits, WithoutResults } from './util';
 import { MenuSelect } from '../packages/react-instantsearch/dom';
-import JSXAddon from 'storybook-addon-jsx';
 
 setAddon(JSXAddon);
 
-const stories = storiesOf('MenuSelect', module);
-
-stories
+storiesOf('MenuSelect', module)
   .addWithJSX(
     'default',
     () => (
       <WrapWithHits linkedStoryGroup="MenuSelect">
         <MenuSelect attributeName="category" />
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'without results',
-    () => (
-      <WrapWithHits searchBox={false} linkedStoryGroup="MenuSelect">
-        <MenuSelect attributeName="category" />
-        <WithoutResults />
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with header and footer',
-    () => (
-      <WrapWithHits linkedStoryGroup="MenuSelect">
-        <MenuSelect
-          attributeName="category"
-          renderHeader={() => 'Header'}
-          renderFooter={() => 'Footer'}
-        />
       </WrapWithHits>
     ),
     {
@@ -82,21 +51,6 @@ stories
     }
   )
   .addWithJSX(
-    'playground',
-    () => (
-      <WrapWithHits linkedStoryGroup="MenuSelect">
-        <MenuSelect
-          attributeName="category"
-          defaultRefinement={text('defaultSelectedItem', 'Bathroom')}
-        />
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
     'with localized count',
     () => (
       <WrapWithHits linkedStoryGroup="MenuSelect">
@@ -109,6 +63,69 @@ stories
               count: (count + 1000).toLocaleString(),
             }))
           }
+        />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'hidden wihtout refinement',
+    () => (
+      <WrapWithHits searchBox={false} linkedStoryGroup="MenuSelect">
+        <MenuSelect
+          attributeName="category"
+          renderHeader={() => 'Header'}
+          autoHideContainer
+        />
+
+        <WithoutResults />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'visible wihtout refinement',
+    () => (
+      <WrapWithHits searchBox={false} linkedStoryGroup="MenuSelect">
+        <MenuSelect attributeName="category" renderHeader={() => 'Header'} />
+
+        <WithoutResults />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'with header and footer',
+    () => (
+      <WrapWithHits linkedStoryGroup="MenuSelect">
+        <MenuSelect
+          attributeName="category"
+          renderHeader={() => 'Header'}
+          renderFooter={() => 'Footer'}
+        />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'playground',
+    () => (
+      <WrapWithHits linkedStoryGroup="MenuSelect">
+        <MenuSelect
+          attributeName="category"
+          defaultRefinement={text('defaultSelectedItem', 'Bathroom')}
         />
       </WrapWithHits>
     ),

@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import connectMenu from '../connectors/connectMenu';
 import classNames from '../components/classNames';
+import AutoHideContainer from '../components/AutoHideContainer';
 import Panel from '../components/Panel';
 import MenuSelectComponent from '../components/MenuSelect';
 
@@ -15,6 +15,7 @@ const cx = classNames('MenuSelect');
  * on the Algolia dashboard or configured as `attributesForFaceting` via a set settings call to the Algolia API.
  * @propType {string} attributeName - the name of the attribute in the record
  * @propType {string} [defaultRefinement] - the value of the item selected by default
+ * @propType {boolean} [autoHideContainer=false] - Hide the container when there are no items in the menu.
  * @propType {function} [transformItems] - Function to modify the items being displayed, e.g. for filtering or sorting them. Takes an items as parameter and expects it back in return.
  * @propType {function} [renderHeader] - Adds a header to the widget.
  * @propType {function} [renderFooter] - Adds a footer to the widget.
@@ -43,21 +44,22 @@ const cx = classNames('MenuSelect');
  * }
  */
 
-const MenuSelect = ({ canRefine, renderHeader, renderFooter, ...props }) => (
-  <Panel
-    cx={cx}
-    canRefine={canRefine}
-    renderHeader={renderHeader}
-    renderFooter={renderFooter}
-  >
-    <MenuSelectComponent {...props} cx={cx} canRefine={canRefine} />
-  </Panel>
+const MenuSelect = connectMenu(
+  ({ canRefine, autoHideContainer, renderHeader, renderFooter, ...props }) => (
+    <AutoHideContainer
+      canRefine={canRefine}
+      autoHideContainer={autoHideContainer}
+    >
+      <Panel
+        cx={cx}
+        canRefine={canRefine}
+        renderHeader={renderHeader}
+        renderFooter={renderFooter}
+      >
+        <MenuSelectComponent {...props} cx={cx} canRefine={canRefine} />
+      </Panel>
+    </AutoHideContainer>
+  )
 );
 
-MenuSelect.propTypes = {
-  canRefine: PropTypes.bool.isRequired,
-  renderHeader: PropTypes.func,
-  renderFooter: PropTypes.func,
-};
-
-export default connectMenu(MenuSelect);
+export default MenuSelect;
