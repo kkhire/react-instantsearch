@@ -16,6 +16,10 @@ export const WithoutResults = () => (
   </div>
 );
 
+export const LineBreak = () => (
+  <hr style={{ marginTop: 30, marginBottom: 30 }} />
+);
+
 export const CustomHits = connectHits(({ hits }) => (
   <div className="hits">
     {hits.map(hit => (
