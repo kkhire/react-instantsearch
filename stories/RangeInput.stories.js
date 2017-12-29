@@ -1,50 +1,18 @@
 import React from 'react';
 import { setAddon, storiesOf } from '@storybook/react';
-import { RangeInput } from '../packages/react-instantsearch/dom';
 import { object, number } from '@storybook/addon-knobs';
-import { displayName, filterProps, WrapWithHits, WithoutResults } from './util';
-
 import JSXAddon from 'storybook-addon-jsx';
+import { RangeInput } from '../packages/react-instantsearch/dom';
+import { displayName, filterProps, WrapWithHits, WithoutResults } from './util';
 
 setAddon(JSXAddon);
 
-const stories = storiesOf('RangeInput', module);
-
-stories
+storiesOf('RangeInput', module)
   .addWithJSX(
     'default',
     () => (
       <WrapWithHits linkedStoryGroup="RangeInput">
         <RangeInput attributeName="price" />
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'without results',
-    () => (
-      <WrapWithHits searchBox={false} linkedStoryGroup="RangeInput">
-        <RangeInput attributeName="price" renderHeader={() => 'Header'} />
-        <WithoutResults />
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with header and footer',
-    () => (
-      <WrapWithHits linkedStoryGroup="RangeInput">
-        <RangeInput
-          attributeName="price"
-          renderHeader={() => 'Header'}
-          renderFooter={() => 'Footer'}
-        />
       </WrapWithHits>
     ),
     {
@@ -124,6 +92,54 @@ stories
           min={30}
           max={500}
           defaultRefinement={{ min: 50, max: 200 }}
+        />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'hidden wihtout results',
+    () => (
+      <WrapWithHits searchBox={false} linkedStoryGroup="RangeInput">
+        <RangeInput
+          attributeName="price"
+          renderHeader={() => 'Header'}
+          autoHideContainer
+        />
+
+        <WithoutResults />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'visible wihtout results',
+    () => (
+      <WrapWithHits searchBox={false} linkedStoryGroup="RangeInput">
+        <RangeInput attributeName="price" renderHeader={() => 'Header'} />
+
+        <WithoutResults />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'with header and footer',
+    () => (
+      <WrapWithHits linkedStoryGroup="RangeInput">
+        <RangeInput
+          attributeName="price"
+          renderHeader={() => 'Header'}
+          renderFooter={() => 'Footer'}
         />
       </WrapWithHits>
     ),
