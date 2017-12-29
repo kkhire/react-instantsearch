@@ -4,7 +4,7 @@ import {
   ClearRefinements,
   RefinementList,
 } from '../packages/react-instantsearch/dom';
-import { displayName, filterProps, WrapWithHits } from './util';
+import { displayName, filterProps, WrapWithHits, LineBreak } from './util';
 import JSXAddon from 'storybook-addon-jsx';
 
 setAddon(JSXAddon);
@@ -15,6 +15,8 @@ storiesOf('ClearRefinements', module)
     () => (
       <WrapWithHits linkedStoryGroup="ClearRefinements">
         <ClearRefinements />
+
+        <LineBreak />
 
         <RefinementList
           attributeName="category"
@@ -32,6 +34,8 @@ storiesOf('ClearRefinements', module)
     () => (
       <WrapWithHits linkedStoryGroup="ClearRefinements">
         <ClearRefinements clearsQuery />
+
+        <LineBreak />
 
         <RefinementList
           attributeName="category"

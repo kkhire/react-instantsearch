@@ -6,11 +6,15 @@ import {
   Breadcrumb,
   HierarchicalMenu,
 } from '../packages/react-instantsearch/dom';
-import { displayName, filterProps, WrapWithHits, WithoutResults } from './util';
+import {
+  displayName,
+  filterProps,
+  WrapWithHits,
+  WithoutResults,
+  LineBreak,
+} from './util';
 
 setAddon(JSXAddon);
-
-const LineBreak = () => <hr style={{ marginTop: 30, marginBottom: 30 }} />;
 
 storiesOf('Breadcrumb', module)
   .addWithJSX(
