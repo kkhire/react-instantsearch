@@ -2,10 +2,10 @@
 
 exports[`Panel expect to render 1`] = `
 <div
-  className=""
+  className="ais-Panel"
 >
   <div
-    className="ais-body"
+    className="ais-Panel-body ais-body"
   >
     <div>
       Hello content
