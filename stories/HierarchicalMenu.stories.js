@@ -1,52 +1,18 @@
 import React from 'react';
 import { setAddon, storiesOf } from '@storybook/react';
-import { HierarchicalMenu } from '../packages/react-instantsearch/dom';
-import { text, boolean, number } from '@storybook/addon-knobs';
-import { displayName, filterProps, WrapWithHits, WithoutResults } from './util';
 import JSXAddon from 'storybook-addon-jsx';
+import { text, boolean, number } from '@storybook/addon-knobs';
+import { HierarchicalMenu } from '../packages/react-instantsearch/dom';
+import { displayName, filterProps, WrapWithHits, WithoutResults } from './util';
 
 setAddon(JSXAddon);
 
-const stories = storiesOf('HierarchicalMenu', module);
-
-stories
+storiesOf('HierarchicalMenu', module)
   .addWithJSX(
     'default',
     () => (
       <WrapWithHits linkedStoryGroup="HierarchicalMenu">
         <HierarchicalMenu
-          attributes={['category', 'sub_category', 'sub_sub_category']}
-        />
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'without results',
-    () => (
-      <WrapWithHits searchBox={false} linkedStoryGroup="HierarchicalMenu">
-        <HierarchicalMenu
-          attributes={['category', 'sub_category', 'sub_sub_category']}
-          renderHeader={() => 'Header'}
-        />
-        <WithoutResults />
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with header and footer',
-    () => (
-      <WrapWithHits linkedStoryGroup="HierarchicalMenu">
-        <HierarchicalMenu
-          renderHeader={() => 'Header'}
-          renderFooter={() => 'Footer'}
           attributes={['category', 'sub_category', 'sub_sub_category']}
         />
       </WrapWithHits>
@@ -80,6 +46,58 @@ stories
           limitMin={2}
           limitMax={5}
           showMore={true}
+        />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'hidden without refinement',
+    () => (
+      <WrapWithHits searchBox={false} linkedStoryGroup="HierarchicalMenu">
+        <HierarchicalMenu
+          attributes={['category', 'sub_category', 'sub_sub_category']}
+          renderHeader={() => 'Header'}
+          autoHideContainer
+        />
+
+        <WithoutResults />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'visible without refinement',
+    () => (
+      <WrapWithHits searchBox={false} linkedStoryGroup="HierarchicalMenu">
+        <HierarchicalMenu
+          attributes={['category', 'sub_category', 'sub_sub_category']}
+          renderHeader={() => 'Header'}
+        />
+
+        <WithoutResults />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+
+  .addWithJSX(
+    'with header and footer',
+    () => (
+      <WrapWithHits linkedStoryGroup="HierarchicalMenu">
+        <HierarchicalMenu
+          attributes={['category', 'sub_category', 'sub_sub_category']}
+          renderHeader={() => 'Header'}
+          renderFooter={() => 'Footer'}
         />
       </WrapWithHits>
     ),

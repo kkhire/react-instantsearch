@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import connectHierarchicalMenu from '../connectors/connectHierarchicalMenu';
 import classNames from '../components/classNames';
+import AutoHideContainer from '../components/AutoHideContainer';
 import Panel from '../components/Panel';
 import HierarchicalMenuComponent from '../components/HierarchicalMenu';
 
@@ -49,13 +49,14 @@ const cx = classNames('HierarchicalMenu');
  * on the Algolia dashboard or configured as `attributesForFaceting` via a set settings call to the Algolia API.
  *
  * @propType {string} attributes - List of attributes to use to generate the hierarchy of the menu. See the example for the convention to follow.
- * @propType {boolean} [showMore=false] - Flag to activate the show more button, for toggling the number of items between limitMin and limitMax.
  * @propType {number} [limitMin=10] -  The maximum number of items displayed.
  * @propType {number} [limitMax=20] -  The maximum number of items displayed when the user triggers the show more. Not considered if `showMore` is false.
  * @propType {string} [separator='>'] -  Specifies the level separator used in the data.
- * @propType {string[]} [rootPath=null] - The already selected and hidden path.
- * @propType {boolean} [showParentLevel=true] - Flag to set if the parent level should be displayed.
  * @propType {string} [defaultRefinement] - the item value selected by default
+ * @propType {string[]} [rootPath=null] - The already selected and hidden path.
+ * @propType {boolean} [showMore=false] - Flag to activate the show more button, for toggling the number of items between limitMin and limitMax.
+ * @propType {boolean} [showParentLevel=true] - Flag to set if the parent level should be displayed.
+ * @propType {boolean} [autoHideContainer=false] - Hide the container when there are no items in the menu.
  * @propType {function} [transformItems] - Function to modify the items being displayed, e.g. for filtering or sorting them. Takes an items as parameter and expects it back in return.
  * @propType {function} [renderHeader] - Adds a header to the widget.
  * @propType {function} [renderFooter] - Adds a footer to the widget.
@@ -101,26 +102,22 @@ const cx = classNames('HierarchicalMenu');
  * }
  */
 
-const HierarchicalMenu = ({
-  canRefine,
-  renderHeader,
-  renderFooter,
-  ...props
-}) => (
-  <Panel
-    cx={cx}
-    canRefine={canRefine}
-    renderHeader={renderHeader}
-    renderFooter={renderFooter}
-  >
-    <HierarchicalMenuComponent {...props} cx={cx} canRefine={canRefine} />
-  </Panel>
+const HierarchicalMenu = connectHierarchicalMenu(
+  ({ canRefine, autoHideContainer, renderHeader, renderFooter, ...props }) => (
+    <AutoHideContainer
+      canRefine={canRefine}
+      autoHideContainer={autoHideContainer}
+    >
+      <Panel
+        cx={cx}
+        canRefine={canRefine}
+        renderHeader={renderHeader}
+        renderFooter={renderFooter}
+      >
+        <HierarchicalMenuComponent {...props} cx={cx} canRefine={canRefine} />
+      </Panel>
+    </AutoHideContainer>
+  )
 );
 
-HierarchicalMenu.propTypes = {
-  canRefine: PropTypes.bool.isRequired,
-  renderHeader: PropTypes.func,
-  renderFooter: PropTypes.func,
-};
-
-export default connectHierarchicalMenu(HierarchicalMenu);
+export default HierarchicalMenu;
