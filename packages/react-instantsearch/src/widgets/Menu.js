@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import connectMenu from '../connectors/connectMenu';
 import classNames from '../components/classNames';
+import AutoHideContainer from '../components/AutoHideContainer';
 import Panel from '../components/Panel';
 import MenuComponent from '../components/Menu';
 
@@ -18,6 +18,7 @@ const cx = classNames('Menu');
  * the [dashboard](https://www.algolia.com/explorer/display/) or using the [API](https://www.algolia.com/doc/guides/searching/faceting/#search-for-facet-values).
  * @propType {string} attributeName - the name of the attribute in the record
  * @propType {boolean} [showMore=false] - true if the component should display a button that will expand the number of items
+ * @propType {boolean} [autoHideContainer=false] - Hide the container when there are no items in the menu.
  * @propType {number} [limitMin=10] - the minimum number of diplayed items
  * @propType {number} [limitMax=20] - the maximun number of displayed items. Only used when showMore is set to `true`
  * @propType {string} [defaultRefinement] - the value of the item selected by default
@@ -58,15 +59,22 @@ const cx = classNames('Menu');
  * }
  */
 
-const Menu = ({ renderHeader, renderFooter, ...props }) => (
-  <Panel cx={cx} renderHeader={renderHeader} renderFooter={renderFooter}>
-    <MenuComponent {...props} cx={cx} />
-  </Panel>
+const Menu = connectMenu(
+  ({ canRefine, autoHideContainer, renderHeader, renderFooter, ...props }) => (
+    <AutoHideContainer
+      canRefine={canRefine}
+      autoHideContainer={autoHideContainer}
+    >
+      <Panel
+        cx={cx}
+        canRefine={canRefine}
+        renderHeader={renderHeader}
+        renderFooter={renderFooter}
+      >
+        <MenuComponent {...props} cx={cx} canRefine={canRefine} />
+      </Panel>
+    </AutoHideContainer>
+  )
 );
 
-Menu.propTypes = {
-  renderHeader: PropTypes.func,
-  renderFooter: PropTypes.func,
-};
-
-export default connectMenu(Menu);
+export default Menu;

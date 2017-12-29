@@ -1,50 +1,19 @@
+import { orderBy } from 'lodash';
 import React from 'react';
 import { setAddon, storiesOf } from '@storybook/react';
-import { Menu } from '../packages/react-instantsearch/dom';
-import { text, boolean, number } from '@storybook/addon-knobs';
-import { displayName, filterProps, WrapWithHits, WithoutResults } from './util';
-import { orderBy } from 'lodash';
 import JSXAddon from 'storybook-addon-jsx';
+import { text, boolean, number } from '@storybook/addon-knobs';
+import { Menu } from '../packages/react-instantsearch/dom';
+import { displayName, filterProps, WrapWithHits, WithoutResults } from './util';
 
 setAddon(JSXAddon);
 
-const stories = storiesOf('Menu', module);
-
-stories
+storiesOf('Menu', module)
   .addWithJSX(
     'default',
     () => (
       <WrapWithHits linkedStoryGroup="Menu">
         <Menu attributeName="category" />
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'without results',
-    () => (
-      <WrapWithHits searchBox={false} linkedStoryGroup="Menu">
-        <Menu attributeName="category" renderHeader={() => 'Header'} />
-        <WithoutResults />
-      </WrapWithHits>
-    ),
-    {
-      displayName,
-      filterProps,
-    }
-  )
-  .addWithJSX(
-    'with header and footer',
-    () => (
-      <WrapWithHits linkedStoryGroup="Menu">
-        <Menu
-          attributeName="category"
-          renderHeader={() => 'Header'}
-          renderFooter={() => 'Footer'}
-        />
       </WrapWithHits>
     ),
     {
@@ -112,6 +81,54 @@ stories
           transformItems={items =>
             orderBy(items, ['label', 'count'], ['asc', 'desc'])
           }
+        />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'hidden without refinement',
+    () => (
+      <WrapWithHits searchBox={false} linkedStoryGroup="Menu">
+        <Menu
+          attributeName="category"
+          renderHeader={() => 'Header'}
+          autoHideContainer
+        />
+
+        <WithoutResults />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'visible without refinement',
+    () => (
+      <WrapWithHits searchBox={false} linkedStoryGroup="Menu">
+        <Menu attributeName="category" renderHeader={() => 'Header'} />
+
+        <WithoutResults />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'with header and footer',
+    () => (
+      <WrapWithHits linkedStoryGroup="Menu">
+        <Menu
+          attributeName="category"
+          renderHeader={() => 'Header'}
+          renderFooter={() => 'Footer'}
         />
       </WrapWithHits>
     ),
