@@ -26,6 +26,7 @@ export { default as Menu } from './src/widgets/Menu';
 export { default as MenuSelect } from './src/widgets/MenuSelect';
 export { default as NumericMenu } from './src/widgets/NumericMenu';
 export { default as Pagination } from './src/widgets/Pagination';
+export { default as Panel } from './src/widgets/Panel';
 export { default as PoweredBy } from './src/widgets/PoweredBy';
 export { default as RangeInput } from './src/widgets/RangeInput';
 export { default as RangeSlider } from './src/widgets/RangeSlider';
