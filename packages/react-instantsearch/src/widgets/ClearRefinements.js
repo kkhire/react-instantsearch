@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import connectCurrentRefinements from '../connectors/connectCurrentRefinements';
 import classNames from '../components/classNames';
+import AutoHideContainer from '../components/AutoHideContainer';
 import Panel from '../components/Panel';
 import ClearRefinementsComponent from '../components/ClearRefinements';
 
@@ -14,6 +14,7 @@ const cx = classNames('ClearRefinements');
  * @kind widget
  * @propType {function} [transformItems] - Function to modify the items being displayed, e.g. for filtering or sorting them. Takes an items as parameter and expects it back in return.
  * @propType {boolean} [clearsQuery=false] - Pass true to also clear the search query
+ * @propType {boolean} [autoHideContainer=false] - Hide the container when no results match.
  * @propType {function} [renderHeader] - Adds a header to the widget.
  * @propType {function} [renderFooter] - Adds a footer to the widget.
  * @themeKey ais-ClearRefinements - the root div of the widget
@@ -45,15 +46,22 @@ const cx = classNames('ClearRefinements');
  * }
  */
 
-const ClearRefinements = ({ renderHeader, renderFooter, ...props }) => (
-  <Panel cx={cx} renderHeader={renderHeader} renderFooter={renderFooter}>
-    <ClearRefinementsComponent {...props} cx={cx} />
-  </Panel>
+const ClearRefinements = connectCurrentRefinements(
+  ({ canRefine, autoHideContainer, renderHeader, renderFooter, ...props }) => (
+    <AutoHideContainer
+      canRefine={canRefine}
+      autoHideContainer={autoHideContainer}
+    >
+      <Panel
+        cx={cx}
+        canRefine={canRefine}
+        renderHeader={renderHeader}
+        renderFooter={renderFooter}
+      >
+        <ClearRefinementsComponent {...props} cx={cx} />
+      </Panel>
+    </AutoHideContainer>
+  )
 );
 
-ClearRefinements.propTypes = {
-  renderHeader: PropTypes.func,
-  renderFooter: PropTypes.func,
-};
-
-export default connectCurrentRefinements(ClearRefinements);
+export default ClearRefinements;
