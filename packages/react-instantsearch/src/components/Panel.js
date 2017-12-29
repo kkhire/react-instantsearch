@@ -1,13 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const BaseWidget = ({
-  children,
-  canRefine,
-  cx,
-  renderHeader,
-  renderFooter,
-}) => (
+const Panel = ({ children, canRefine, cx, renderHeader, renderFooter }) => (
   <div className={cx('', !canRefine && '-noRefinement').trim()}>
     {renderHeader && (
       <div className={`${cx('header')} ais-header`.trim()}>
@@ -25,7 +19,7 @@ const BaseWidget = ({
   </div>
 );
 
-BaseWidget.propTypes = {
+Panel.propTypes = {
   children: PropTypes.node.isRequired,
   cx: PropTypes.func,
   canRefine: PropTypes.bool,
@@ -33,9 +27,9 @@ BaseWidget.propTypes = {
   renderFooter: PropTypes.func,
 };
 
-BaseWidget.defaultProps = {
+Panel.defaultProps = {
   cx: () => '',
   canRefine: true,
 };
 
-export default BaseWidget;
+export default Panel;

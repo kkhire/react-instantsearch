@@ -1,20 +1,20 @@
 import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import BaseWidget from './BaseWidget';
+import Panel from './Panel';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('BaseWidget', () => {
+describe('Panel', () => {
   const defaultProps = {
     cx: (...args) => args.filter(x => Boolean(x)).join(' '),
   };
 
   it('expect to render', () => {
     const wrapper = shallow(
-      <BaseWidget>
+      <Panel>
         <div>Hello content</div>
-      </BaseWidget>
+      </Panel>
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -26,9 +26,9 @@ describe('BaseWidget', () => {
     };
 
     const wrapper = shallow(
-      <BaseWidget {...props}>
+      <Panel {...props}>
         <div>Hello content</div>
-      </BaseWidget>
+      </Panel>
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -41,9 +41,9 @@ describe('BaseWidget', () => {
     };
 
     const wrapper = shallow(
-      <BaseWidget {...props}>
+      <Panel {...props}>
         <div>Hello content</div>
-      </BaseWidget>
+      </Panel>
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -56,9 +56,9 @@ describe('BaseWidget', () => {
     };
 
     const wrapper = shallow(
-      <BaseWidget {...props}>
+      <Panel {...props}>
         <div>Hello content</div>
-      </BaseWidget>
+      </Panel>
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -71,9 +71,9 @@ describe('BaseWidget', () => {
     };
 
     const wrapper = shallow(
-      <BaseWidget {...props}>
+      <Panel {...props}>
         <div>Hello content</div>
-      </BaseWidget>
+      </Panel>
     );
 
     expect(wrapper).toMatchSnapshot();
