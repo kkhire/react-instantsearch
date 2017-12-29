@@ -7,6 +7,7 @@ import {
   RefinementList,
   SortBy,
   Stats,
+  Panel,
   ClearRefinements,
   RatingMenu,
   RangeInput,
@@ -91,14 +92,11 @@ const Facets = () => (
         renderHeader={() => <h5>Materials</h5>}
       />
 
-      <div>
-        <div className="ais-header">
-          <h5>Colors</h5>
-        </div>
-        <div className="ais-body">
-          <ConnectedColorRefinementList attributeName="colors" operator="or" />
-        </div>
-      </div>
+      <ConnectedColorRefinementList
+        attributeName="colors"
+        operator="or"
+        renderHeader={() => <h5>Colors</h5>}
+      />
 
       <RatingMenu
         attributeName="rating"
@@ -152,16 +150,25 @@ const ColorItem = ({ item, createURL, refine }) => {
   );
 };
 
-const CustomColorRefinementList = ({ items, refine, createURL }) =>
-  items.length > 0 &&
-  items.map(item => (
-    <ColorItem
-      key={item.label}
-      item={item}
-      refine={refine}
-      createURL={createURL}
-    />
-  ));
+const CustomColorRefinementList = ({
+  items,
+  canRefine,
+  refine,
+  createURL,
+  renderHeader,
+}) =>
+  items.length > 0 && (
+    <Panel renderHeader={renderHeader}>
+      {items.map(item => (
+        <ColorItem
+          key={item.label}
+          item={item}
+          refine={refine}
+          createURL={createURL}
+        />
+      ))}
+    </Panel>
+  );
 
 function CustomHits({ hits, refine, hasMore }) {
   const loadMoreButton = hasMore ? (
