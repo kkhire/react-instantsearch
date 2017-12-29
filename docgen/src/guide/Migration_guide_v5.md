@@ -256,7 +256,7 @@ No change.
 | .ais-Breadcrumb\_\_itemLabel    | **Removed**. Use `.ais-Breadcrumb-link` instead. |
 | .ais-Breadcrumb\_\_itemDisabled | .ais-Breadcrumb-item--selected                   |
 | .ais-Breadcrumb\_\_separator    | .ais-Breadcrumb-separator                        |
-| .ais-Breadcrumb\_\_noRefinement | .ais-Breadcrumb--noRefinement                    |
+| .ais-Breadcrumb\_\_noRefinement | .ais-Breadcrumb\-\-noRefinement                  |
 
 ### ClearAll
 
@@ -319,7 +319,7 @@ Instead of displaying the widget as `category: One ✕ Two ✕`, it now displays
 | .ais-HierarchicalMenu\_\_itemCount          | .ais-HierarchicalMenu-count                                                                        |
 | .ais-HierarchicalMenu\_\_itemItems          | .ais-HierarchicalMenu-list--child                                                                  |
 | .ais-HierarchicalMenu\_\_showMore           | .ais-HierarchicalMenu-showMore                                                                     |
-| .ais-HierarchicalMenu\_\_noRefinement       | .ais-HierarchicalMenu--noRefinement                                                                |
+| .ais-HierarchicalMenu\_\_noRefinement       | .ais-HierarchicalMenu\-\-noRefinement                                                              |
 
 ### Highlight
 
@@ -410,7 +410,7 @@ No change.
 | .ais-Menu\_\_itemLabel         | .ais-Menu-label                                                      |
 | .ais-Menu\_\_itemCount         | .ais-Menu-count                                                      |
 | .ais-Menu\_\_itemCountSelected | **Removed**. Use `.ais-Menu-item--selected .ais-Menu-count` instead. |
-| .ais-Menu\_\_noRefinement      | .ais-Menu--noRefinement                                              |
+| .ais-Menu\_\_noRefinement      | .ais-Menu\-\-noRefinement                                            |
 | .ais-Menu\_\_showMore          | .ais-Menu-showMore                                                   |
 | .ais-Menu\_\_SearchBox         | .ais-Menu-searchBox                                                  |
 
@@ -453,8 +453,8 @@ No change.
 | .ais-MultiRange\_\_itemLabelSelected | **Removed**. Use `.ais-NumericMenu-item--selected .ais-NumericMenu-label` instead. |
 | .ais-MultiRange\_\_itemRadio         | .ais-NumericMenu-radio                                                             |
 | .ais-MultiRange\_\_itemRadioSelected | **Removed**. Use `.ais-NumericMenu-item--selected .ais-NumericMenu-radio` instead. |
-| .ais-MultiRange\_\_noRefinement      | .ais-NumericMenu--noRefinement                                                     |
-| .ais-MultiRange\_\_itemNoRefinement  | .ais-NumericMenu-item--noRefinement                                                |
+| .ais-MultiRange\_\_noRefinement      | .ais-NumericMenu\-\-noRefinement                                                   |
+| .ais-MultiRange\_\_itemNoRefinement  | .ais-NumericMenu-item\-\-noRefinement                                              |
 | .ais-MultiRange\_\_itemAll           | **Removed**.                                                                       |
 
 ### Pagination
@@ -481,7 +481,7 @@ No change.
 | .ais-Pagination\_\_itemDisabled | .ais-Pagination-item--disabled     |
 | .ais-Pagination\_\_itemSelected | .ais-Pagination-item--selected     |
 | .ais-Pagination\_\_itemLink     | .ais-Pagination-link               |
-| .ais-Pagination\_\_noRefinement | .ais-Pagination--noRefinement      |
+| .ais-Pagination\_\_noRefinement | .ais-Pagination\-\-noRefinement    |
 
 ### Panel
 
@@ -495,10 +495,10 @@ No change.
 
 #### CSS classes equivalency table
 
-| Old class name             | New class name          |
-| -------------------------- | ----------------------- |
-| .ais-Panel\_\_root         | .ais-Panel              |
-| .ais-Panel\_\_noRefinement | .ais-Panel-noRefinement |
+| Old class name             | New class name             |
+| -------------------------- | -------------------------- |
+| .ais-Panel\_\_root         | .ais-Panel                 |
+| .ais-Panel\_\_noRefinement | .ais-Panel\-\-noRefinement |
 
 ### PoweredBy
 
@@ -530,16 +530,16 @@ No change.
 
 #### CSS classes equivalency table
 
-| Old class name                  | New class name                |
-| ------------------------------- | ----------------------------- |
-| .ais-RangeInput\_\_root         | .ais-RangeInput               |
-| .ais-RangeInput\_\_labelMin     | **Removed**.                  |
-| .ais-RangeInput\_\_inputMin     | .ais-RangeInput-input--min    |
-| .ais-RangeInput\_\_separator    | .ais-RangeInput-separator     |
-| .ais-RangeInput\_\_labelMax     | **Removed**.                  |
-| .ais-RangeInput\_\_inputMax     | .ais-RangeInput-input--max    |
-| .ais-RangeInput\_\_submit       | .ais-RangeInput-submit        |
-| .ais-RangeInput\_\_noRefinement | .ais-RangeInput--noRefinement |
+| Old class name                  | New class name                  |
+| ------------------------------- | ------------------------------- |
+| .ais-RangeInput\_\_root         | .ais-RangeInput                 |
+| .ais-RangeInput\_\_labelMin     | **Removed**.                    |
+| .ais-RangeInput\_\_inputMin     | .ais-RangeInput-input--min      |
+| .ais-RangeInput\_\_separator    | .ais-RangeInput-separator       |
+| .ais-RangeInput\_\_labelMax     | **Removed**.                    |
+| .ais-RangeInput\_\_inputMax     | .ais-RangeInput-input--max      |
+| .ais-RangeInput\_\_submit       | .ais-RangeInput-submit          |
+| .ais-RangeInput\_\_noRefinement | .ais-RangeInput\-\-noRefinement |
 
 ### RefinementList
 
@@ -566,7 +566,7 @@ No change.
 | .ais-RefinementList\_\_itemCount            | .ais-RefinementList-count                                                                   |
 | .ais-RefinementList\_\_itemCountSelected    | **Removed**. Use `.ais-RefinementList-item--selected .ais-RefinementList-count` instead.    |
 | .ais-RefinementList\_\_showMore             | .ais-RefinementList--showMore                                                               |
-| .ais-RefinementList\_\_noRefinement         | .ais-RefinementList--noRefinement                                                           |
+| .ais-RefinementList\_\_noRefinement         | .ais-RefinementList\-\-noRefinement                                                         |
 | .ais-RefinementList\_\_SearchBox            | .ais-RefinementList-searchBox                                                               |
 
 <h3 id="searchBox">

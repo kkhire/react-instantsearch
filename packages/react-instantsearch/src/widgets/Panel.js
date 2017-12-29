@@ -12,7 +12,7 @@ import Panel from '../components/Panel';
  * @propType {function} [renderHeader] - Adds a header to the Panel.
  * @propType {function} [renderFooter] - Adds a footer to the Panel.
  * @themeKey ais-Panel - the root div of the Panel
- * @themeKey ais-Panel-noRefinement - the root div of the Panel without refinement
+ * @themeKey ais-Panel--noRefinement - the root div of the Panel without refinement
  * @themeKey ais-Panel-header - the header of the Panel (optional)
  * @themeKey ais-Panel-body - the body of the Panel
  * @themeKey ais-Panel-footer - the footer of the Panel (optional)
