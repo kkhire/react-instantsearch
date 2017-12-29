@@ -69,4 +69,4 @@ const CurrentRefinements = connectCurrentRefinements(
   )
 );
 
-export default connectCurrentRefinements(CurrentRefinements);
+export default CurrentRefinements;
