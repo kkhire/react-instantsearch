@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import connectNumericMenu from '../connectors/connectNumericMenu';
 import classNames from '../components/classNames';
+import AutoHideContainer from '../components/AutoHideContainer';
 import Panel from '../components/Panel';
 import NumericMenuComponent from '../components/NumericMenu';
 
@@ -14,6 +14,7 @@ const cx = classNames('NumericMenu');
  * @requirements The attribute passed to the `attributeName` prop must be holding numerical values.
  * @propType {string} attributeName - the name of the attribute in the records
  * @propType {{label: string, start: number, end: number}[]} items - List of options. With a text label, and upper and lower bounds.
+ * @propType {boolean} [autoHideContainer=false] - Hide the container when there are no items in the menu.
  * @propType {string} [defaultRefinement] - the value of the item selected by default, follow the format "min:max".
  * @propType {function} [transformItems] - Function to modify the items being displayed, e.g. for filtering or sorting them. Takes an items as parameter and expects it back in return.
  * @propType {function} [renderHeader] - Adds a header to the widget.
@@ -55,21 +56,22 @@ const cx = classNames('NumericMenu');
  * }
  */
 
-const NumericMenu = ({ canRefine, renderHeader, renderFooter, ...props }) => (
-  <Panel
-    cx={cx}
-    canRefine={canRefine}
-    renderHeader={renderHeader}
-    renderFooter={renderFooter}
-  >
-    <NumericMenuComponent {...props} cx={cx} canRefine={canRefine} />
-  </Panel>
+const NumericMenu = connectNumericMenu(
+  ({ canRefine, autoHideContainer, renderHeader, renderFooter, ...props }) => (
+    <AutoHideContainer
+      canRefine={canRefine}
+      autoHideContainer={autoHideContainer}
+    >
+      <Panel
+        cx={cx}
+        canRefine={canRefine}
+        renderHeader={renderHeader}
+        renderFooter={renderFooter}
+      >
+        <NumericMenuComponent {...props} cx={cx} canRefine={canRefine} />
+      </Panel>
+    </AutoHideContainer>
+  )
 );
 
-NumericMenu.propTypes = {
-  canRefine: PropTypes.bool.isRequired,
-  renderHeader: PropTypes.func,
-  renderFooter: PropTypes.func,
-};
-
-export default connectNumericMenu(NumericMenu);
+export default NumericMenu;
