@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connectToggle from '../connectors/connectToggle';
 import classNames from '../components/classNames';
-import BaseWidget from '../components/BaseWidget';
+import Panel from '../components/Panel';
 import ToggleComponent from '../components/Toggle';
 
 const cx = classNames('Toggle');
@@ -55,14 +55,9 @@ const cx = classNames('Toggle');
  */
 
 const Toggle = ({ renderHeader, renderFooter, ...props }) => (
-  <BaseWidget
-    cx={cx}
-    canRefine
-    renderHeader={renderHeader}
-    renderFooter={renderFooter}
-  >
+  <Panel cx={cx} renderHeader={renderHeader} renderFooter={renderFooter}>
     <ToggleComponent {...props} cx={cx} />
-  </BaseWidget>
+  </Panel>
 );
 
 Toggle.propTypes = {

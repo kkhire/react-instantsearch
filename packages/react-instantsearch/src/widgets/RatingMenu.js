@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connectRange from '../connectors/connectRange';
 import classNames from '../components/classNames';
-import BaseWidget from '../components/BaseWidget';
+import Panel from '../components/Panel';
 import RatingMenuComponent from '../components/RatingMenu';
 
 const cx = classNames('RatingMenu');
@@ -54,14 +54,14 @@ const cx = classNames('RatingMenu');
  */
 
 const RatingMenu = ({ canRefine, renderHeader, renderFooter, ...props }) => (
-  <BaseWidget
+  <Panel
     cx={cx}
     canRefine={canRefine}
     renderHeader={renderHeader}
     renderFooter={renderFooter}
   >
     <RatingMenuComponent {...props} cx={cx} canRefine={canRefine} />
-  </BaseWidget>
+  </Panel>
 );
 
 RatingMenu.propTypes = {

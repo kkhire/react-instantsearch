@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connectStats from '../connectors/connectStats';
 import classNames from '../components/classNames';
-import BaseWidget from '../components/BaseWidget';
+import Panel from '../components/Panel';
 import StatsComponent from '../components/Stats';
 
 const cx = classNames('Stats');
@@ -38,14 +38,9 @@ const cx = classNames('Stats');
  */
 
 const Stats = ({ renderHeader, renderFooter, ...props }) => (
-  <BaseWidget
-    cx={cx}
-    canRefine
-    renderHeader={renderHeader}
-    renderFooter={renderFooter}
-  >
+  <Panel cx={cx} renderHeader={renderHeader} renderFooter={renderFooter}>
     <StatsComponent {...props} cx={cx} />
-  </BaseWidget>
+  </Panel>
 );
 
 Stats.propTypes = {

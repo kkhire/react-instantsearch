@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connectHierarchicalMenu from '../connectors/connectHierarchicalMenu';
 import classNames from '../components/classNames';
-import BaseWidget from '../components/BaseWidget';
+import Panel from '../components/Panel';
 import HierarchicalMenuComponent from '../components/HierarchicalMenu';
 
 const cx = classNames('HierarchicalMenu');
@@ -107,14 +107,14 @@ const HierarchicalMenu = ({
   renderFooter,
   ...props
 }) => (
-  <BaseWidget
+  <Panel
     cx={cx}
     canRefine={canRefine}
     renderHeader={renderHeader}
     renderFooter={renderFooter}
   >
     <HierarchicalMenuComponent {...props} cx={cx} canRefine={canRefine} />
-  </BaseWidget>
+  </Panel>
 );
 
 HierarchicalMenu.propTypes = {

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connectBreadcrumb from '../connectors/connectBreadcrumb';
 import classNames from '../components/classNames';
-import BaseWidget from '../components/BaseWidget';
+import Panel from '../components/Panel';
 import BreadcrumbComponent from '../components/Breadcrumb';
 
 const cx = classNames('Breadcrumb');
@@ -92,14 +92,14 @@ const cx = classNames('Breadcrumb');
  */
 
 const Breadcrumb = ({ canRefine, renderHeader, renderFooter, ...props }) => (
-  <BaseWidget
+  <Panel
     cx={cx}
     canRefine={canRefine}
     renderHeader={renderHeader}
     renderFooter={renderFooter}
   >
     <BreadcrumbComponent {...props} cx={cx} canRefine={canRefine} />
-  </BaseWidget>
+  </Panel>
 );
 
 Breadcrumb.propTypes = {

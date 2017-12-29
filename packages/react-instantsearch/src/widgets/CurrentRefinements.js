@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connectCurrentRefinements from '../connectors/connectCurrentRefinements';
 import classNames from '../components/classNames';
-import BaseWidget from '../components/BaseWidget';
+import Panel from '../components/Panel';
 import CurrentRefinementsComponent from '../components/CurrentRefinements';
 
 const cx = classNames('CurrentRefinements');
@@ -56,14 +56,14 @@ const CurrentRefinements = ({
   renderFooter,
   ...props
 }) => (
-  <BaseWidget
+  <Panel
     cx={cx}
     canRefine={canRefine}
     renderHeader={renderHeader}
     renderFooter={renderFooter}
   >
     <CurrentRefinementsComponent {...props} cx={cx} />
-  </BaseWidget>
+  </Panel>
 );
 
 CurrentRefinements.propTypes = {

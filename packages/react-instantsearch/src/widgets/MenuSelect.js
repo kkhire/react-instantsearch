@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connectMenu from '../connectors/connectMenu';
 import classNames from '../components/classNames';
-import BaseWidget from '../components/BaseWidget';
+import Panel from '../components/Panel';
 import MenuSelectComponent from '../components/MenuSelect';
 
 const cx = classNames('MenuSelect');
@@ -44,14 +44,14 @@ const cx = classNames('MenuSelect');
  */
 
 const MenuSelect = ({ canRefine, renderHeader, renderFooter, ...props }) => (
-  <BaseWidget
+  <Panel
     cx={cx}
     canRefine={canRefine}
     renderHeader={renderHeader}
     renderFooter={renderFooter}
   >
     <MenuSelectComponent {...props} cx={cx} canRefine={canRefine} />
-  </BaseWidget>
+  </Panel>
 );
 
 MenuSelect.propTypes = {

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connectMenu from '../connectors/connectMenu';
 import classNames from '../components/classNames';
-import BaseWidget from '../components/BaseWidget';
+import Panel from '../components/Panel';
 import MenuComponent from '../components/Menu';
 
 const cx = classNames('Menu');
@@ -59,14 +59,9 @@ const cx = classNames('Menu');
  */
 
 const Menu = ({ renderHeader, renderFooter, ...props }) => (
-  <BaseWidget
-    cx={cx}
-    canRefine
-    renderHeader={renderHeader}
-    renderFooter={renderFooter}
-  >
+  <Panel cx={cx} renderHeader={renderHeader} renderFooter={renderFooter}>
     <MenuComponent {...props} cx={cx} />
-  </BaseWidget>
+  </Panel>
 );
 
 Menu.propTypes = {

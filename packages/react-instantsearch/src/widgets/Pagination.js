@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connectPagination from '../connectors/connectPagination';
 import classNames from '../components/classNames';
-import BaseWidget from '../components/BaseWidget';
+import Panel from '../components/Panel';
 import PaginationComponent from '../components/Pagination';
 
 const cx = classNames('Pagination');
@@ -63,14 +63,9 @@ const cx = classNames('Pagination');
  */
 
 const Pagination = ({ renderHeader, renderFooter, ...props }) => (
-  <BaseWidget
-    cx={cx}
-    canRefine
-    renderHeader={renderHeader}
-    renderFooter={renderFooter}
-  >
+  <Panel cx={cx} renderHeader={renderHeader} renderFooter={renderFooter}>
     <PaginationComponent {...props} cx={cx} />
-  </BaseWidget>
+  </Panel>
 );
 
 Pagination.propTypes = {

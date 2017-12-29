@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connectNumericMenu from '../connectors/connectNumericMenu';
 import classNames from '../components/classNames';
-import BaseWidget from '../components/BaseWidget';
+import Panel from '../components/Panel';
 import NumericMenuComponent from '../components/NumericMenu';
 
 const cx = classNames('NumericMenu');
@@ -56,14 +56,14 @@ const cx = classNames('NumericMenu');
  */
 
 const NumericMenu = ({ canRefine, renderHeader, renderFooter, ...props }) => (
-  <BaseWidget
+  <Panel
     cx={cx}
     canRefine={canRefine}
     renderHeader={renderHeader}
     renderFooter={renderFooter}
   >
     <NumericMenuComponent {...props} cx={cx} canRefine={canRefine} />
-  </BaseWidget>
+  </Panel>
 );
 
 NumericMenu.propTypes = {

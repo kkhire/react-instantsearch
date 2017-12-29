@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connectHitsPerPage from '../connectors/connectHitsPerPage';
 import classNames from '../components/classNames';
-import BaseWidget from '../components/BaseWidget';
+import Panel from '../components/Panel';
 import HitsPerPageSelectComponent from '../components/HitsPerPage';
 
 const cx = classNames('HitsPerPage');
@@ -52,14 +52,9 @@ const cx = classNames('HitsPerPage');
  */
 
 const HitsPerPage = ({ renderHeader, renderFooter, ...props }) => (
-  <BaseWidget
-    cx={cx}
-    canRefine
-    renderHeader={renderHeader}
-    renderFooter={renderFooter}
-  >
+  <Panel cx={cx} renderHeader={renderHeader} renderFooter={renderFooter}>
     <HitsPerPageSelectComponent {...props} cx={cx} />
-  </BaseWidget>
+  </Panel>
 );
 
 HitsPerPage.propTypes = {

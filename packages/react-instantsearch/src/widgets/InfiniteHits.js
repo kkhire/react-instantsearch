@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connectInfiniteHits from '../connectors/connectInfiniteHits';
 import classNames from '../components/classNames';
-import BaseWidget from '../components/BaseWidget';
+import Panel from '../components/Panel';
 import InfiniteHitsComponent from '../components/InfiniteHits';
 
 const cx = classNames('InfiniteHits');
@@ -48,14 +48,9 @@ const cx = classNames('InfiniteHits');
  */
 
 const InfiniteHits = ({ renderHeader, renderFooter, ...props }) => (
-  <BaseWidget
-    cx={cx}
-    canRefine
-    renderHeader={renderHeader}
-    renderFooter={renderFooter}
-  >
+  <Panel cx={cx} renderHeader={renderHeader} renderFooter={renderFooter}>
     <InfiniteHitsComponent {...props} cx={cx} />
-  </BaseWidget>
+  </Panel>
 );
 
 InfiniteHits.propTypes = {

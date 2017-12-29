@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connectRefinementList from '../connectors/connectRefinementList';
 import classNames from '../components/classNames';
-import BaseWidget from '../components/BaseWidget';
+import Panel from '../components/Panel';
 import RefinementListComponent from '../components/RefinementList';
 
 const cx = classNames('RefinementList');
@@ -64,14 +64,14 @@ const RefinementList = ({
   renderFooter,
   ...props
 }) => (
-  <BaseWidget
+  <Panel
     cx={cx}
     canRefine={canRefine}
     renderHeader={renderHeader}
     renderFooter={renderFooter}
   >
     <RefinementListComponent {...props} cx={cx} canRefine={canRefine} />
-  </BaseWidget>
+  </Panel>
 );
 
 RefinementList.propTypes = {

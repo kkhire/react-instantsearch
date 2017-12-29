@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connectSearchBox from '../connectors/connectSearchBox';
 import classNames from '../components/classNames';
-import BaseWidget from '../components/BaseWidget';
+import Panel from '../components/Panel';
 import SearchBoxComponent from '../components/SearchBox';
 
 const cx = classNames('SearchBox');
@@ -58,14 +58,9 @@ const cx = classNames('SearchBox');
  */
 
 const SearchBox = ({ renderHeader, renderFooter, ...props }) => (
-  <BaseWidget
-    cx={cx}
-    canRefine
-    renderHeader={renderHeader}
-    renderFooter={renderFooter}
-  >
+  <Panel cx={cx} renderHeader={renderHeader} renderFooter={renderFooter}>
     <SearchBoxComponent {...props} cx={cx} />
-  </BaseWidget>
+  </Panel>
 );
 
 SearchBox.propTypes = {

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connectRange from '../connectors/connectRange';
 import classNames from '../components/classNames';
-import BaseWidget from '../components/BaseWidget';
+import Panel from '../components/Panel';
 import RangeInputComponent from '../components/RangeInput';
 
 const cx = classNames('RangeInput');
@@ -51,14 +51,14 @@ const cx = classNames('RangeInput');
  */
 
 const RangeInput = ({ canRefine, renderHeader, renderFooter, ...props }) => (
-  <BaseWidget
+  <Panel
     cx={cx}
     canRefine={canRefine}
     renderHeader={renderHeader}
     renderFooter={renderFooter}
   >
     <RangeInputComponent {...props} cx={cx} canRefine={canRefine} />
-  </BaseWidget>
+  </Panel>
 );
 
 RangeInput.propTypes = {

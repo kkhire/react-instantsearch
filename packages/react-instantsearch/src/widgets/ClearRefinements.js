@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connectCurrentRefinements from '../connectors/connectCurrentRefinements';
 import classNames from '../components/classNames';
-import BaseWidget from '../components/BaseWidget';
+import Panel from '../components/Panel';
 import ClearRefinementsComponent from '../components/ClearRefinements';
 
 const cx = classNames('ClearRefinements');
@@ -46,14 +46,9 @@ const cx = classNames('ClearRefinements');
  */
 
 const ClearRefinements = ({ renderHeader, renderFooter, ...props }) => (
-  <BaseWidget
-    cx={cx}
-    renderHeader={renderHeader}
-    renderFooter={renderFooter}
-    canRefine
-  >
+  <Panel cx={cx} renderHeader={renderHeader} renderFooter={renderFooter}>
     <ClearRefinementsComponent {...props} cx={cx} />
-  </BaseWidget>
+  </Panel>
 );
 
 ClearRefinements.propTypes = {

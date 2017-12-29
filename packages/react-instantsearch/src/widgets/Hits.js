@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connectHits from '../connectors/connectHits';
 import classNames from '../components/classNames';
-import BaseWidget from '../components/BaseWidget';
+import Panel from '../components/Panel';
 import HitsComponent from '../components/Hits';
 
 const cx = classNames('Hits');
@@ -45,14 +45,9 @@ const cx = classNames('Hits');
  */
 
 const Hits = ({ renderHeader, renderFooter, ...props }) => (
-  <BaseWidget
-    cx={cx}
-    canRefine
-    renderHeader={renderHeader}
-    renderFooter={renderFooter}
-  >
+  <Panel cx={cx} renderHeader={renderHeader} renderFooter={renderFooter}>
     <HitsComponent {...props} cx={cx} />
-  </BaseWidget>
+  </Panel>
 );
 
 Hits.propTypes = {

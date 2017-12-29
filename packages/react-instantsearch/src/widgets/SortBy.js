@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connectSortBy from '../connectors/connectSortBy';
 import classNames from '../components/classNames';
-import BaseWidget from '../components/BaseWidget';
+import Panel from '../components/Panel';
 import SortByComponent from '../components/SortBy';
 
 const cx = classNames('SortBy');
@@ -50,14 +50,9 @@ const cx = classNames('SortBy');
  */
 
 const SortBy = ({ renderHeader, renderFooter, ...props }) => (
-  <BaseWidget
-    cx={cx}
-    canRefine
-    renderHeader={renderHeader}
-    renderFooter={renderFooter}
-  >
+  <Panel cx={cx} renderHeader={renderHeader} renderFooter={renderFooter}>
     <SortByComponent {...props} cx={cx} />
-  </BaseWidget>
+  </Panel>
 );
 
 SortBy.propTypes = {
