@@ -33,7 +33,7 @@ export default function Highlighter({
   highlightProperty,
   tagName,
   nonHighlightedTagName,
-  separator,
+  renderSeparator,
 }) {
   const parsedHighlightedValue = highlight({
     hit,
@@ -58,7 +58,9 @@ export default function Highlighter({
                   isHighlighted={element.isHighlighted}
                 />
               ))}
-              {!isLast && <span className={cx('separator')}>{separator}</span>}
+              {!isLast && (
+                <span className={cx('separator')}>{renderSeparator()}</span>
+              )}
             </span>
           );
         }
@@ -86,11 +88,11 @@ Highlighter.propTypes = {
   highlightProperty: PropTypes.string.isRequired,
   tagName: PropTypes.string,
   nonHighlightedTagName: PropTypes.string,
-  separator: PropTypes.node,
+  renderSeparator: PropTypes.func,
 };
 
 Highlighter.defaultProps = {
   tagName: 'em',
   nonHighlightedTagName: 'span',
-  separator: ', ',
+  renderSeparator: () => ', ',
 };
