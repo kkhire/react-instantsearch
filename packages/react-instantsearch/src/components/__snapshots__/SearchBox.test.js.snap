@@ -214,6 +214,56 @@ exports[`SearchBox lets you give custom components for reset and submit 1`] = `
     title="Submit your search query."
     type="submit"
   >
+    <span>
+      🔍
+    </span>
+  </button>
+  <button
+    className="reset"
+    hidden={true}
+    onClick={[Function]}
+    title="Clear the search query."
+    type="reset"
+  >
+    <svg
+      viewBox="200 198 108 122"
+    >
+      <path
+        d="M200.8 220l45 46.7-20 47.4 31.7-34 50.4 39.3-34.3-52.6 30.2-68.3-49.7 51.7"
+      />
+    </svg>
+  </button>
+</form>
+`;
+
+exports[`SearchBox should render a custom loading indicator 1`] = `
+<form
+  action=""
+  className="form form--stalledSearch"
+  noValidate={true}
+  onReset={[Function]}
+  onSubmit={[Function]}
+  role="search"
+>
+  <input
+    autoCapitalize="off"
+    autoComplete="off"
+    autoCorrect="off"
+    autoFocus={false}
+    className="input"
+    maxLength="512"
+    onChange={[Function]}
+    placeholder="Search here…"
+    required={true}
+    spellCheck="false"
+    type="search"
+    value=""
+  />
+  <button
+    className="submit"
+    title="Submit your search query."
+    type="submit"
+  >
     <svg
       className="submitIcon"
       height="10"
@@ -245,6 +295,14 @@ exports[`SearchBox lets you give custom components for reset and submit 1`] = `
       />
     </svg>
   </button>
+  <span
+    className="loadingIndicator"
+    hidden={false}
+  >
+    <span>
+      ✨
+    </span>
+  </span>
 </form>
 `;
 

@@ -70,12 +70,12 @@ describe('SearchBox', () => {
         <SearchBox
           cx={(...x) => x.join(' ')}
           refine={() => null}
-          submitComponent={<span>🔍</span>}
-          resetComponent={
+          renderSubmit={() => <span>🔍</span>}
+          renderReset={() => (
             <svg viewBox="200 198 108 122">
               <path d="M200.8 220l45 46.7-20 47.4 31.7-34 50.4 39.3-34.3-52.6 30.2-68.3-49.7 51.7" />
             </svg>
-          }
+          )}
         />
       )
       .toJSON();
@@ -243,6 +243,21 @@ describe('SearchBox', () => {
         <SearchBox
           cx={(...x) => x.join(' ')}
           refine={() => null}
+          showLoadingIndicator
+          isSearchStalled
+        />
+      )
+      .toJSON();
+    expect(treeWithLoadingIndicator).toMatchSnapshot();
+  });
+
+  it('should render a custom loading indicator', () => {
+    const treeWithLoadingIndicator = renderer
+      .create(
+        <SearchBox
+          cx={(...x) => x.join(' ')}
+          refine={() => null}
+          renderLoadingIndicator={() => <span>✨</span>}
           showLoadingIndicator
           isSearchStalled
         />
