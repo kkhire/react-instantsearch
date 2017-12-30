@@ -27,27 +27,38 @@ const highlight = ({ attributeName, hit, highlightProperty }) =>
  *
  * const CustomHighlight = connectHighlight(
  *   ({ highlight, attributeName, hit, highlightProperty }) => {
- *     const parsedHit = highlight({ attributeName, hit, highlightProperty: '_highlightResult' });
- *     const highlightedHits = parsedHit.map(part => {
- *       if (part.isHighlighted) return <mark>{part.value}</mark>;
- *       return part.value;
+ *     const parsedHit = highlight({
+ *       attributeName,
+ *       hit,
+ *       highlightProperty: "_highlightResult"
  *     });
- *     return <div>{highlightedHits}</div>;
+ *
+ *     return (
+ *       <div>
+ *         {parsedHit.map(part => part.isHighlighted ? (
+ *           <mark>{part.value}</mark>
+ *         ) : (
+ *           <span>{part.value}</span>
+ *         )}
+ *       </div>
+ *     );
  *   }
  * );
  *
- * const Hit = ({hit}) =>
- * <p>
- *   <CustomHighlight attributeName="description" hit={hit} />
- * </p>;
+ * const Hit = ({hit}) => (
+ *   <p>
+ *     <CustomHighlight attributeName="description" hit={hit} />
+ *   </p>
+ * );
  *
  * export default function App() {
  *   return (
  *     <InstantSearch
- *        appId="latency"
- *        apiKey="6be0576ff61c053d5f9a3225e2a90f76"
- *        indexName="ikea">
- *       <Hits hitComponent={Hit} />
+ *       appId="latency"
+ *       apiKey="6be0576ff61c053d5f9a3225e2a90f76"
+ *       indexName="ikea"
+ *     >
+ *       <Hits renderHit={hit => <Hit hit={hit} />} />
  *     </InstantSearch>
  *   );
  * }

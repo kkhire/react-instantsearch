@@ -56,7 +56,7 @@ export default function App() {
       apiKey="6be0576ff61c053d5f9a3225e2a90f76"
       indexName="ikea"
     >
-      <Hits hitComponent={Hit} />
+      <Hits renderHit={hit => <Hit hit={hit} />} />
     </InstantSearch>
   );
 }
@@ -110,7 +110,7 @@ export default function App() {
       apiKey="6be0576ff61c053d5f9a3225e2a90f76"
       indexName="ikea"
     >
-      <Hits hitComponent={Hit} />
+      <Hits renderHit={hit => <Hit hit={hit} />} />
     </InstantSearch>
   );
 }

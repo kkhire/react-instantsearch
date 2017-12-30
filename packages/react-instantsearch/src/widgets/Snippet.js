@@ -35,7 +35,7 @@ const cx = classNames('Snippet');
  *       indexName="ikea"
  *     >
  *       <Hits
- *         hitComponent={({ hit }) => (
+ *         renderHit={hit => (
  *           <p key={hit.objectID}>
  *             <Snippet attributeName="description" hit={hit} />
  *           </p>

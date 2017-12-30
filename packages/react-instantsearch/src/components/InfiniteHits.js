@@ -5,21 +5,14 @@ import translatable from '../core/translatable';
 
 class InfiniteHits extends Component {
   render() {
-    const {
-      cx,
-      hitComponent: ItemComponent,
-      hits,
-      hasMore,
-      refine,
-      translate,
-    } = this.props;
+    const { cx, renderHit, hits, hasMore, refine, translate } = this.props;
 
     return (
       <div>
         <ul className={cx('list')}>
           {hits.map(hit => (
             <li key={hit.objectID} className={cx('item')}>
-              <ItemComponent hit={hit} />
+              {renderHit(hit)}
             </li>
           ))}
         </ul>
@@ -38,8 +31,7 @@ class InfiniteHits extends Component {
 InfiniteHits.propTypes = {
   cx: PropTypes.func.isRequired,
   hits: PropTypes.array,
-  hitComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
-    .isRequired,
+  renderHit: PropTypes.func,
   hasMore: PropTypes.bool.isRequired,
   refine: PropTypes.func.isRequired,
   translate: PropTypes.func.isRequired,
@@ -49,7 +41,7 @@ InfiniteHits.propTypes = {
 
 /* eslint-disable react/display-name */
 InfiniteHits.defaultProps = {
-  hitComponent: hit => (
+  renderHit: hit => (
     <div
       style={{
         borderBottom: '1px solid #bbb',

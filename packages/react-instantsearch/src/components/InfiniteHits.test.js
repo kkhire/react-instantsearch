@@ -10,13 +10,13 @@ Enzyme.configure({ adapter: new Adapter() });
 import InfiniteHits from './InfiniteHits';
 
 describe('Hits', () => {
-  it('accepts a hitComponent prop', () => {
+  it('accepts a renderHit prop', () => {
     const hits = [{ objectID: 0 }, { objectID: 1 }, { objectID: 2 }];
     const Hit = 'Hit';
     const tree = renderer.create(
       <InfiniteHits
         cx={(...x) => x.join(' ')}
-        hitComponent={Hit}
+        renderHit={hit => <Hit hit={hit} />}
         hits={hits}
         hasMore={false}
         refine={() => undefined}
@@ -35,7 +35,6 @@ describe('Hits', () => {
       <InfiniteHits
         cx={(...x) => x.join(' ')}
         refine={mockedRefine}
-        hitComponent={Hit}
         hits={hits}
         hasMore={true}
       />
@@ -51,7 +50,6 @@ describe('Hits', () => {
       <InfiniteHits
         cx={(...x) => x.join(' ')}
         refine={() => undefined}
-        hitComponent={Hit}
         hits={hits}
         hasMore={false}
       />

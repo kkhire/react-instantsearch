@@ -9,9 +9,7 @@ const stories = storiesOf('Snippet', module);
 
 const Default = ({ hit }) => (
   <article>
-    <p>
-      <Snippet attributeName="name" hit={hit} />
-    </p>
+    <p>{hit.name}</p>
     <p>
       <Snippet attributeName="description" hit={hit} />
     </p>
@@ -24,13 +22,7 @@ Default.propTypes = {
 
 const StrongHits = ({ hit }) => (
   <article>
-    <p>
-      <Snippet
-        attributeName="name"
-        tagName={text('tag name (title)', 'strong')}
-        hit={hit}
-      />
-    </p>
+    <p>{hit.name}</p>
     <p>
       <Snippet
         attributeName="description"
@@ -48,11 +40,11 @@ StrongHits.propTypes = {
 stories
   .add('default', () => (
     <WrapWithHits hasPlayground={true} linkedStoryGroup="Snippet">
-      <Hits hitComponent={Default} />
+      <Hits renderHit={hit => <Default hit={hit} />} />
     </WrapWithHits>
   ))
   .add('playground', () => (
     <WrapWithHits linkedStoryGroup="Snippet">
-      <Hits hitComponent={StrongHits} />
+      <Hits renderHit={hit => <StrongHits hit={hit} />} />
     </WrapWithHits>
   ));

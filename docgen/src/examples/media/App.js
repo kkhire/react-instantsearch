@@ -156,7 +156,7 @@ const Results = connectSearchBox(() => (
     </div>
     <hr />
     <div id="hits">
-      <Hits hitComponent={Hit} />
+      <Hits renderHit={hit => <Hit hit={hit} />} />
     </div>
     <div id="pagination" className="text-center">
       <Pagination />
