@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import BaseWidget from './BaseWidget';
-import connectInfiniteHits from '../connectors/connectInfiniteHits.js';
-import InfiniteHitsComponent from '../components/InfiniteHits.js';
+import connectInfiniteHits from '../connectors/connectInfiniteHits';
+import Panel from '../components/Panel';
+import InfiniteHitsComponent from '../components/InfiniteHits';
 import classNames from '../components/classNames';
 
 const cx = classNames('InfiniteHits');
@@ -18,8 +17,8 @@ const cx = classNames('InfiniteHits');
  * @propType {function} [renderHit] - Function used for rendering each hit from
  *   the results. If it is not provided the rendering defaults to displaying the
  *   hit in its JSON form. The function will be called with a `hit` argument.
- * @propType {node} [header] - Adds a header to the widget.
- * @propType {node} [footer] - Adds a footer to the widget.
+ * @propType {function} [renderHeader] - Adds a header to the widget.
+ * @propType {function} [renderFooter] - Adds a footer to the widget.
  * @themeKey ais-InfiniteHits - the root div of the widget
  * @themeKey ais-InfiniteHits-header - the header of the widget (optional)
  * @themeKey ais-InfiniteHits-body - the body of the widget
@@ -47,15 +46,10 @@ const cx = classNames('InfiniteHits');
  * }
  */
 
-const Widget = props => (
-  <BaseWidget cx={cx} header={props.header} footer={props.footer}>
-    <InfiniteHitsComponent cx={cx} {...props} />
-  </BaseWidget>
-);
+const InfiniteHits = connectInfiniteHits(props => (
+  <Panel {...props} cx={cx}>
+    <InfiniteHitsComponent {...props} cx={cx} />
+  </Panel>
+));
 
-Widget.propTypes = {
-  header: PropTypes.node,
-  footer: PropTypes.node,
-};
-
-export default connectInfiniteHits(Widget);
+export default InfiniteHits;

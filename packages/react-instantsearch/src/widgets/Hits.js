@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import BaseWidget from './BaseWidget';
-import connectHits from '../connectors/connectHits.js';
-import HitsComponent from '../components/Hits.js';
+import connectHits from '../connectors/connectHits';
+import Panel from '../components/Panel';
+import HitsComponent from '../components/Hits';
 import classNames from '../components/classNames';
 
 const cx = classNames('Hits');
@@ -18,8 +17,8 @@ const cx = classNames('Hits');
  * @propType {function} [renderHit] - Function used for render each hit from
  *   the results. If it is not provided the rendering defaults to displaying the
  *   hit in its JSON form. The function will be called with a `hit` argument.
- * @propType {node} [header] - Adds a header to the widget.
- * @propType {node} [footer] - Adds a footer to the widget.
+ * @propType {function} [renderHeader] - Adds a header to the widget.
+ * @propType {function} [renderFooter] - Adds a footer to the widget.
  * @themeKey ais-Hits - the root div of the widget
  * @themeKey ais-Hits-header - the header of the widget (optional)
  * @themeKey ais-Hits-body - the body of the widget
@@ -44,15 +43,10 @@ const cx = classNames('Hits');
  * }
  */
 
-const Widget = props => (
-  <BaseWidget cx={cx} header={props.header} footer={props.footer}>
-    <HitsComponent cx={cx} {...props} />
-  </BaseWidget>
-);
+const Hits = connectHits(props => (
+  <Panel {...props} cx={cx}>
+    <HitsComponent {...props} cx={cx} />
+  </Panel>
+));
 
-Widget.propTypes = {
-  header: PropTypes.node,
-  footer: PropTypes.node,
-};
-
-export default connectHits(Widget);
+export default Hits;

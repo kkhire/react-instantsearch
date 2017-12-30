@@ -30,7 +30,10 @@ stories
     'with header and footer',
     () => (
       <WrapWithHits linkedStoryGroup="Hits" pagination={false}>
-        <InfiniteHits header="Header" footer="Footer" />
+        <InfiniteHits
+          renderHeader={() => 'Infinite hits'}
+          renderFooter={() => 'Footer'}
+        />
       </WrapWithHits>
     ),
     {

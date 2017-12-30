@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import BaseWidget from './BaseWidget';
-import connectCurrentRefinements from '../connectors/connectCurrentRefinements.js';
-import ClearRefinementsComponent from '../components/ClearRefinements.js';
+import connectCurrentRefinements from '../connectors/connectCurrentRefinements';
+import AutoHideContainer from '../components/AutoHideContainer';
+import Panel from '../components/Panel';
+import ClearRefinementsComponent from '../components/ClearRefinements';
 import classNames from '../components/classNames';
 
 const cx = classNames('ClearRefinements');
@@ -14,8 +14,9 @@ const cx = classNames('ClearRefinements');
  * @kind widget
  * @propType {function} [transformItems] - Function to modify the items being displayed, e.g. for filtering or sorting them. Takes an items as parameter and expects it back in return.
  * @propType {boolean} [clearsQuery=false] - Pass true to also clear the search query
- * @propType {node} [header] - Adds a header to the widget.
- * @propType {node} [footer] - Adds a footer to the widget.
+ * @propType {boolean} [autoHideContainer=false] - Hide the container when there are no refinements to clear.
+ * @propType {function} [renderHeader] - Adds a header to the widget.
+ * @propType {function} [renderFooter] - Adds a footer to the widget.
  * @themeKey ais-ClearRefinements - the root div of the widget
  * @themeKey ais-ClearRefinements-header - the header of the widget (optional)
  * @themeKey ais-ClearRefinements-body - the body of the widget
@@ -45,15 +46,12 @@ const cx = classNames('ClearRefinements');
  * }
  */
 
-const Widget = props => (
-  <BaseWidget cx={cx} header={props.header} footer={props.footer}>
-    <ClearRefinementsComponent cx={cx} {...props} />
-  </BaseWidget>
-);
+const ClearRefinements = connectCurrentRefinements(props => (
+  <AutoHideContainer {...props}>
+    <Panel {...props} cx={cx}>
+      <ClearRefinementsComponent {...props} cx={cx} />
+    </Panel>
+  </AutoHideContainer>
+));
 
-Widget.propTypes = {
-  header: PropTypes.node,
-  footer: PropTypes.node,
-};
-
-export default connectCurrentRefinements(Widget);
+export default ClearRefinements;

@@ -39,8 +39,8 @@ stories
             { value: 'ikea_price_desc', label: 'Price desc.' },
           ]}
           defaultRefinement="ikea"
-          header="Header"
-          footer="Footer"
+          renderHeader={() => 'Sort By'}
+          renderFooter={() => 'Footer'}
         />
       </WrapWithHits>
     ),

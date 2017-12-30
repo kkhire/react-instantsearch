@@ -36,15 +36,37 @@ stories
     'with header and footer',
     () => (
       <WrapWithHits linkedStoryGroup="ClearRefinements">
-        <div>
-          <ClearRefinements header="Header" footer="Footer" />
-          <div style={{ display: 'none' }}>
-            <RefinementList
-              attributeName="category"
-              defaultRefinement={['Dining']}
-            />
-          </div>
-        </div>
+        <ClearRefinements
+          renderHeader={() => 'Clear refinements'}
+          renderFooter={() => 'Footer'}
+        />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'hidden without refinement',
+    () => (
+      <WrapWithHits linkedStoryGroup="ClearRefinements">
+        <ClearRefinements
+          renderHeader={() => 'Clear refinements'}
+          autoHideContainer
+        />
+      </WrapWithHits>
+    ),
+    {
+      displayName,
+      filterProps,
+    }
+  )
+  .addWithJSX(
+    'visible without refinement',
+    () => (
+      <WrapWithHits linkedStoryGroup="ClearRefinements">
+        <ClearRefinements renderHeader={() => 'Clear refinements'} />
       </WrapWithHits>
     ),
     {

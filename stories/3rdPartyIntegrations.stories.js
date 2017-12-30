@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { connectRange } from '../packages/react-instantsearch/connectors';
 import { WrapWithHits } from './util';
-import BaseWidget from '../packages/react-instantsearch/src/widgets/BaseWidget';
+import Panel from '../packages/react-instantsearch/src/widgets/Panel';
 import classNames from '../packages/react-instantsearch/src/components/classNames';
 import Rheostat from 'rheostat';
 
@@ -24,8 +24,8 @@ class Range extends Component {
     currentRefinement: PropTypes.object,
     refine: PropTypes.func.isRequired,
     canRefine: PropTypes.bool.isRequired,
-    header: PropTypes.node,
-    footer: PropTypes.node,
+    renderHeader: PropTypes.func,
+    renderFooter: PropTypes.func,
   };
 
   state = { currentValues: { min: this.props.min, max: this.props.max } };
@@ -60,10 +60,23 @@ class Range extends Component {
   };
 
   render() {
-    const { min, max, currentRefinement, header, footer } = this.props;
+    const {
+      min,
+      max,
+      currentRefinement,
+      canRefine,
+      renderHeader,
+      renderFooter,
+    } = this.props;
     const { currentValues } = this.state;
+
     return min !== max ? (
-      <BaseWidget cx={cx} header={header} footer={footer}>
+      <Panel
+        cx={cx}
+        canRefine={canRefine}
+        renderHeader={renderHeader}
+        renderFooter={renderFooter}
+      >
         <Rheostat
           min={min}
           max={max}
@@ -84,7 +97,7 @@ class Range extends Component {
             <div className="rheostat-value">{currentValues.max}</div>
           </div>
         </Rheostat>
-      </BaseWidget>
+      </Panel>
     ) : null;
   }
 }

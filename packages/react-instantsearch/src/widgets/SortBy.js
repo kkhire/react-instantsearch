@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import BaseWidget from './BaseWidget';
-import connectSortBy from '../connectors/connectSortBy.js';
-import SortByComponent from '../components/SortBy.js';
+import connectSortBy from '../connectors/connectSortBy';
+import Panel from '../components/Panel';
+import SortByComponent from '../components/SortBy';
 import classNames from '../components/classNames';
 
 const cx = classNames('SortBy');
@@ -16,8 +15,8 @@ const cx = classNames('SortBy');
  * @propType {{value: string, label: string}[]} items - The list of indexes to search in.
  * @propType {string} defaultRefinement - The default selected index.
  * @propType {function} [transformItems] - Function to modify the items being displayed, e.g. for filtering or sorting them. Takes an items as parameter and expects it back in return.
- * @propType {node} [header] - Adds a header to the widget.
- * @propType {node} [footer] - Adds a footer to the widget.
+ * @propType {function} [renderHeader] - Adds a header to the widget.
+ * @propType {function} [renderFooter] - Adds a footer to the widget.
  * @themeKey ais-SortBy - the root div of the widget
  * @themeKey ais-SortBy-header - the header of the widget (optional)
  * @themeKey ais-SortBy-body - the body of the widget
@@ -49,15 +48,10 @@ const cx = classNames('SortBy');
  * }
  */
 
-const Widget = props => (
-  <BaseWidget cx={cx} header={props.header} footer={props.footer}>
-    <SortByComponent cx={cx} {...props} />
-  </BaseWidget>
-);
+const SortBy = connectSortBy(props => (
+  <Panel {...props} cx={cx}>
+    <SortByComponent {...props} cx={cx} />
+  </Panel>
+));
 
-Widget.propTypes = {
-  header: PropTypes.node,
-  footer: PropTypes.node,
-};
-
-export default connectSortBy(Widget);
+export default SortBy;

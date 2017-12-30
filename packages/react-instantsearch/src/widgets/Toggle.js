@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import BaseWidget from './BaseWidget';
-import connectToggle from '../connectors/connectToggle.js';
-import ToggleComponent from '../components/Toggle.js';
+import connectToggle from '../connectors/connectToggle';
+import Panel from '../components/Panel';
+import ToggleComponent from '../components/Toggle';
 import classNames from '../components/classNames';
 
 const cx = classNames('Toggle');
@@ -20,8 +19,8 @@ const cx = classNames('Toggle');
  * @propType {string} label - Label for the toggle.
  * @propType {any} value - Value of the refinement to apply on `attributeName` when checked.
  * @propType {boolean} [defaultRefinement=false] - Default state of the widget. Should the toggle be checked by default?
- * @propType {node} [header] - Adds a header to the widget.
- * @propType {node} [footer] - Adds a footer to the widget.
+ * @propType {function} [renderHeader] - Adds a header to the widget.
+ * @propType {function} [renderFooter] - Adds a footer to the widget.
  * @themeKey ais-Toggle - the root div of the widget
  * @themeKey ais-Toggle-header - the header of the widget (optional)
  * @themeKey ais-Toggle-body - the body of the widget
@@ -54,15 +53,10 @@ const cx = classNames('Toggle');
  * }
  */
 
-const Widget = props => (
-  <BaseWidget cx={cx} header={props.header} footer={props.footer}>
-    <ToggleComponent cx={cx} {...props} />
-  </BaseWidget>
-);
+const Toggle = connectToggle(props => (
+  <Panel {...props} cx={cx}>
+    <ToggleComponent {...props} cx={cx} />
+  </Panel>
+));
 
-Widget.propTypes = {
-  header: PropTypes.node,
-  footer: PropTypes.node,
-};
-
-export default connectToggle(Widget);
+export default Toggle;

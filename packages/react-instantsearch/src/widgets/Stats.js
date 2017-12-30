@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import BaseWidget from './BaseWidget';
-import connectStats from '../connectors/connectStats.js';
-import StatsComponent from '../components/Stats.js';
+import connectStats from '../connectors/connectStats';
+import Panel from '../components/Panel';
+import StatsComponent from '../components/Stats';
 import classNames from '../components/classNames';
 
 const cx = classNames('Stats');
@@ -11,8 +10,8 @@ const cx = classNames('Stats');
  * The Stats component displays the total number of matching hits and the time it took to get them (time spent in the Algolia server).
  * @name Stats
  * @kind widget
- * @propType {node} [header] - Adds a header to the widget.
- * @propType {node} [footer] - Adds a footer to the widget.
+ * @propType {function} [renderHeader] - Adds a header to the widget.
+ * @propType {function} [renderFooter] - Adds a footer to the widget.
  * @themeKey ais-Stats - the root div of the widget
  * @themeKey ais-Stats-header - the header of the widget (optional)
  * @themeKey ais-Stats-body - the body of the widget
@@ -37,15 +36,10 @@ const cx = classNames('Stats');
  * }
  */
 
-const Widget = props => (
-  <BaseWidget cx={cx} header={props.header} footer={props.footer}>
-    <StatsComponent cx={cx} {...props} />
-  </BaseWidget>
-);
+const Stats = connectStats(props => (
+  <Panel {...props} cx={cx}>
+    <StatsComponent {...props} cx={cx} />
+  </Panel>
+));
 
-Widget.propTypes = {
-  header: PropTypes.node,
-  footer: PropTypes.node,
-};
-
-export default connectStats(Widget);
+export default Stats;

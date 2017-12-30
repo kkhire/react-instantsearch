@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import BaseWidget from './BaseWidget';
-import connectHitsPerPage from '../connectors/connectHitsPerPage.js';
-import HitsPerPageSelectComponent from '../components/HitsPerPage.js';
+import connectHitsPerPage from '../connectors/connectHitsPerPage';
+import Panel from '../components/Panel';
+import HitsPerPageSelectComponent from '../components/HitsPerPage';
 import classNames from '../components/classNames';
 
 const cx = classNames('HitsPerPage');
@@ -19,8 +18,8 @@ const cx = classNames('HitsPerPage');
  * @propType {{value: number, label: string}[]} items - List of available options.
  * @propType {number} defaultRefinement - The number of items selected by default
  * @propType {function} [transformItems] - Function to modify the items being displayed, e.g. for filtering or sorting them. Takes an items as parameter and expects it back in return.
- * @propType {node} [header] - Adds a header to the widget.
- * @propType {node} [footer] - Adds a footer to the widget.
+ * @propType {function} [renderHeader] - Adds a header to the widget.
+ * @propType {function} [renderFooter] - Adds a footer to the widget.
  * @themeKey ais-HitsPerPage - the root div of the widget
  * @themeKey ais-HitsPerPage-header - the header of the widget (optional)
  * @themeKey ais-HitsPerPage-body - the body of the widget
@@ -48,15 +47,10 @@ const cx = classNames('HitsPerPage');
  * }
  */
 
-const Widget = props => (
-  <BaseWidget cx={cx} header={props.header} footer={props.footer}>
-    <HitsPerPageSelectComponent cx={cx} {...props} />
-  </BaseWidget>
-);
+const HitsPerPage = connectHitsPerPage(props => (
+  <Panel {...props} cx={cx}>
+    <HitsPerPageSelectComponent {...props} cx={cx} />
+  </Panel>
+));
 
-Widget.propTypes = {
-  header: PropTypes.node,
-  footer: PropTypes.node,
-};
-
-export default connectHitsPerPage(Widget);
+export default HitsPerPage;
